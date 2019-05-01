@@ -3,7 +3,9 @@ import { NativeScriptCommonModule } from "nativescript-angular/common";
 
 import { HomeRoutingModule } from "./home-routing.module";
 import { HomeComponent } from "./home.component";
-import { Collections } from "../components/collections/collections.component"
+import { Collections } from "../components/collections/collections.component";
+import { CollectionsList } from "../components/collections-list/collections-list.component";
+import { Buddies } from "../components/buddies/buddies.component";
     @NgModule({
     imports: [
         NativeScriptCommonModule,
@@ -11,7 +13,10 @@ import { Collections } from "../components/collections/collections.component"
     ],
     declarations: [
         HomeComponent,
-        Collections // added
+        Collections,
+        CollectionsList,
+        Buddies
+
     ],
     schemas: [
         NO_ERRORS_SCHEMA
