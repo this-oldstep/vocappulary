@@ -7,6 +7,7 @@ import { Collections } from "../components/collections/collections.component";
 import { CollectionsList } from "../components/collections-list/collections-list.component";
 import { Buddies } from "../components/buddies/buddies.component";
 import { Practice } from "../components/practice/practice.component";
+import { Login } from "../components/login/login.component";
 
     @NgModule({
     imports: [
@@ -18,7 +19,8 @@ import { Practice } from "../components/practice/practice.component";
         Collections,
         CollectionsList,
         Buddies,
-        Practice
+        Practice,
+        Login
 
     ],
     schemas: [

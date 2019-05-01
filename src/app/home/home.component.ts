@@ -12,11 +12,6 @@ export class HomeComponent implements OnInit {
     }
 
 
-    onSignIn(){
-        console.log('signedIn!');
-    }
-
-
     ngOnInit(): void {
         // Init your component properties here.
     }
