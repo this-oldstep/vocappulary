@@ -6,6 +6,8 @@ import { HomeComponent } from "./home.component";
 import { Collections } from "../components/collections/collections.component";
 import { CollectionsList } from "../components/collections-list/collections-list.component";
 import { Buddies } from "../components/buddies/buddies.component";
+import { Practice } from "../components/practice/practice.component";
+
     @NgModule({
     imports: [
         NativeScriptCommonModule,
@@ -15,7 +17,8 @@ import { Buddies } from "../components/buddies/buddies.component";
         HomeComponent,
         Collections,
         CollectionsList,
-        Buddies
+        Buddies,
+        Practice
 
     ],
     schemas: [

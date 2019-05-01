@@ -6,4 +6,8 @@ import { Component } from "@angular/core"
   styleUrls: ['/collections.component.css'],
   moduleId: module.id
 })
-export class Collections { } 
+export class Collections { 
+  title = 'hello world'
+  
+
+} 
