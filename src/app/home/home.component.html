@@ -1,16 +1,11 @@
-<ActionBar class="action-bar">
+<ActionBar class="action-bar" orientation="bottom">
+    <ActionItem text="hello world" android.systemIcon="ic_menu_action" android.position="actionBar"></ActionItem>
     <Label class="action-bar-title" text="Vocapp!"></Label>
 </ActionBar>
-
-<GridLayout columns="*,1" rows="1*,1*,1*" width="300" height="400" backgroundColor="lightgray">
-    <TextField col="0" row="0"  hint="Username"></TextField>
-    <TextField col="0" row="1" hint="Password"></TextField>
-    <Button text="Sign In!" col="0" row="2" (tap)="onSignIn()"></Button>
-
-</GridLayout>
 <StackLayout>
     <collections></collections>
     <collections-list></collections-list>
     <buddies></buddies>
     <practice></practice>
+    <login></login>
 </StackLayout>
