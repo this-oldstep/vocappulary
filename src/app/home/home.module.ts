@@ -3,14 +3,25 @@ import { NativeScriptCommonModule } from "nativescript-angular/common";
 
 import { HomeRoutingModule } from "./home-routing.module";
 import { HomeComponent } from "./home.component";
+import { Collections } from "../components/collections/collections.component";
+import { CollectionsList } from "../components/collections-list/collections-list.component";
+import { Buddies } from "../components/buddies/buddies.component";
+import { Practice } from "../components/practice/practice.component";
+import { Login } from "../components/login/login.component";
 
-@NgModule({
+    @NgModule({
     imports: [
         NativeScriptCommonModule,
         HomeRoutingModule
     ],
     declarations: [
-        HomeComponent
+        HomeComponent,
+        Collections,
+        CollectionsList,
+        Buddies,
+        Practice,
+        Login
+
     ],
     schemas: [
         NO_ERRORS_SCHEMA
