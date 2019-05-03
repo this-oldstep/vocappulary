@@ -25,6 +25,13 @@ export class Collections {
             console.log("Result is an image asset instance");
             var image = new imageModule.Image();
             image.src = imageAsset;
+            this.http.post(`https://api.cloudinary.com/v1_1/demo/image/upload?file=${image.src}`)
+              .then((data)=>{
+                console.log('hello');
+              })
+              .catch((err)=>{
+                console.log(err);
+              })
           }).catch(function (err) {
             console.log("Error -> " + err.message);
           });
