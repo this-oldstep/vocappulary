@@ -18,12 +18,14 @@ export class CollectionsList {
     camera.requestPermissions().then(
       function success() {
         console.log('yes')
+        let options = { width: 100, height: 100, keepAspectRatio: false, saveToGallery: true };
         let imageModule = require("tns-core-modules/ui/image");
-        camera.takePicture()
+        camera.takePicture(options)
           .then(function (imageAsset) {
             console.log("Result is an image asset instance");
             var image = new imageModule.Image();
             image.src = imageAsset;
+            console.log(imageAsset.options.width, imageAsset.options.height)
           }).catch(function (err) {
             console.log("Error -> " + err.message);
           });
