@@ -7,7 +7,7 @@ import { Component } from "@angular/core"
   moduleId: module.id
 })
 export class Collections { 
-  title = 'hello world'
+  title = 'hello friend'
   
 
 } 
