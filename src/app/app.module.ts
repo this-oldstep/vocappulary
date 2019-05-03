@@ -3,6 +3,7 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { AuthComponent } from './auth/auth.component';
 // import { Collections } from "./components/collections/collections.component"
 
 @NgModule({
@@ -15,6 +16,7 @@ import { AppComponent } from "./app.component";
     ],
     declarations: [
         AppComponent,
+        AuthComponent,
         // Collections// hello
 
 
