@@ -1,10 +1,10 @@
 
 <ListView [items]="collections" (itemTap)="onItemTap($event)" iosEstimatedRowHeight="65">
-  <ng-template>
-    <GridLayout rows="40,20" columns="50,*">
-      <Label text="Item" row="0" col="0" rowSpan="2"></Label>
-      <Label text="Item content" row="0" col="1"></Label>
-      <Label text="Item content row2" row="1" col="1"></Label>
-    </GridLayout>
+  <ng-template let-collection="item" let-index="index">
+    <FlexboxLayout justifyContent="center">
+      <!-- <Label [text]="index" row="0" col="0" rowSpan="2"></Label> -->
+      <Label class="collection" [text]="collection"></Label>
+      <!-- <Label text="Item content row2" row="1" col="1"></Label> -->
+    </FlexboxLayout>
   </ng-template>
-</ListView> 
+</ListView>
