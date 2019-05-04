@@ -23,6 +23,8 @@ export class CollectionInputComponent  {
 
   @Output() input = new EventEmitter <string>();
 
+
+
   onCreateCollection() {
    // this.currentCollection = this.collectionDescription;
    this.input.emit(this.collectionDescription);

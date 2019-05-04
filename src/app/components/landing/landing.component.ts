@@ -8,11 +8,13 @@ import { CollectionInputComponent} from '../collection-input/collection-input.co
   styleUrls: ['./landing.component.css'],
   moduleId: module.id,
 })
-export class LandingComponent implements OnInit {
+export class LandingComponent {
 
-  constructor() { }
+  activeCollections: string[] = [];
 
-  ngOnInit() {
+
+  onCollectionInput(collectionDescription: string) {
+    this.activeCollections.push(collectionDescription);
   }
 
 }
