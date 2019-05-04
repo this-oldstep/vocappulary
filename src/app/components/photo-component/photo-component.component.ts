@@ -11,7 +11,7 @@ import { fromAsset } from "tns-core-modules/image-source/image-source";
   styleUrls: ['./photo-component.component.css'],
   moduleId: module.id,
 })
-export class PhotoComponent {
+export class PhotoComponentComponent {
 
 
   constructor(private http: HttpClient) { }
