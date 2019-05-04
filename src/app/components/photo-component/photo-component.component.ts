@@ -1,18 +1,17 @@
-import { Component } from "@angular/core"
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http"
 import * as camera from "nativescript-camera";
 import * as Platform from "platform"
 import enumsModule = require('tns-core-modules/ui/enums')
 import { fromAsset } from "tns-core-modules/image-source/image-source";
 
-
 @Component({
-  selector: 'collections-list',
-  templateUrl: './collections-list.component.html',
-  styleUrls: ['/collections-list.component.css'],
-  moduleId: module.id
+  selector: 'ns-photo-component',
+  templateUrl: './photo-component.component.html',
+  styleUrls: ['./photo-component.component.css'],
+  moduleId: module.id,
 })
-export class CollectionsList {
+export class PhotoComponent {
 
 
   constructor(private http: HttpClient) { }
@@ -31,7 +30,7 @@ export class CollectionsList {
             var image = new imageModule.Image();
             image.src = imageAsset;
             console.log(imageAsset.options.width, imageAsset.options.height)
-            fromAsset(imageAsset).then((result)=>{
+            fromAsset(imageAsset).then((result) => {
               let base64 = result.toBase64String("jpeg", 100);
               let testUrl = 'http://b5f49f49.ngrok.io/images/';
               let options = {
@@ -39,7 +38,7 @@ export class CollectionsList {
                 nativeLanguage: Platform.device.language
               }
               http.post(testUrl, options)
-                .subscribe((data)=>{
+                .subscribe((data) => {
                   console.log(data);
                 })
 
@@ -54,4 +53,4 @@ export class CollectionsList {
       }
     );
   }
- } 
+} 
