@@ -1,5 +1,4 @@
 import { Component } from "@angular/core"
-import * as Platform from "platform"
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -8,6 +7,6 @@ import * as Platform from "platform"
 })
 export class Login { 
   onSignIn() {
-    console.log(Platform.device.language);
+
   }
 } 

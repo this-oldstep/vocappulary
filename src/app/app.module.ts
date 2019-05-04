@@ -4,7 +4,6 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 // import { PhotoComponentComponent } from './components/photo-component/photo-component.component';
-// import { Collections } from "./components/collections/collections.component"
 
 @NgModule({
     bootstrap: [
@@ -17,7 +16,6 @@ import { AppComponent } from "./app.component";
     declarations: [
         AppComponent,
         // PhotoComponentComponent,
-        // Collections// hello
 
 
     ],

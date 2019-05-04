@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http"
-import * as camera from "nativescript-camera";
-import * as Platform from "platform"
-import enumsModule = require('tns-core-modules/ui/enums')
-import { fromAsset } from "tns-core-modules/image-source/image-source";
+import { HttpClient } from "@angular/common/http";
+var camera = require("nativescript-camera"); //import * as camera from "nativescript-camera";
+let Platform = require("tns-core-modules/platform");
+// import Platform from "tns-core-modules/platform"// * as
+let enumsModule = require('tns-core-modules/ui/enums');
+// import enumsModule = require('tns-core-modules/ui/enums')
+let { fromAsset } = require("tns-core-modules/image-source/image-source");
+// import { fromAsset } from "tns-core-modules/image-source/image-source";
 
 @Component({
   selector: 'ns-photo-component',

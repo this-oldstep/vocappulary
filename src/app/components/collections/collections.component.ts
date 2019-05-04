@@ -1,6 +1,4 @@
 import { Component } from "@angular/core"
-import {HttpClient} from "@angular/common/http"
-import * as camera from "nativescript-camera";
 
 @Component({
   selector: 'collections',
