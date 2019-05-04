@@ -1,5 +1,6 @@
 import { Component, Input } from "@angular/core"
 //import {HttpClient} from "@angular/common/http"
+import { ItemEventData } from 'tns-core-modules/ui/list-view'
 
 @Component({
   selector: 'ns-collections',
@@ -10,6 +11,10 @@ import { Component, Input } from "@angular/core"
 export class CollectionsComponent { 
   title = 'Collections'
 
-@Input() currentCollection = '';
+@Input() collections: string[] = [];
+
+onItemTap(args: ItemEventData){
+  console.log(args)
+}
  
 } 

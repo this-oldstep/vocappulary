@@ -6,10 +6,13 @@ import { Component } from "@angular/core";
     templateUrl: "app.component.html"
 })
 export class AppComponent {
-    enteredCollection="";
+    
+    //enteredCollection="";
+    activeCollections: string[] = [];
+
 
     onCollectionInput(collectionDescription: string) {
-        this.enteredCollection = collectionDescription;
+        this.activeCollections.push(collectionDescription);
     }
 
  }

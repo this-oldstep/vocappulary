@@ -11,12 +11,12 @@ export class CollectionInputComponent  {
   collectionDescription = "";
   currentCollection = '';
 
-  collections: string[] = [
-    'living room',
-    'skatepark',
-    'yo mommas house',
-    'restaurant'
-  ]
+  // collections: string[] = [
+  //   'living room',
+  //   'skatepark',
+  //   'yo mommas house',
+  //   'restaurant'
+  // ]
 
   @Output() input = new EventEmitter <string>();
 
