@@ -1,14 +1,16 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
+import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import {NativeScriptFormsModule} from 'nativescript-angular/forms'
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AuthComponent } from './auth/auth.component';
-// import { Collections } from "./components/collections/collections.component"
-import { PracticaComponent } from './components/practica/practica.component'
 import {CollectionsComponent} from './components/collections/collections.component';
 import { CollectionInputComponent } from './components/collection-input/collection-input.component';
 import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular/side-drawer-directives'
+import { HttpClientModule } from '@angular/common/http';
+import { LandingComponent } from './components/landing/landing.component'
+
 
 @NgModule({
     bootstrap: [
@@ -19,13 +21,15 @@ import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angul
         AppRoutingModule,
         NativeScriptFormsModule,
         NativeScriptUISideDrawerModule,
+        NativeScriptCommonModule,
+        HttpClientModule
     ],
     declarations: [
         AppComponent,
-        PracticaComponent,
         CollectionsComponent,
         CollectionInputComponent,
-        AuthComponent
+        AuthComponent,
+        LandingComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
