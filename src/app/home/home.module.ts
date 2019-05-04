@@ -8,7 +8,7 @@ import { CollectionsList } from "../components/collections-list/collections-list
 import { Buddies } from "../components/buddies/buddies.component";
 import { Practice } from "../components/practice/practice.component";
 import { Login } from "../components/login/login.component";
-import { PhotoComponent } from "../components/photo-component/photo-component.component"
+import { PhotoComponentComponent } from "../components/photo-component/photo-component.component"
 
     @NgModule({
     imports: [
@@ -17,7 +17,7 @@ import { PhotoComponent } from "../components/photo-component/photo-component.co
         HomeRoutingModule
     ],
     declarations: [
-        PhotoComponent,
+        PhotoComponentComponent,
         HomeComponent,
         Collections,
         CollectionsList,

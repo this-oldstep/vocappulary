@@ -3,7 +3,7 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { PhotoComponentComponent } from './components/photo-component/photo-component.component';
+// import { PhotoComponentComponent } from './components/photo-component/photo-component.component';
 // import { Collections } from "./components/collections/collections.component"
 
 @NgModule({
@@ -16,7 +16,7 @@ import { PhotoComponentComponent } from './components/photo-component/photo-comp
     ],
     declarations: [
         AppComponent,
-        PhotoComponentComponent,
+        // PhotoComponentComponent,
         // Collections// hello
 
 
