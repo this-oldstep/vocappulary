@@ -18,3 +18,8 @@ components that have the btn class name.
 .btn {
     font-size: 18;
 }
+
+.drawer-container {
+    background: linear-gradient(140deg, #ffffff, #757575 );
+    horizontal-align: left;
+}
