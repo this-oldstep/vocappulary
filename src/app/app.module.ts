@@ -7,6 +7,7 @@ import { AppComponent } from "./app.component";
 import { PracticaComponent } from './components/practica/practica.component'
 import {CollectionsComponent} from './components/collections/collections.component';
 import { CollectionInputComponent } from './components/collection-input/collection-input.component';
+import { ItemComponent } from './components/item/item.component';
 
 @NgModule({
     bootstrap: [
@@ -22,6 +23,7 @@ import { CollectionInputComponent } from './components/collection-input/collecti
         PracticaComponent,
         CollectionsComponent,
         CollectionInputComponent,
+        ItemComponent,
     ],
     schemas: [
         NO_ERRORS_SCHEMA
