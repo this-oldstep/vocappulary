@@ -6,7 +6,6 @@ import { HomeComponent } from "./home.component";
 //import { Collections } from "../components/collections/collections.component";
 import { CollectionsList } from "../components/collections-list/collections-list.component";
 import { Buddies } from "../components/buddies/buddies.component";
-import { Practice } from "../components/practice/practice.component";
 import { Login } from "../components/login/login.component";
 import { PhotoComponentComponent } from "../components/photo-component/photo-component.component"
 
@@ -19,12 +18,9 @@ import { PhotoComponentComponent } from "../components/photo-component/photo-com
     declarations: [
         PhotoComponentComponent,
         HomeComponent,
-        //Collections,
         CollectionsList,
         Buddies,
-        Practice,
         Login
-
     ],
     schemas: [
         NO_ERRORS_SCHEMA

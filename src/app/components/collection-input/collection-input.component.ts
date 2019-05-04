@@ -29,7 +29,7 @@ export class CollectionInputComponent  {
    // this.currentCollection = this.collectionDescription;
    this.input.emit(this.collectionDescription);
    //this.http.post()
-
+    console.log(this.collectionDescription);
   }
 
 }
