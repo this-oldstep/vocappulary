@@ -26,10 +26,19 @@ export class CollectionInputComponent  {
 
 
   onCreateCollection() {
-   // this.currentCollection = this.collectionDescription;
    this.input.emit(this.collectionDescription);
-   //this.http.post()
-    console.log(this.collectionDescription);
+   console.log(this.collectionDescription);
+
+   const URL = 'https://3011c9d0.ngrok.io/collections';
+   //should also include active status and userId
+   const options = {
+     name: this.collectionDescription
+   }
+
+   this.http.post(URL, options)
+    .subscribe((response) =>{
+      console.log(response);
+    })
   }
 
 }
