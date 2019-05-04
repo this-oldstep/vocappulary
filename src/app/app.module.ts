@@ -1,9 +1,13 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
-
+import {NativeScriptFormsModule} from 'nativescript-angular/forms'
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-// import { PhotoComponentComponent } from './components/photo-component/photo-component.component';
+import { AuthComponent } from './auth/auth.component';
+// import { Collections } from "./components/collections/collections.component"
+import { PracticaComponent } from './components/practica/practica.component'
+import {CollectionsComponent} from './components/collections/collections.component';
+import { CollectionInputComponent } from './components/collection-input/collection-input.component';
 
 @NgModule({
     bootstrap: [
@@ -11,13 +15,15 @@ import { AppComponent } from "./app.component";
     ],
     imports: [
         NativeScriptModule,
-        AppRoutingModule
+        AppRoutingModule,
+        NativeScriptFormsModule
     ],
     declarations: [
         AppComponent,
-        // PhotoComponentComponent,
-
-
+        PracticaComponent,
+        CollectionsComponent,
+        CollectionInputComponent,
+        AuthComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA

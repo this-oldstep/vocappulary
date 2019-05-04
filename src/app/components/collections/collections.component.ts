@@ -1,9 +1,20 @@
-import { Component } from "@angular/core"
+import { Component, Input } from "@angular/core"
+//import {HttpClient} from "@angular/common/http"
+import { ItemEventData } from 'tns-core-modules/ui/list-view'
 
 @Component({
-  selector: 'collections',
+  selector: 'ns-collections',
   templateUrl: './collections.component.html',
   styleUrls: ['/collections.component.css'],
   moduleId: module.id
 })
-export class Collections { } 
+export class CollectionsComponent { //Collections from us
+  title = 'Collections'
+
+@Input() collections: string[] = [];
+
+onItemTap(args: ItemEventData){
+  console.log(args)
+}
+ 
+} 
