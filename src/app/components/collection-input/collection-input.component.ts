@@ -3,7 +3,6 @@ import { Component,  EventEmitter, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-
 @Injectable()
 @Component({
   selector: 'ns-collection-input',
@@ -37,7 +36,8 @@ export class CollectionInputComponent  {
         this response gives me the id of the collection created,
         figure out how to attach that id to the button created
         so that when that button is clicked, on ngOninit for 
-        individualCollection, I can use that collection id to get all the items from a collection
+        individualCollection, I can use that collection id to get 
+        all the items from a collection. also its name
       */
     })
   }

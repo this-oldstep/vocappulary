@@ -12,6 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { LandingComponent } from './components/landing/landing.component';
 import { ActionBarComponent } from './shared/ui/action-bar/action-bar.component'
 import { ReactiveFormsModule } from "@angular/forms";
+import { PhotoComponentComponent} from './components/photo-component/photo-component.component'
+import { IndividualCollectionComponent} from './components/individual-collection/individual-collection.component';
+import { SelectWordComponent } from './components/select-word/select-word.component'
 
 
 @NgModule({
@@ -35,10 +38,12 @@ import { ReactiveFormsModule } from "@angular/forms";
         LandingComponent,
         ActionBarComponent,
         IndividualCollectionComponent,
-        PhotoComponentComponent
+        PhotoComponentComponent,
+        SelectWordComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
-    ]
+    ],
+    entryComponents: [SelectWordComponent]
 })
 export class AppModule { }
