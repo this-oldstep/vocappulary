@@ -4,7 +4,6 @@ import {NativeScriptFormsModule} from 'nativescript-angular/forms'
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AuthComponent } from './auth/auth.component';
-import { Buddies } from './components/buddies/buddies.component';
 // import { Collections } from "./components/collections/collections.component"
 import { PracticaComponent } from './components/practica/practica.component'
 import {CollectionsComponent} from './components/collections/collections.component';
