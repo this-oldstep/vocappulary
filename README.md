@@ -7,10 +7,9 @@
 
 1. [Team](#team)
 2. [Requirements](#requirements)
-3. [Development](#development)
-4. [Installing Dependencies](#installing-dependencies)
-5. [Usage](#Usage)
-6. [Contributing](#contributing)
+3. [Installing Dependencies](#installing-dependencies)
+4. [Usage](#Usage)
+5. [Contributing](#contributing)
 
 ## Team
 
@@ -30,9 +29,6 @@
 - postgresql 10
 - webpack 4.27.1
 - Typescript v3.4.1.
-
-
-## Development
 
 ### Installing Dependencies
 
