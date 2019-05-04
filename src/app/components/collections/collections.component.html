@@ -1,10 +1,7 @@
-
-<ListView [items]="collections" (itemTap)="onItemTap($event)" iosEstimatedRowHeight="65">
-  <ng-template let-collection="item" let-index="index">
-    <FlexboxLayout justifyContent="center">
-      <!-- <Label [text]="index" row="0" col="0" rowSpan="2"></Label> -->
-      <Label class="collection" [text]="collection"></Label>
-      <!-- <Label text="Item content row2" row="1" col="1"></Label> -->
-    </FlexboxLayout>
-  </ng-template>
-</ListView>
+  <ListView [items]="collections" (itemTap)="onItemTap($event)" iosEstimatedRowHeight="65">
+    <ng-template let-collection="item" let-index="index">
+      <FlexboxLayout justifyContent="center">
+        <Label class="collection" [text]="collection"></Label>
+      </FlexboxLayout>
+    </ng-template>
+  </ListView>
