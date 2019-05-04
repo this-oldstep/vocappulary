@@ -1,11 +1,3 @@
-<!-- <page-router-outlet>
-
-</page-router-outlet> -->
-    <!-- <StackLayout>
-        <ns-practica></ns-practica>
-    </StackLayout> -->
-<FlexboxLayout flexDirection="column">
-    <ns-collection-input (input)="onCollectionInput($event)"></ns-collection-input>
-    <ns-collections [collections]="activeCollections"></ns-collections>
-</FlexboxLayout>
-
+<StackLayout>
+    <router-outlet></router-outlet>
+</StackLayout>
