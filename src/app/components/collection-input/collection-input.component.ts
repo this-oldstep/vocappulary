@@ -33,6 +33,12 @@ export class CollectionInputComponent  {
    this.http.post(URL, options)
     .subscribe((response) =>{
       console.log(response);
+      /*
+        this response gives me the id of the collection created,
+        figure out how to attach that id to the button created
+        so that when that button is clicked, on ngOninit for 
+        individualCollection, I can use that collection id to get all the items from a collection
+      */
     })
   }
 
