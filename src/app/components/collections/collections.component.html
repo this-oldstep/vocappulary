@@ -1,23 +1,11 @@
-<GridLayout rows="auto,*" columns="2*,*">
-<TextField 
-row="0"
-col="0"
-hint="add collection..." 
-[(ngModel)]="collectionDescription"
-class="input input-border"
-></TextField>
-<Button 
-class="btn btn-primary"
-row="0"
-col="1"
-(tap)="onCreateCollection()" 
-text="Create"
-></Button>
-<Label 
-row="1"
-col="0"
-colSpan="2"
-[text]="currentCollection" 
-fontSize="20"
-></Label>
-</GridLayout>
+<StackLayout>
+  <Label 
+  horizontalAlignment="center"
+  row="1"
+  col="0"
+  colSpan="2"
+  [text]="currentCollection" 
+  fontSize="20"
+  ></Label>
+</StackLayout>
+  

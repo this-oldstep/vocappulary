@@ -1,1 +1,12 @@
-<Button text="collection-input works!" class="btn btn-primary"></Button>
+  <FlexboxLayout justifyContent="space-between">
+  <TextField 
+   hint="add collection..." 
+   [(ngModel)]="collectionDescription" 
+   class="input input-border">
+  </TextField>
+  <Button
+  class="btn btn-primary" 
+  (tap)="onCreateCollection()"
+    text="Create">
+  </Button>
+</FlexboxLayout>

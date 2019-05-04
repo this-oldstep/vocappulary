@@ -19,7 +19,6 @@ import { CollectionInputComponent } from './components/collection-input/collecti
     ],
     declarations: [
         AppComponent,
-        // Collections// hello
         PracticaComponent,
         CollectionsComponent,
         CollectionInputComponent,

@@ -4,7 +4,8 @@
     <!-- <StackLayout>
         <ns-practica></ns-practica>
     </StackLayout> -->
-<GridLayout>
-    <ns-collections></ns-collections>
-</GridLayout>
+<StackLayout>
+    <ns-collection-input (input)="onCollectionInput($event)"></ns-collection-input>
+    <ns-collections [currentCollection]="enteredCollection"></ns-collections>
+</StackLayout>
 

@@ -5,4 +5,11 @@ import { Component } from "@angular/core";
     selector: "ns-app",
     templateUrl: "app.component.html"
 })
-export class AppComponent { }
+export class AppComponent {
+    enteredCollection="";
+
+    onCollectionInput(collectionDescription: string) {
+        this.enteredCollection = collectionDescription;
+    }
+
+ }

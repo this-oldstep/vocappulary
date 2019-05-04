@@ -1,4 +1,4 @@
-import { Component } from "@angular/core"
+import { Component, Input } from "@angular/core"
 //import {HttpClient} from "@angular/common/http"
 
 @Component({
@@ -10,19 +10,6 @@ import { Component } from "@angular/core"
 export class CollectionsComponent { 
   title = 'Collections'
 
-  collectionDescription= "";
-  currentCollection = '';
-
-  collections: string [] = [
-    'living room',
-    'skatepark',
-    'yo mommas house',
-    'restaurant'
-  ]
-  
-  onCreateCollection(){
-        this.currentCollection = this.collectionDescription;
-    }
-
+@Input() currentCollection = '';
  
 } 
