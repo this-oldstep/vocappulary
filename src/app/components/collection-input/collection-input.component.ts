@@ -1,5 +1,13 @@
-import { Component,  EventEmitter, Output } from '@angular/core';
+const cachedExtends = global.__extends;
+import { HttpClient } from '@angular/common/http';
+global.__extends = cachedExtends;
 
+import { Component,  EventEmitter, Output } from '@angular/core';
+//import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+
+@Injectable()
 @Component({
   selector: 'ns-collection-input',
   templateUrl: './collection-input.component.html',
@@ -11,18 +19,18 @@ export class CollectionInputComponent  {
   collectionDescription = "";
   currentCollection = '';
 
-  // collections: string[] = [
-  //   'living room',
-  //   'skatepark',
-  //   'yo mommas house',
-  //   'restaurant'
-  // ]
+
+  constructor(private httpClient: HttpClient) { }
+
+
 
   @Output() input = new EventEmitter <string>();
 
   onCreateCollection() {
    // this.currentCollection = this.collectionDescription;
    this.input.emit(this.collectionDescription);
+   // this.http.get()
+
   }
 
 }

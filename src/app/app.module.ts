@@ -4,10 +4,11 @@ import {NativeScriptFormsModule} from 'nativescript-angular/forms'
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AuthComponent } from './auth/auth.component';
-// import { Collections } from "./components/collections/collections.component"
-import { PracticaComponent } from './components/practica/practica.component'
 import {CollectionsComponent} from './components/collections/collections.component';
 import { CollectionInputComponent } from './components/collection-input/collection-input.component';
+import {HttpClientModule } from '@angular/common/http'
+import { NativeScriptCommonModule } from "nativescript-angular/common";
+
 
 @NgModule({
     bootstrap: [
@@ -16,11 +17,12 @@ import { CollectionInputComponent } from './components/collection-input/collecti
     imports: [
         NativeScriptModule,
         AppRoutingModule,
-        NativeScriptFormsModule
+        NativeScriptFormsModule,
+        HttpClientModule,
+        NativeScriptCommonModule
     ],
     declarations: [
         AppComponent,
-        PracticaComponent,
         CollectionsComponent,
         CollectionInputComponent,
         AuthComponent
