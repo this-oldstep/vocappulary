@@ -1,7 +1,56 @@
-<ns-action-bar title="Login" [showBackButton]='false' [hasMenu]='false'></ns-action-bar>
-<StackLayout>
-    <Button 
-text="LOGIN" 
-class="btn btn-primary" 
-(tap)="onSignin()"></Button>
+<ns-action-bar
+  [title]="isLogin ? 'Login' : 'Signup'"
+  [showBackButton]="false"
+  [hasMenu]="false"
+></ns-action-bar>
+<StackLayout class="form" [formGroup]="form">
+  <StackLayout class="input-field">
+    <Label
+      class="label"
+      text="E-Mail"
+      [ngClass]="{ invalid: !emailControlIsValid }"
+    ></Label>
+    <TextField
+      class="input"
+      returnKeyType="next"
+      keyboardType="email"
+      [autocorrect]="false"
+      autocapitalizationType="none"
+      formControlName="email"
+      #emailEl
+    ></TextField>
+    <Label
+      *ngIf="!emailControlIsValid"
+      text="Please enter a valid email."
+    ></Label>
+  </StackLayout>
+  <StackLayout class="input-field">
+    <Label
+      class="label"
+      text="Password"
+      [ngClass]="{ invalid: !passwordControlIsValid }"
+    ></Label>
+    <TextField
+      class="input"
+      returnKeyType="done"
+      [autocorrect]="false"
+      autocapitalizationType="none"
+      [secure]="true"
+      hint="Min 6 characters"
+      formControlName="password"
+      (returnPress)="onDone()"
+      #passwordEl
+    ></TextField>
+    <Label
+      *ngIf="!passwordControlIsValid"
+      text="Please enter a valid 6 character or more password."
+    ></Label>
+  </StackLayout>
+  <Button [text]="isLogin ? 'Sign Up' : 'Log In'" class="btn" (tap)="onSwitch()"></Button>
+  <Button
+    [text]="isLogin ? 'Login' : 'Signup'"
+    class="btn btn-primary btn-rounded-lg"
+    (tap)="onSubmit()"
+    [isEnabled]="form.valid"
+  ></Button>
 </StackLayout>

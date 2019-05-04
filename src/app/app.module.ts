@@ -11,6 +11,7 @@ import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angul
 import { HttpClientModule } from '@angular/common/http';
 import { LandingComponent } from './components/landing/landing.component';
 import { ActionBarComponent } from './shared/ui/action-bar/action-bar.component'
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ActionBarComponent } from './shared/ui/action-bar/action-bar.component'
         AppRoutingModule,
         NativeScriptFormsModule,
         NativeScriptUISideDrawerModule,
+        ReactiveFormsModule,
         NativeScriptCommonModule,
         HttpClientModule
     ],
