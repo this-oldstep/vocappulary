@@ -21,13 +21,10 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
-<<<<<<< HEAD
     "cloudinary": "^1.14.0",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.1",
-=======
     "body-parser": "^1.19.0",
->>>>>>> 913aadb385058efffb74d2895869ef0cb1c3af3f
     "nativescript-angular": "~7.2.0",
     "nativescript-background-http": "^3.4.0",
     "nativescript-camera": "^4.4.0",
