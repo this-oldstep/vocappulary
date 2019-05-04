@@ -16,14 +16,9 @@ export class CollectionInputComponent  {
   collectionDescription = "";
   currentCollection = '';
 
-
   constructor(private http: HttpClient) { }
 
-
-
   @Output() input = new EventEmitter <string>();
-
-
 
   onCreateCollection() {
    this.input.emit(this.collectionDescription);

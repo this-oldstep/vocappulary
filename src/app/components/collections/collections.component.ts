@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core"
-//import {HttpClient} from "@angular/common/http"
+import { RouterExtensions } from 'nativescript-angular/router';
 import { ItemEventData } from 'tns-core-modules/ui/list-view'
 
 @Component({
@@ -11,10 +11,14 @@ import { ItemEventData } from 'tns-core-modules/ui/list-view'
 export class CollectionsComponent { //Collections from us
   title = 'Collections'
 
+constructor(private router: RouterExtensions) { }
+
+
 @Input() collections: string[] = [];
 
 onItemTap(args: ItemEventData){
   console.log(args)
+  this.router.navigate(['/collection'])
 }
  
 } 

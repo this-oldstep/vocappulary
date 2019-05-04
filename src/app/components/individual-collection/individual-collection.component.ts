@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import { PageRoute } from 'nativescript-angular/router'
 
 @Component({
   selector: 'ns-individual-collection',
@@ -8,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndividualCollectionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute, private pageRoute: PageRoute) { }
 
   ngOnInit() {
+    this.pageRoute.activatedRoute.subscribe(ActivatedRoute => {
+      ActivatedRoute.paramMap.subscribe(paramMap => {
+        console.log(paramMap.get('mode'))
+      })
+    });
   }
 
 }

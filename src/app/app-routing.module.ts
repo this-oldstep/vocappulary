@@ -4,10 +4,12 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { AuthComponent } from "./auth/auth.component";
 //import { CollectionsComponent } from "./components/collections/collections.component";
 import { LandingComponent } from "./components/landing/landing.component";
+import { IndividualCollectionComponent } from "./components/individual-collection/individual-collection.component";
 
 const routes: Routes = [
     { path: "", component: AuthComponent },
-    { path: "landing", component: LandingComponent }
+    { path: "landing", component: LandingComponent },
+    { path: "collection", component: IndividualCollectionComponent}
 ];
 
 @NgModule({
