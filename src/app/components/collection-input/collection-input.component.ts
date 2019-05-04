@@ -1,9 +1,6 @@
-const cachedExtends = global.__extends;
-import { HttpClient } from '@angular/common/http';
-global.__extends = cachedExtends;
 
 import { Component,  EventEmitter, Output } from '@angular/core';
-//import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 
@@ -20,7 +17,7 @@ export class CollectionInputComponent  {
   currentCollection = '';
 
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
 
 
@@ -29,7 +26,7 @@ export class CollectionInputComponent  {
   onCreateCollection() {
    // this.currentCollection = this.collectionDescription;
    this.input.emit(this.collectionDescription);
-   // this.http.get()
+   //this.http.post()
 
   }
 
