@@ -1,6 +1,5 @@
 import { Component } from "@angular/core"
-import { HttpClient } from "@angular/common/http"
-import * as camera from "nativescript-camera";
+
 @Component({
   selector: 'collections-list',
   templateUrl: './collections-list.component.html',
@@ -8,6 +7,7 @@ import * as camera from "nativescript-camera";
   moduleId: module.id
 })
 export class CollectionsList {
+<<<<<<< HEAD
   title = 'hello world'
 
   post: any;
@@ -15,5 +15,10 @@ export class CollectionsList {
 
   }
   
+=======
+
+
+  constructor() { }
+>>>>>>> 5ba0e7da6381893568d49afbcbd5a9134a596266
 
  } 

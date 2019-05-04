@@ -8,7 +8,7 @@ import { ItemEventData } from 'tns-core-modules/ui/list-view'
   styleUrls: ['/collections.component.css'],
   moduleId: module.id
 })
-export class CollectionsComponent { 
+export class CollectionsComponent { //Collections from us
   title = 'Collections'
 
 @Input() collections: string[] = [];
