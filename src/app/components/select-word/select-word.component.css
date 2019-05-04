@@ -1,0 +1,12 @@
+FlexboxLayout {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20;
+}
+
+.definition {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
