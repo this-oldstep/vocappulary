@@ -8,6 +8,7 @@ import { AuthComponent } from './auth/auth.component';
 import { PracticaComponent } from './components/practica/practica.component'
 import {CollectionsComponent} from './components/collections/collections.component';
 import { CollectionInputComponent } from './components/collection-input/collection-input.component';
+import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular/side-drawer-directives'
 
 @NgModule({
     bootstrap: [
@@ -16,7 +17,8 @@ import { CollectionInputComponent } from './components/collection-input/collecti
     imports: [
         NativeScriptModule,
         AppRoutingModule,
-        NativeScriptFormsModule
+        NativeScriptFormsModule,
+        NativeScriptUISideDrawerModule,
     ],
     declarations: [
         AppComponent,
