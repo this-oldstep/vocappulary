@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError, BehaviorSubject } from 'rxjs';
 import { alert } from 'tns-core-modules/ui/dialogs'
 import { User } from './user.model';
 
@@ -14,11 +14,18 @@ interface AuthResponseData {
     refreshToken: string;
     expiresIn: string;
     localId: string;
+    registered?: boolean;
 }
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
+    private _user = new BehaviorSubject<User>(null);
+
     constructor(private http: HttpClient) {}
+
+    get user() {
+        return this._user.asObservable();
+    }
 
     signUp(email: string, password: string) {
        return this.http.post<AuthResponseData>(
@@ -30,8 +37,7 @@ export class AuthService {
             }),
             tap(resData => {
                 if (resData && resData.idToken) {
-                    const expirationDate = new Date(new Date().getTime() + parseInt(resData.expiresIn) * 1000);
-                    //const user = new User(email, resData.localId, resData.idToken, expirationDate)
+                    this.handleLogin(email, resData.idToken, resData.localId, parseInt(resData.expiresIn));
                 }
             })
             );
@@ -43,7 +49,19 @@ export class AuthService {
             ).pipe(catchError(errorRes => {
                 this.handleError(errorRes.error.error.message)
                 return throwError(errorRes);
+            }),
+            tap(resData => {
+                if (resData && resData.idToken) {
+                    this.handleLogin(email, resData.idToken, resData.localId, parseInt(resData.expiresIn));
+                }
             }))
+    }
+
+    private handleLogin(email: string, token: string, userId: string, expiresIn: number) {
+        const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+        const user = new User(email, userId, token, expirationDate);
+        this._user.next(user);
+        console.log(this._user);
     }
 
     private handleError(errorMessage: string) {

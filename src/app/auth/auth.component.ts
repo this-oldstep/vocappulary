@@ -1,11 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { RouterExtensions} from 'nativescript-angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {TextField} from 'tns-core-modules/ui/text-field';
+import {TextField } from 'tns-core-modules/ui/text-field';
 import { AuthService } from './auth.service';
-import { registerElement } from 'nativescript-angular/element-registry';
-import { FilterSelect } from 'nativescript-filter-select'
-registerElement('FilterSelect', () => FilterSelect);
 
 @Component({
   selector: 'ns-auth',
