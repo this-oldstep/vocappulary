@@ -13,8 +13,18 @@ interface AuthResponseData {
     email: string;
     refreshToken: string;
     expiresIn: string;
-    localId: string;
+    localId: number;
     registered?: boolean;
+}
+
+interface VocappResponseData {
+    username: any;
+    points: number;
+    nativeLanguageId: number;
+    currentLanguageId: number;
+    id: number;
+    email: string;
+
 }
 
 @Injectable({providedIn: 'root'})
@@ -37,7 +47,7 @@ export class AuthService {
             }),
             tap(resData => {
                 if (resData && resData.idToken) {
-                    this.handleLogin(email, resData.idToken, resData.localId, parseInt(resData.expiresIn));
+                    this.handleLogin(email, resData.idToken, resData.localId, parseInt(resData.expiresIn), true);
                 }
             })
             );
@@ -52,21 +62,28 @@ export class AuthService {
             }),
             tap(resData => {
                 if (resData && resData.idToken) {
-                    this.handleLogin(email, resData.idToken, resData.localId, parseInt(resData.expiresIn));
+                    this.handleLogin(email, resData.idToken, resData.localId, parseInt(resData.expiresIn), false);
                 }
             }))
     }
 
-    private handleLogin(email: string, token: string, userId: string, expiresIn: number) {
+    private handleLogin(email: string, token: string, userId: number, expiresIn: number, newUser: boolean) {
         const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-        const user = new User(email, userId, token, expirationDate);
-        this.http.post('https://39f4d42f.ngrok.io/auth/', 
-        {token: token, email: email, userId: userId, expiresIn: expiresIn}
+        
+        this.http.post<VocappResponseData>('https://8f7ebd92.ngrok.io/auth/', 
+        {token: token, email: email, userId: userId, expiresIn: expiresIn, currentLanguageId: 4, nativeLanguageId: 3, username: "Thomas Bahama", newUser: newUser}
         ).subscribe(response => {
-            console.log(response);
+            email = response.email;
+            userId = response.id;
+            const currentLanguageId = response.currentLanguageId;
+            const nativeLanguageId = response.nativeLanguageId;
+            const points = response.points;
+            const username = response.username;
+            const user = new User(email, userId, username, currentLanguageId, nativeLanguageId, points, token, expirationDate,  );
+            this._user.next(user);
         })
-        this._user.next(user);
-        console.log(this._user);
+        
+        
     }
 
     private handleError(errorMessage: string) {
