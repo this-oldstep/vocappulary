@@ -60,6 +60,11 @@ export class AuthService {
     private handleLogin(email: string, token: string, userId: string, expiresIn: number) {
         const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
         const user = new User(email, userId, token, expirationDate);
+        this.http.post('https://39f4d42f.ngrok.io/auth/', 
+        {token: token, email: email, userId: userId, expiresIn: expiresIn}
+        ).subscribe(response => {
+            console.log(response);
+        })
         this._user.next(user);
         console.log(this._user);
     }
