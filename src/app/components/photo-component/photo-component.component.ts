@@ -35,7 +35,7 @@ export class PhotoComponentComponent {
             console.log(imageAsset.options.width, imageAsset.options.height)
             fromAsset(imageAsset).then((result) => {
               let base64 = result.toBase64String("jpeg", 100);
-              let testUrl = 'http://b5f49f49.ngrok.io/images/';
+              let testUrl = 'https://3011c9d0.ngrok.io/images';
               let options = {
                 base64: base64,
                 nativeLanguage: Platform.device.language
