@@ -31,7 +31,7 @@ export class AuthService {
             tap(resData => {
                 if (resData && resData.idToken) {
                     const expirationDate = new Date(new Date().getTime() + parseInt(resData.expiresIn) * 1000);
-                    const user = new User(email, resData.localId, resData.idToken, expirationDate)
+                    //const user = new User(email, resData.localId, resData.idToken, expirationDate)
                 }
             })
             );

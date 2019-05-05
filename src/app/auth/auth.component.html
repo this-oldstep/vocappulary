@@ -46,6 +46,19 @@
       text="Please enter a valid 6 character or more password."
     ></Label>
   </StackLayout>
+  <StackLayout>
+    <Label
+      class="label"
+      text="Native Language"
+      [isEnabled]="!isLogin"
+    ></Label>
+    <FilterSelect 
+    [items]="items"
+    (change)="onitemselected($event)" 
+    modal_title="Language" search_param="Language" 
+    primary_key="id">
+  </FilterSelect>
+  </StackLayout>
   <Button [text]="isLogin ? 'Sign Up' : 'Log In'" class="btn" (tap)="onSwitch()"></Button>
   <Button
     [text]="isLogin ? 'Login' : 'Signup'"
