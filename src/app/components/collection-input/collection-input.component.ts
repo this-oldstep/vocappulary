@@ -17,13 +17,13 @@ export class CollectionInputComponent  {
 
   constructor(private http: HttpClient) { }
 
-  @Output() input = new EventEmitter <string>();
+  @Output() input = new EventEmitter <Object>();
 
   onCreateCollection() {
    this.input.emit(this.collectionDescription);
    console.log(this.collectionDescription);
 
-   const URL = 'https://3011c9d0.ngrok.io/collections';
+    const URL = 'https://02f28968.ngrok.io/collections';
    //should also include active status and userId
    const options = {
      name: this.collectionDescription

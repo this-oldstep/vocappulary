@@ -70,21 +70,25 @@ export class IndividualCollectionComponent implements OnInit {
             console.log(imageAsset.options.width, imageAsset.options.height)
             fromAsset(imageAsset).then((result) => {
               let base64 = result.toBase64String("jpeg", 100);
-              let testUrl = 'https://db5d4f11.ngrok.io/images';
+              let testUrl = 'https://02f28968.ngrok.io/images';
               let options = {
                 base64: base64,
                 nativeLanguage: Platform.device.language
               }
               http.post(testUrl, options)
                 .subscribe((data) => {
-                  //console.log(data);
+                 // console.log(data);
                   self.modalDialog.showModal(SelectWordComponent,
                     {
                       fullscreen: true,
                       viewContainerRef: self.vcRef, //this.uiService.getRootVCRef() ? this.uiService.getRootVCRef : this.vcRef;
                       context: data
-                    });
+                    })
+                     .then((action) => { 
+                        console.log(action);
+                     })
                 })
+                
             })
           }).catch(function (err) {
             console.log("Error -> " + err.message);

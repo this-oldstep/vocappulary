@@ -14,7 +14,14 @@ export class CollectionsComponent { //Collections from us
 constructor(private router: RouterExtensions) { }
 
 
-@Input() collections: string[] = [];
+@Input() collections:
+  { id: number,
+    name: any,
+    public: boolean, 
+    count: number, 
+    createdAt: string, 
+    updatedAt: string, 
+    userId: number}[] = []
 
 onItemTap(args: ItemEventData){
   console.log(args)

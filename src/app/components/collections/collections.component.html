@@ -1,7 +1,7 @@
   <ListView [items]="collections" (itemTap)="onItemTap($event)" iosEstimatedRowHeight="65">
     <ng-template let-collection="item" let-index="index">
       <FlexboxLayout justifyContent="center">
-        <Label class="collection" [text]="collection"></Label>
+        <Label class="collection" [text]="collection.name"></Label>
       </FlexboxLayout>
     </ng-template>
   </ListView>
