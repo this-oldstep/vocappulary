@@ -61,8 +61,8 @@ public collectionId: any;
       collectionId: this.collectionId
     }
     
-    const URL = "https://449e90f7.ngrok.io/collectionItems"
-
+    const URL = "https://bfb22891.ngrok.io/collectionItems"
+    console.log('sending to server to save word', chosenWord);
     this.http.post(URL, chosenWord)
       .subscribe( response => {
         console.log('response from server after saving word', response);
