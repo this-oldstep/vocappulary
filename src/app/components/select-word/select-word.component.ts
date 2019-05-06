@@ -42,10 +42,30 @@ export class SelectWordComponent implements OnInit {
 imgUrl: string
 }
 
+public imgUrl: string;
+
   constructor(private modalParams: ModalDialogParams) { }
+
+  onWordSelection(action: any){
+    
+    let chosenWord: {
+      imgUrl: string,
+      wordId: number,
+      collectionId: number,
+    } = {
+      imgUrl: this.imgUrl,
+      wordId: action,
+      collectionId: 1
+    }
+    
+      this.modalParams.closeCallback(chosenWord)
+  }
+
+
 
   ngOnInit() {
     console.log(this.modalParams.context.data);
+    this.imgUrl = this.modalParams.context.imgUrl;
     this.words = this.modalParams.context.data as {
       data: [
       {

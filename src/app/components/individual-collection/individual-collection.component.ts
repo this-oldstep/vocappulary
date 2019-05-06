@@ -5,6 +5,7 @@ import { ModalDialogService, ModalDialogParams } from 'nativescript-angular/moda
 import { SelectWordComponent } from '../select-word/select-word.component'
 import { UIService } from '~/app/shared/ui.serivce';
 import { HttpClient } from "@angular/common/http";
+import { Observable } from 'tns-core-modules/ui/page/page';
 var camera = require("nativescript-camera"); //import * as camera from "nativescript-camera";
 let Platform = require("tns-core-modules/platform");
 // import Platform from "tns-core-modules/platform"// * as
@@ -23,15 +24,34 @@ let { fromAsset } = require("tns-core-modules/image-source/image-source");
 })
 export class IndividualCollectionComponent implements OnInit {
 
+  //public collection: {id: string, name: string, public: boolean, count: string, createdAt: string, updatedAt: string, userId: string};
+  public collection: any;
+
   constructor(private activatedRoute: ActivatedRoute, 
               private modalDialog: ModalDialogService,
               private vcRef: ViewContainerRef,
               private uiService: UIService,
               private http: HttpClient,
               //private modalParams: ModalDialogParams,
-              private pageRoute: PageRoute) {}
+              private pageRoute: PageRoute) {
+                this.activatedRoute.queryParams.subscribe( params => {
+                  this.collection = params;
+                });
+              }
 
   ngOnInit() {
+
+    console.log(this.collection);
+
+    //const id = this.collection.id;
+    const id = 1;
+
+    this.http.get(`https://02f28968.ngrok.io/collectionItems/${id}`)
+      .subscribe(items => {
+        console.log(items);
+      })
+
+
     this.pageRoute.activatedRoute.subscribe(ActivatedRoute => {
       ActivatedRoute.paramMap.subscribe(paramMap => {
         console.log(paramMap.get('mode'))
@@ -70,21 +90,25 @@ export class IndividualCollectionComponent implements OnInit {
             console.log(imageAsset.options.width, imageAsset.options.height)
             fromAsset(imageAsset).then((result) => {
               let base64 = result.toBase64String("jpeg", 100);
-              let testUrl = 'https://db5d4f11.ngrok.io/images';
+              let testUrl = 'https://02f28968.ngrok.io/images';
               let options = {
                 base64: base64,
                 nativeLanguage: Platform.device.language
               }
               http.post(testUrl, options)
                 .subscribe((data) => {
-                  //console.log(data);
+                 // console.log(data);
                   self.modalDialog.showModal(SelectWordComponent,
                     {
                       fullscreen: true,
                       viewContainerRef: self.vcRef, //this.uiService.getRootVCRef() ? this.uiService.getRootVCRef : this.vcRef;
                       context: data
-                    });
+                    })
+                     .then((action) => { 
+                        console.log(action);
+                     })
                 })
+                
             })
           }).catch(function (err) {
             console.log("Error -> " + err.message);
