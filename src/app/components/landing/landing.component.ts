@@ -15,7 +15,7 @@ import { HttpClient } from '@angular/common/http';
 export class LandingComponent implements OnInit {
 
 
-  private userId: number = 1;
+  private userId: number = 9;
 
 
   constructor(private router: RouterExtensions,
@@ -28,6 +28,12 @@ export class LandingComponent implements OnInit {
 
     this.getAllCollections();
    
+  }
+
+  onCollectionInput($event) {
+    let newCollection = $event;
+    console.log(newCollection);
+    this.getAllCollections();
   }
 
   getAllCollections(){
@@ -44,9 +50,6 @@ export class LandingComponent implements OnInit {
   }
 
 
-  // onCollectionInput(collectionDescription: string) {
-  //   this.activeCollections.push(collectionDescription);
-  // }
 
 
 }

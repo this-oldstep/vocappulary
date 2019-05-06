@@ -15,23 +15,28 @@ export class CollectionInputComponent  {
   collectionDescription = "";
   currentCollection = '';
 
+  private userId: number = 9;
+
   constructor(private http: HttpClient) { }
 
   @Output() input = new EventEmitter <Object>();
 
   onCreateCollection() {
-   this.input.emit(this.collectionDescription);
-   console.log(this.collectionDescription);
-
+    console.log(this.collectionDescription);
+    
     const URL = 'https://02f28968.ngrok.io/collections';
-   //should also include active status and userId
-   const options = {
-     name: this.collectionDescription
-   }
-
-   this.http.post(URL, options)
+    //should also include active status and userId
+    const options = {
+      name: this.collectionDescription,
+      userId: this.userId,
+      public: true
+    }
+    
+    this.http.post(URL, options)
     .subscribe((response) =>{
-      console.log(response);
+      console.log('saved in database');
+      
+      this.input.emit(response);
       /*
         this response gives me the id of the collection created,
         figure out how to attach that id to the button created
