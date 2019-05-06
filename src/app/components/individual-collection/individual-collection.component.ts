@@ -6,6 +6,9 @@ import { SelectWordComponent } from '../select-word/select-word.component'
 import { UIService } from '~/app/shared/ui.serivce';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'tns-core-modules/ui/page/page';
+import { RouterExtensions } from 'nativescript-angular/router';
+
+
 var camera = require("nativescript-camera"); //import * as camera from "nativescript-camera";
 let Platform = require("tns-core-modules/platform");
 // import Platform from "tns-core-modules/platform"// * as
@@ -32,6 +35,7 @@ export class IndividualCollectionComponent implements OnInit {
               private vcRef: ViewContainerRef,
               private uiService: UIService,
               private http: HttpClient,
+              private router: RouterExtensions,
               //private modalParams: ModalDialogParams,
               private pageRoute: PageRoute) {
                 this.activatedRoute.queryParams.subscribe( params => {
@@ -39,18 +43,13 @@ export class IndividualCollectionComponent implements OnInit {
                 });
               }
 
+
+  activeItems: any;
+
   ngOnInit() {
 
-    console.log(this.collection);
-
-    //const id = this.collection.id;
-    const id = 1;
-
-    this.http.get(`https://02f28968.ngrok.io/collectionItems/${id}`)
-      .subscribe(items => {
-        console.log(items);
-      })
-
+    this.getAllItems();
+    //console.log('here are the items', this.activeItems);
 
     this.pageRoute.activatedRoute.subscribe(ActivatedRoute => {
       ActivatedRoute.paramMap.subscribe(paramMap => {
@@ -59,19 +58,19 @@ export class IndividualCollectionComponent implements OnInit {
     });
   }
 
-  onSelectObjectWord(){
-    this.modalDialog.showModal(SelectWordComponent, 
-      {fullscreen: true, 
-       viewContainerRef: this.vcRef, //this.uiService.getRootVCRef() ? this.uiService.getRootVCRef : this.vcRef;
-       context: {
-         word1: 'dog',
-         word2: 'quinn',
-         word3: 'quinn-dog',
-         word4: 'quinnier dog',
-         word5: 'dog-quinn'
-       } 
-      });
+  getAllItems(){
+    //const id = this.collection.id;
+    const id = 1;
+
+    this.http.get(`https://02f28968.ngrok.io/collectionItems/${id}`)
+      .subscribe(items => {
+        console.log(items);
+        this.activeItems = items;
+      })
   }
+
+
+  
 
 
   uploadPhoto() {
