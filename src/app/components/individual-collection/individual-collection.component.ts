@@ -9,6 +9,7 @@ import { Observable } from 'tns-core-modules/ui/page/page';
 import { AuthService } from '~/app/auth/auth.service';
 import { switchMap } from 'rxjs/operators';
 import { RouterExtensions } from 'nativescript-angular/router';
+import { NavigationExtras } from "@angular/router";
 
 
 var camera = require("nativescript-camera"); //import * as camera from "nativescript-camera";
@@ -48,7 +49,7 @@ export class IndividualCollectionComponent implements OnInit {
   activeItems: any;
 
   ngOnInit() {
-
+    console.log('coming into individual coll', this.collection)
     this.getAllItems();
     //console.log('here are the items', this.activeItems);
 
@@ -61,9 +62,10 @@ export class IndividualCollectionComponent implements OnInit {
 
   getAllItems(){
     this.authService.user.pipe(switchMap(currentUser => {
-      return this.http.get(`https://d8835855.ngrok.io/collectionItems/${currentUser.id}`)
+      return this.http.get(`https://449e90f7.ngrok.io/collectionItems/${this.collection.id}`)
     })).subscribe(items => {
-      console.log(items, 'userid');
+      this.activeItems = items;
+      console.log(items, 'items in collection');
     })
   }
 
@@ -87,22 +89,35 @@ export class IndividualCollectionComponent implements OnInit {
             console.log(imageAsset.options.width, imageAsset.options.height)
             fromAsset(imageAsset).then((result) => {
               let base64 = result.toBase64String("jpeg", 100);
-              let testUrl = `https://d8835855.ngrok.io/images`;
+              let testUrl = `https://449e90f7.ngrok.io/images`;
               let options = {
                 base64: base64,
-                nativeLanguage: Platform.device.language
+                nativeLanguage: 'es'
               }
               http.post(testUrl, options)
                 .subscribe((data) => {
                  // console.log(data);
+                 data['collectionId'] = self.collection.id
                   self.modalDialog.showModal(SelectWordComponent,
                     {
                       fullscreen: true,
                       viewContainerRef: self.vcRef, //this.uiService.getRootVCRef() ? this.uiService.getRootVCRef : this.vcRef;
-                      context: data
+                      context: data,
                     })
                      .then((action) => { 
-                        console.log(action);
+                        
+                       console.log(action);
+                       let navigationExtras: NavigationExtras = {
+                         queryParams: {
+                           //"wordId": action.itemId,
+                           "url_image": action.image_url,
+                           "currentTranslation": action.currentLangText,
+                           //"nativeTranslation": action.nativeTranslation,
+                         }
+                       }
+
+                      self.router.navigate(['/item'], navigationExtras)
+                      
                      })
                 })
                 

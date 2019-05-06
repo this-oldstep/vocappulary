@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalDialogParams } from 'nativescript-angular/modal-dialog';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -43,8 +44,10 @@ imgUrl: string
 }
 
 public imgUrl: string;
+public collectionId: any;
 
-  constructor(private modalParams: ModalDialogParams) { }
+  constructor(private modalParams: ModalDialogParams,
+              private http: HttpClient,) { }
 
   onWordSelection(action: any){
     
@@ -55,16 +58,23 @@ public imgUrl: string;
     } = {
       imgUrl: this.imgUrl,
       wordId: action,
-      collectionId: 1
+      collectionId: this.collectionId
     }
     
-      this.modalParams.closeCallback(chosenWord)
+    const URL = "https://449e90f7.ngrok.io/collectionItems"
+
+    this.http.post(URL, chosenWord)
+      .subscribe( response => {
+        console.log('response from server after saving word', response);
+        this.modalParams.closeCallback(response);
+      })
   }
 
 
 
   ngOnInit() {
-    console.log(this.modalParams.context.data);
+    console.log(this.modalParams.context);
+    this.collectionId = this.modalParams.context.collectionId;
     this.imgUrl = this.modalParams.context.imgUrl;
     this.words = this.modalParams.context.data as {
       data: [
