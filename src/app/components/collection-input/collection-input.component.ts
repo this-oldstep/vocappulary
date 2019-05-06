@@ -2,6 +2,8 @@
 import { Component,  EventEmitter, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AuthService } from '~/app/auth/auth.service';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable()
 @Component({
@@ -15,25 +17,24 @@ export class CollectionInputComponent  {
   collectionDescription = "";
   currentCollection = '';
 
-  private userId: number = 9;
-
-  constructor(private http: HttpClient) { }
+  // private userId: number = 9;
+  constructor(private http: HttpClient,
+    private authService: AuthService, ) { }
 
   @Output() input = new EventEmitter <Object>();
 
   onCreateCollection() {
     console.log(this.collectionDescription);
-    
-    const URL = 'https://0533d889.ngrok.io/collections';
+    this.authService.user.pipe(switchMap(currentUser => {
+    const URL =  `https://d8835855.ngrok.io/collections`;
     //should also include active status and userId
     const options = {
       name: this.collectionDescription,
-      userId: this.userId,
+      userId: currentUser.id,
       public: true
     }
-    
-    this.http.post(URL, options)
-    .subscribe((response) =>{
+    return this.http.post(URL, options)
+      })).subscribe((response) =>{
       console.log('saved in database');
       
       this.input.emit(response);

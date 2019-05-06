@@ -53,10 +53,15 @@ export class AuthComponent implements OnInit {
     this.isLoading = true;
     if (this.isLogin) {
       this.authService.login(email, password).subscribe(resData => {
-        this.isLoading = false;
-        this.router.navigate(["/landing"], {clearHistory: true});
-      }, err => {
-        this.isLoading = false;
+        this.authService.user.subscribe(user => {
+          if (user) {
+            this.isLoading = false;
+            this.router.navigate(["/landing"], {clearHistory: true});
+          }
+        }, err => {
+          this.isLoading = false;
+        })
+
       });
     } else {
       this.authService.signUp(email, password).subscribe(resData => {

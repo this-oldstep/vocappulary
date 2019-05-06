@@ -48,7 +48,7 @@ export class IndividualCollectionComponent implements OnInit {
 
     //const id = this.collection.id;
     this.authService.user.pipe(switchMap(currentUser => {
-      return this.http.get(`https://0533d889.ngrok.io/collectionItems/${currentUser.id}`)
+      return this.http.get(`https://d8835855.ngrok.io/collectionItems/${currentUser.id}`)
     })).subscribe(items => {
       console.log(items, 'userid');
     })
@@ -92,7 +92,7 @@ export class IndividualCollectionComponent implements OnInit {
             console.log(imageAsset.options.width, imageAsset.options.height)
             fromAsset(imageAsset).then((result) => {
               let base64 = result.toBase64String("jpeg", 100);
-              let testUrl = 'https://0533d889.ngrok.io/images';
+              let testUrl = `https://d8835855.ngrok.io/images`;
               let options = {
                 base64: base64,
                 nativeLanguage: Platform.device.language

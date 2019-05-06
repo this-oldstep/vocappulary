@@ -42,7 +42,7 @@ export class LandingComponent implements OnInit {
   getAllCollections(){
     
     this.authService.user.pipe(switchMap(currentUser => {
-      const URL = "https://0533d889.ngrok.io/collections/get"
+      const URL = `https://d8835855.ngrok.io/collections/get`
       const options = { userId: currentUser.id }
       return this.http.post(URL, options)
     })).subscribe(collections => {
