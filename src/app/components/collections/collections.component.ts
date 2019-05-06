@@ -1,6 +1,7 @@
 import { Component, Input } from "@angular/core"
 import { RouterExtensions } from 'nativescript-angular/router';
 import { ItemEventData } from 'tns-core-modules/ui/list-view'
+import { NavigationExtras } from "@angular/router";
 
 @Component({
   selector: 'ns-collections',
@@ -23,9 +24,20 @@ constructor(private router: RouterExtensions) { }
     updatedAt: string, 
     userId: number}[] = []
 
+
+
+
+
 onItemTap(args: ItemEventData){
   console.log(args)
-  this.router.navigate(['/collection'])
+
+  let navigationExtras: NavigationExtras = {
+    queryParams: {
+      "hello": "world"
+    }
+  }
+
+  this.router.navigate(['/collection'], navigationExtras)
 }
  
 } 

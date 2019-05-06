@@ -5,6 +5,7 @@ import { ModalDialogService, ModalDialogParams } from 'nativescript-angular/moda
 import { SelectWordComponent } from '../select-word/select-word.component'
 import { UIService } from '~/app/shared/ui.serivce';
 import { HttpClient } from "@angular/common/http";
+import { Observable } from 'tns-core-modules/ui/page/page';
 var camera = require("nativescript-camera"); //import * as camera from "nativescript-camera";
 let Platform = require("tns-core-modules/platform");
 // import Platform from "tns-core-modules/platform"// * as
@@ -23,15 +24,26 @@ let { fromAsset } = require("tns-core-modules/image-source/image-source");
 })
 export class IndividualCollectionComponent implements OnInit {
 
+  public hello: string;
+
   constructor(private activatedRoute: ActivatedRoute, 
               private modalDialog: ModalDialogService,
               private vcRef: ViewContainerRef,
               private uiService: UIService,
               private http: HttpClient,
               //private modalParams: ModalDialogParams,
-              private pageRoute: PageRoute) {}
+              private pageRoute: PageRoute) {
+                this.activatedRoute.queryParams.subscribe( params => {
+                  this.hello = params["hello"];
+                });
+              }
 
   ngOnInit() {
+
+    console.log(this.hello);
+
+
+
     this.pageRoute.activatedRoute.subscribe(ActivatedRoute => {
       ActivatedRoute.paramMap.subscribe(paramMap => {
         console.log(paramMap.get('mode'))
