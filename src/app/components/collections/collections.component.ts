@@ -25,9 +25,6 @@ constructor(private router: RouterExtensions) { }
     userId: number}[] = []
 
 
-
-
-
 onItemTap($event){
   //console.log($event)
 
