@@ -52,5 +52,7 @@
     class="btn btn-primary btn-rounded-lg"
     (tap)="onSubmit()"
     [isEnabled]="form.valid"
+    *ngIf="!isLoading"
   ></Button>
+  <ActivityIndicator [busy]="isLoading"></ActivityIndicator>
 </StackLayout>
