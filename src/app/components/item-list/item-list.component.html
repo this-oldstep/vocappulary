@@ -1,0 +1,8 @@
+<Label text="hello im here"></Label>
+<ListView [items]="activeItems" iosEstimatedRowHeight="65">
+  <ng-template let-activeItem="item" let-index="index">
+    <FlexboxLayout justifyContent="center" (tap)="onItemTap(activeItem)">
+      <Label class="activeItem" [text]="activeItem.currentTranslation"></Label>
+    </FlexboxLayout>
+  </ng-template>
+</ListView>  

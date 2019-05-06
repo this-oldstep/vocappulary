@@ -15,7 +15,8 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { PhotoComponentComponent} from './components/photo-component/photo-component.component'
 import { IndividualCollectionComponent} from './components/individual-collection/individual-collection.component';
 import { SelectWordComponent } from './components/select-word/select-word.component'
-
+import {ItemComponent } from './components/item/item.component';
+import { ItemListComponent } from './components/item-list/item-list.component';
 
 @NgModule({
     bootstrap: [
@@ -39,7 +40,9 @@ import { SelectWordComponent } from './components/select-word/select-word.compon
         ActionBarComponent,
         IndividualCollectionComponent,
         PhotoComponentComponent,
-        SelectWordComponent
+        SelectWordComponent,
+        ItemComponent,
+        ItemListComponent,
     ],
     schemas: [
         NO_ERRORS_SCHEMA
