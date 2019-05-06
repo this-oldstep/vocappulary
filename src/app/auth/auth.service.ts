@@ -70,7 +70,7 @@ export class AuthService {
     private handleLogin(email: string, token: string, userId: number, expiresIn: number, newUser: boolean) {
         const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
         
-        this.http.post<VocappResponseData>('https://02f28968.ngrok.io/auth/', 
+        this.http.post<VocappResponseData>('https://449e90f7.ngrok.io/auth/', 
         {token: token, email: email, userId: userId, expiresIn: expiresIn, currentLanguageId: 4, nativeLanguageId: 3, username: "Thomas Bahama", newUser: newUser}
         ).subscribe(response => {
             email = response.email;

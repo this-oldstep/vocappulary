@@ -37,7 +37,7 @@ export class LandingComponent implements OnInit {
   }
 
   getAllCollections(){
-    const URL = "https://02f28968.ngrok.io/collections/get"
+    const URL = "https://449e90f7.ngrok.io/collections/get"
 
     const options = { userId: this.userId }
 

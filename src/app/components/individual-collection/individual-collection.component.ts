@@ -7,6 +7,7 @@ import { UIService } from '~/app/shared/ui.serivce';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'tns-core-modules/ui/page/page';
 import { RouterExtensions } from 'nativescript-angular/router';
+import { NavigationExtras } from "@angular/router";
 
 
 var camera = require("nativescript-camera"); //import * as camera from "nativescript-camera";
@@ -59,10 +60,10 @@ export class IndividualCollectionComponent implements OnInit {
   }
 
   getAllItems(){
-    //const id = this.collection.id;
-    const id = 1;
+    const id = this.collection.id;
+    //const id = 1;
 
-    this.http.get(`https://02f28968.ngrok.io/collectionItems/${id}`)
+    this.http.get(`https://449e90f7.ngrok.io/collectionItems/${id}`)
       .subscribe(items => {
         console.log(items);
         this.activeItems = items;
@@ -89,22 +90,35 @@ export class IndividualCollectionComponent implements OnInit {
             console.log(imageAsset.options.width, imageAsset.options.height)
             fromAsset(imageAsset).then((result) => {
               let base64 = result.toBase64String("jpeg", 100);
-              let testUrl = 'https://02f28968.ngrok.io/images';
+              let testUrl = 'https://449e90f7.ngrok.io/images';
               let options = {
                 base64: base64,
-                nativeLanguage: Platform.device.language
+                nativeLanguage: 'es'
               }
               http.post(testUrl, options)
                 .subscribe((data) => {
                  // console.log(data);
+                 data['collectionId'] = self.collection.id
                   self.modalDialog.showModal(SelectWordComponent,
                     {
                       fullscreen: true,
                       viewContainerRef: self.vcRef, //this.uiService.getRootVCRef() ? this.uiService.getRootVCRef : this.vcRef;
-                      context: data
+                      context: data,
                     })
                      .then((action) => { 
-                        console.log(action);
+                        
+                       console.log(action);
+                       let navigationExtras: NavigationExtras = {
+                         queryParams: {
+                           //"wordId": action.itemId,
+                           "url_image": action.image_url,
+                           "currentTranslation": action.currentLangText,
+                           //"nativeTranslation": action.nativeTranslation,
+                         }
+                       }
+
+                      // self.router.navigate(['/item'], navigationExtras)
+                      
                      })
                 })
                 

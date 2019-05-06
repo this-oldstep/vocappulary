@@ -28,7 +28,7 @@ export class ItemListComponent  {
 
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        "itemId": $event.itemId,
+        "wordId": $event.itemId,
         "url_image": $event.url_image,
         "currentTranslation": $event.currentTranslation,
         "nativeTranslation": $event.nativeTranslation,
