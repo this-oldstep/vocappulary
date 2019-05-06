@@ -28,8 +28,8 @@ constructor(private router: RouterExtensions) { }
 
 
 
-onItemTap(args: ItemEventData){
-  console.log(args)
+onItemTap($event){
+  console.log($event)
 
   let navigationExtras: NavigationExtras = {
     queryParams: {
