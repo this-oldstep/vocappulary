@@ -29,11 +29,17 @@ constructor(private router: RouterExtensions) { }
 
 
 onItemTap($event){
-  console.log($event)
+  //console.log($event)
 
   let navigationExtras: NavigationExtras = {
     queryParams: {
-      "hello": "world"
+      "id": $event.id,
+      "name": $event.name,
+      "public": $event.public,
+      "count": $event.count,
+      "createdAt": $event.createdAt,
+      "updatedAt": $event.updatedAt,
+      "userId": $event.userId
     }
   }
 

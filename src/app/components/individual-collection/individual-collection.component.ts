@@ -24,7 +24,8 @@ let { fromAsset } = require("tns-core-modules/image-source/image-source");
 })
 export class IndividualCollectionComponent implements OnInit {
 
-  public hello: string;
+  //public collection: {id: string, name: string, public: boolean, count: string, createdAt: string, updatedAt: string, userId: string};
+  public collection: any;
 
   constructor(private activatedRoute: ActivatedRoute, 
               private modalDialog: ModalDialogService,
@@ -34,14 +35,21 @@ export class IndividualCollectionComponent implements OnInit {
               //private modalParams: ModalDialogParams,
               private pageRoute: PageRoute) {
                 this.activatedRoute.queryParams.subscribe( params => {
-                  this.hello = params["hello"];
+                  this.collection = params;
                 });
               }
 
   ngOnInit() {
 
-    console.log(this.hello);
+    console.log(this.collection);
 
+    //const id = this.collection.id;
+    const id = 1;
+
+    this.http.get(`https://02f28968.ngrok.io/collectionItems/${id}`)
+      .subscribe(items => {
+        console.log(items);
+      })
 
 
     this.pageRoute.activatedRoute.subscribe(ActivatedRoute => {
