@@ -6,6 +6,8 @@ import { SelectWordComponent } from '../select-word/select-word.component'
 import { UIService } from '~/app/shared/ui.serivce';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'tns-core-modules/ui/page/page';
+import { AuthService } from '~/app/auth/auth.service';
+import { switchMap } from 'rxjs/operators';
 var camera = require("nativescript-camera"); //import * as camera from "nativescript-camera";
 let Platform = require("tns-core-modules/platform");
 // import Platform from "tns-core-modules/platform"// * as
@@ -32,6 +34,7 @@ export class IndividualCollectionComponent implements OnInit {
               private vcRef: ViewContainerRef,
               private uiService: UIService,
               private http: HttpClient,
+              private authService: AuthService,
               //private modalParams: ModalDialogParams,
               private pageRoute: PageRoute) {
                 this.activatedRoute.queryParams.subscribe( params => {
@@ -44,12 +47,11 @@ export class IndividualCollectionComponent implements OnInit {
     console.log(this.collection);
 
     //const id = this.collection.id;
-    const id = 1;
-
-    this.http.get(`https://02f28968.ngrok.io/collectionItems/${id}`)
-      .subscribe(items => {
-        console.log(items);
-      })
+    this.authService.user.pipe(switchMap(currentUser => {
+      return this.http.get(`https://0533d889.ngrok.io/collectionItems/${currentUser.id}`)
+    })).subscribe(items => {
+      console.log(items, 'userid');
+    })
 
 
     this.pageRoute.activatedRoute.subscribe(ActivatedRoute => {
@@ -90,7 +92,7 @@ export class IndividualCollectionComponent implements OnInit {
             console.log(imageAsset.options.width, imageAsset.options.height)
             fromAsset(imageAsset).then((result) => {
               let base64 = result.toBase64String("jpeg", 100);
-              let testUrl = 'https://02f28968.ngrok.io/images';
+              let testUrl = 'https://0533d889.ngrok.io/images';
               let options = {
                 base64: base64,
                 nativeLanguage: Platform.device.language

@@ -24,7 +24,7 @@ export class CollectionInputComponent  {
   onCreateCollection() {
     console.log(this.collectionDescription);
     
-    const URL = 'https://02f28968.ngrok.io/collections';
+    const URL = 'https://0533d889.ngrok.io/collections';
     //should also include active status and userId
     const options = {
       name: this.collectionDescription,
