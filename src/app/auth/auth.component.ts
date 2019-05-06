@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { RouterExtensions} from 'nativescript-angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {TextField } from 'tns-core-modules/ui/text-field';
+import {TextField  } from 'tns-core-modules/ui/text-field';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -53,10 +53,15 @@ export class AuthComponent implements OnInit {
     this.isLoading = true;
     if (this.isLogin) {
       this.authService.login(email, password).subscribe(resData => {
-        this.isLoading = false;
-        this.router.navigate(["/landing"], {clearHistory: true});
-      }, err => {
-        this.isLoading = false;
+        this.authService.user.subscribe(user => {
+          if (user) {
+            this.isLoading = false;
+            this.router.navigate(["/landing"], {clearHistory: true});
+          }
+        }, err => {
+          this.isLoading = false;
+        })
+
       });
     } else {
       this.authService.signUp(email, password).subscribe(resData => {
