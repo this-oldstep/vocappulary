@@ -3,6 +3,8 @@ import { CollectionsComponent } from '../collections/collections.component'
 import { CollectionInputComponent} from '../collection-input/collection-input.component'
 import { RouterExtensions } from 'nativescript-angular/router';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '~/app/auth/auth.service';
+import { switchMap } from 'rxjs/operators';
 
 
 
@@ -15,11 +17,12 @@ import { HttpClient } from '@angular/common/http';
 export class LandingComponent implements OnInit {
 
 
-  private userId: number = 9;
+  // private userId: number = 9;
 
 
   constructor(private router: RouterExtensions,
-              private http: HttpClient,      
+              private http: HttpClient,
+              private authService: AuthService,   
               ) {}
 
   activeCollections: any;
@@ -37,16 +40,20 @@ export class LandingComponent implements OnInit {
   }
 
   getAllCollections(){
-    const URL = "https://449e90f7.ngrok.io/collections/get"
+    
+    this.authService.user.pipe(switchMap(currentUser => {
+      const URL = `https://449e90f7.ngrok.io/collections/get`
+      const options = { userId: currentUser.id }
+      return this.http.post(URL, options)
+    })).subscribe(collections => {
+      //console.log(collections);
+      this.activeCollections = collections;
+      console.log(this.activeCollections);
+    })
+    
 
-    const options = { userId: this.userId }
-
-    this.http.post(URL, options)
-      .subscribe(collections => {
-        //console.log(collections);
-        this.activeCollections = collections;
-        console.log(this.activeCollections);
-      })
+    
+ 
   }
 
 

@@ -53,7 +53,7 @@ export class AuthService {
             );
         }
     login(email: string, password: string) {
-       return this.http.post<AuthResponseData>(
+        return this.http.post<AuthResponseData>(
             `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${FIREBASE_API_KEY}`
             , {email: email, password: password, returnSecureToken: true}
             ).pipe(catchError(errorRes => {
@@ -61,6 +61,7 @@ export class AuthService {
                 return throwError(errorRes);
             }),
             tap(resData => {
+                console.log("****************", 2)
                 if (resData && resData.idToken) {
                     this.handleLogin(email, resData.idToken, resData.localId, parseInt(resData.expiresIn), false);
                 }

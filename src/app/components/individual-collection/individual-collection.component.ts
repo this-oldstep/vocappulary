@@ -6,6 +6,8 @@ import { SelectWordComponent } from '../select-word/select-word.component'
 import { UIService } from '~/app/shared/ui.serivce';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'tns-core-modules/ui/page/page';
+import { AuthService } from '~/app/auth/auth.service';
+import { switchMap } from 'rxjs/operators';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { NavigationExtras } from "@angular/router";
 
@@ -36,14 +38,13 @@ export class IndividualCollectionComponent implements OnInit {
               private vcRef: ViewContainerRef,
               private uiService: UIService,
               private http: HttpClient,
+              private authService: AuthService,
               private router: RouterExtensions,
-              //private modalParams: ModalDialogParams,
               private pageRoute: PageRoute) {
                 this.activatedRoute.queryParams.subscribe( params => {
                   this.collection = params;
                 });
               }
-
 
   activeItems: any;
 
@@ -60,14 +61,11 @@ export class IndividualCollectionComponent implements OnInit {
   }
 
   getAllItems(){
-    const id = this.collection.id;
-    //const id = 1;
-
-    this.http.get(`https://449e90f7.ngrok.io/collectionItems/${id}`)
-      .subscribe(items => {
-        console.log(items);
-        this.activeItems = items;
-      })
+    this.authService.user.pipe(switchMap(currentUser => {
+      return this.http.get(`https://449e90f7.ngrok.io/collectionItems/${currentUser.id}`)
+    })).subscribe(items => {
+      console.log(items, 'userid');
+    })
   }
 
 
@@ -117,7 +115,7 @@ export class IndividualCollectionComponent implements OnInit {
                          }
                        }
 
-                      // self.router.navigate(['/item'], navigationExtras)
+                      self.router.navigate(['/item'], navigationExtras)
                       
                      })
                 })
