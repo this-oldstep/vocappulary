@@ -49,7 +49,7 @@ export class IndividualCollectionComponent implements OnInit {
   activeItems: any;
 
   ngOnInit() {
-
+    console.log('coming into individual coll', this.collection)
     this.getAllItems();
     //console.log('here are the items', this.activeItems);
 
@@ -62,9 +62,10 @@ export class IndividualCollectionComponent implements OnInit {
 
   getAllItems(){
     this.authService.user.pipe(switchMap(currentUser => {
-      return this.http.get(`https://449e90f7.ngrok.io/collectionItems/${currentUser.id}`)
+      return this.http.get(`https://449e90f7.ngrok.io/collectionItems/${this.collection.id}`)
     })).subscribe(items => {
-      console.log(items, 'userid');
+      this.activeItems = items;
+      console.log(items, 'items in collection');
     })
   }
 
@@ -88,7 +89,7 @@ export class IndividualCollectionComponent implements OnInit {
             console.log(imageAsset.options.width, imageAsset.options.height)
             fromAsset(imageAsset).then((result) => {
               let base64 = result.toBase64String("jpeg", 100);
-              let testUrl = 'https://449e90f7.ngrok.io/images';
+              let testUrl = `https://449e90f7.ngrok.io/images`;
               let options = {
                 base64: base64,
                 nativeLanguage: 'es'
