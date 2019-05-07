@@ -26,7 +26,7 @@ export class CollectionInputComponent  {
   onCreateCollection() {
     console.log(this.collectionDescription);
     this.authService.user.pipe(switchMap(currentUser => {
-      const URL =  `https://31580059.ngrok.io/collections`;
+      const URL =  `https://23496efc.ngrok.io/collections`;
     //should also include active status and userId
     const options = {
       name: this.collectionDescription,
