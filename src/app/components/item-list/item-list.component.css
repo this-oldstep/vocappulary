@@ -22,3 +22,15 @@ FlexboxLayout {
 .aaa {
     background-image: url("https://img.freepik.com/vector-gratis/fondo-textura-madera-blanca_64749-498.jpg?size=338&ext=jpg"); 
 }
+
+#img{
+border-radius: 15px;
+border-width: 20px;
+border-color:#F6EEC4;
+}
+
+#img-label{
+border-radius: 15px;
+font-weight: bold;
+font-size: 20px;
+}

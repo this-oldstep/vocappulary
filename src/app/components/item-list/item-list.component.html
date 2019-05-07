@@ -2,16 +2,16 @@
   <RadListView [items]="activeItems" class="aaa">
     <ng-template tkListItemTemplate let-activeItem="item">
       <GridLayout backgroundColor="white" margin="15" (tap)="onItemTap(activeItem)">
-        <Image [src]="activeItem.url_image" stretch="aspectFill"></Image>
+        <Image id="img" [src]="activeItem.url_image" stretch="aspectFill"></Image>
         <GridLayout verticalAlignment="bottom">
-          <FlexboxLayout backgroundColor="#BBFFFFFF" paddingTop="15" paddingBottom="15" paddingLeft="16"
+          <FlexboxLayout backgroundColor="#F6EEC4" paddingTop="15" paddingBottom="15" paddingLeft="16"
             paddingRight="16">
-            <Label [text]="activeItem.currentTranslation" class="barNombre"></Label>
+            <Label id="img-label" [text]="activeItem.currentTranslation" class="barNombre"></Label>
           </FlexboxLayout>
         </GridLayout>
       </GridLayout>
     </ng-template>
-    <ListViewGridLayout tkListViewLayout scrollDirection="Vertical" spanCount="1">
+    <ListViewGridLayout tkListViewLayout scrollDirection="Vertical" spanCount="2">
     </ListViewGridLayout>
   </RadListView>
 </GridLayout>
