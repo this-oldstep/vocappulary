@@ -31,7 +31,7 @@ interface VocappResponseData {
 export class AuthService {
     private _user = new BehaviorSubject<User>(null);
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient ) {}
 
     get user() {
         return this._user.asObservable();
@@ -41,37 +41,42 @@ export class AuthService {
        return this.http.post<AuthResponseData>(
             `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${FIREBASE_API_KEY}`
             , {email: email, password: password, returnSecureToken: true}
-            ).pipe(catchError(errorRes => {
-                this.handleError(errorRes.error.error.message)
-                return throwError(errorRes);
-            }),
-            tap(resData => {
+            ).toPromise().then((resData) => {
                 if (resData && resData.idToken) {
-                    this.handleLogin(email, resData.idToken, resData.localId, parseInt(resData.expiresIn), true);
+                    this.handleLogin(email, resData.idToken, resData.localId, parseInt(resData.expiresIn), false);
                 }
-            })
-            );
+            }).catch((errorRes) => {
+                this.handleError(errorRes.error.error.message)
+                return errorRes;
+            });
         }
     login(email: string, password: string) {
         return this.http.post<AuthResponseData>(
             `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${FIREBASE_API_KEY}`
             , {email: email, password: password, returnSecureToken: true}
-            ).pipe(catchError(errorRes => {
-                this.handleError(errorRes.error.error.message)
-                return throwError(errorRes);
-            }),
-            tap(resData => {
-                console.log("****************", 2)
+            ).toPromise().then((resData) => {
                 if (resData && resData.idToken) {
                     this.handleLogin(email, resData.idToken, resData.localId, parseInt(resData.expiresIn), false);
                 }
-            }))
+            }).catch((errorRes) => {
+                this.handleError(errorRes.error.error.message)
+                return errorRes;
+            });
+            // (catchError(errorRes => {
+            //     this.handleError(errorRes.error.error.message)
+            //     return throwError(errorRes);
+            // }),
+            // tap(resData => {
+            //     if (resData && resData.idToken) {
+            //         this.handleLogin(email, resData.idToken, resData.localId, parseInt(resData.expiresIn), false);
+            //     }
+            // }))
     }
 
     private handleLogin(email: string, token: string, userId: number, expiresIn: number, newUser: boolean) {
         const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
         
-        return this.http.post<VocappResponseData>(`https://bfb22891.ngrok.io/auth/`, 
+        return this.http.post<VocappResponseData>(`https://23496efc.ngrok.io/auth/`, 
         {token: token, email: email, userId: userId, expiresIn: expiresIn, currentLanguageId: 4, nativeLanguageId: 3, username: "Thomas Bahama", newUser: newUser}
         ).subscribe(response => {
             email = response.email;
