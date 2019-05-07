@@ -5,6 +5,7 @@ import { RouterExtensions } from 'nativescript-angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '~/app/auth/auth.service';
 import { switchMap } from 'rxjs/operators';
+import { NGROK } from '../../../config'
 
 
 
@@ -42,7 +43,7 @@ export class LandingComponent implements OnInit {
   getAllCollections(){
     
     this.authService.user.pipe(switchMap(currentUser => {
-      const URL = `https://23496efc.ngrok.io/collections/get`
+      const URL = `${NGROK}/collections/get`
       const options = { userId: currentUser.id }
       return this.http.post(URL, options)
     })).subscribe(collections => {
