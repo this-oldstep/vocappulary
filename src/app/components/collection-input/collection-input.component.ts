@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '~/app/auth/auth.service';
 import { switchMap } from 'rxjs/operators';
+import { NGROK } from '../../../config'
 
 @Injectable()
 @Component({
@@ -26,7 +27,7 @@ export class CollectionInputComponent  {
   onCreateCollection() {
     console.log(this.collectionDescription);
     this.authService.user.pipe(switchMap(currentUser => {
-      const URL =  `https://23496efc.ngrok.io/collections`;
+      const URL =  `${NGROK}/collections`;
     //should also include active status and userId
     const options = {
       name: this.collectionDescription,

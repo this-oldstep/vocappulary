@@ -10,6 +10,7 @@ import { AuthService } from '~/app/auth/auth.service';
 import { switchMap } from 'rxjs/operators';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { NavigationExtras } from "@angular/router";
+import { NGROK } from '../../../config'
 
 
 var camera = require("nativescript-camera"); //import * as camera from "nativescript-camera";
@@ -66,7 +67,7 @@ export class IndividualCollectionComponent implements OnInit {
 
   getAllItems(){
     this.authService.user.pipe(switchMap(currentUser => {
-      return this.http.get(`https://23496efc.ngrok.io/collectionItems/${this.collection.id}`)
+      return this.http.get(`${NGROK}/collectionItems/${this.collection.id}`)
     })).subscribe(items => {
       this.activeItems = items;
       console.log(items, 'items in collection');
@@ -95,7 +96,7 @@ export class IndividualCollectionComponent implements OnInit {
             fromAsset(imageAsset).then((result) => {
               this.authService.user.pipe(switchMap(currentUser => {
               let base64 = result.toBase64String("jpeg", 100);
-              let testUrl = `https://6d33f125.ngrok.io/images`;
+              let testUrl = `${NGROK}/images`;
               let options = {
                 base64: base64,
                 userId: currentUser.id,

@@ -4,8 +4,9 @@ import { catchError, tap } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 import { alert } from 'tns-core-modules/ui/dialogs'
 import { User } from './user.model';
+import {NGROK, FIREBASE_API_KEY} from '../../config';
 
-const FIREBASE_API_KEY = 'AIzaSyC8WpwuQBkU6xoVHnoZ59xyDk9pdvFNeR0'
+// const FIREBASE_API_KEY = 'AIzaSyC8WpwuQBkU6xoVHnoZ59xyDk9pdvFNeR0'
 
 interface AuthResponseData {
     kind: string;
@@ -76,7 +77,7 @@ export class AuthService {
     private handleLogin(email: string, token: string, userId: number, expiresIn: number, newUser: boolean) {
         const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
         
-        return this.http.post<VocappResponseData>(`https://23496efc.ngrok.io/auth/`, 
+        return this.http.post<VocappResponseData>(`${NGROK}/auth/`, 
         {token: token, email: email, userId: userId, expiresIn: expiresIn, currentLanguageId: 4, nativeLanguageId: 3, username: "Thomas Bahama", newUser: newUser}
         ).subscribe(response => {
             email = response.email;
