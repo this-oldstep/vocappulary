@@ -17,6 +17,7 @@ import { IndividualCollectionComponent} from './components/individual-collection
 import { SelectWordComponent } from './components/select-word/select-word.component'
 import {ItemComponent } from './components/item/item.component';
 import { ItemListComponent } from './components/item-list/item-list.component';
+import { IndividualCollectionService } from "./components/individual-collection/individual-collection.service";
 
 @NgModule({
     bootstrap: [
@@ -31,6 +32,7 @@ import { ItemListComponent } from './components/item-list/item-list.component';
         NativeScriptCommonModule,
         HttpClientModule
     ],
+    providers: [IndividualCollectionService],
     declarations: [
         AppComponent,
         CollectionsComponent,
