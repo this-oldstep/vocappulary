@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalDialogParams } from 'nativescript-angular/modal-dialog';
 import { HttpClient } from '@angular/common/http';
+import { NGROK } from '../../../config'
 
 
 @Component({
@@ -61,7 +62,7 @@ public collectionId: any;
       collectionId: this.collectionId
     }
     
-    const URL = "https://23496efc.ngrok.io/collectionItems"
+    const URL = `${NGROK}/collectionItems`
     console.log('sending to server to save word', chosenWord);
     this.http.post(URL, chosenWord)
       .subscribe( response => {

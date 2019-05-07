@@ -7,7 +7,7 @@ let enumsModule = require('tns-core-modules/ui/enums');
 // import enumsModule = require('tns-core-modules/ui/enums')
 let { fromAsset } = require("tns-core-modules/image-source/image-source");
 // import { fromAsset } from "tns-core-modules/image-source/image-source";
-
+import { NGROK } from '../../../config'
 @Component({
   selector: 'ns-photo-component',
   templateUrl: './photo-component.component.html',
@@ -35,7 +35,7 @@ export class PhotoComponentComponent {
             console.log(imageAsset.options.width, imageAsset.options.height)
             fromAsset(imageAsset).then((result) => {
               let base64 = result.toBase64String("jpeg", 100);
-              let testUrl = `https://23496efc.ngrok.io/images`;
+              let testUrl = `${NGROK}/images`;
               let options = {
                 base64: base64,
                 nativeLanguage: Platform.device.language

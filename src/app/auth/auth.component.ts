@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {TextField  } from 'tns-core-modules/ui/text-field';
 import { AuthService } from './auth.service';
 
+
 @Component({
   selector: 'ns-auth',
   templateUrl: './auth.component.html',
@@ -34,6 +35,8 @@ export class AuthComponent implements OnInit {
     this.form.get('password').statusChanges.subscribe(status => {
       this.passwordControlIsValid = status === 'VALID';
     });
+
+  
   }
 
 
