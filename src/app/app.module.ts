@@ -18,6 +18,7 @@ import { SelectWordComponent } from './components/select-word/select-word.compon
 import {ItemComponent } from './components/item/item.component';
 import { ItemListComponent } from './components/item-list/item-list.component';
 import { IndividualCollectionService } from "./components/individual-collection/individual-collection.service";
+import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular"
 
 @NgModule({
     bootstrap: [
@@ -30,7 +31,8 @@ import { IndividualCollectionService } from "./components/individual-collection/
         NativeScriptUISideDrawerModule,
         ReactiveFormsModule,
         NativeScriptCommonModule,
-        HttpClientModule
+        HttpClientModule,
+        NativeScriptUIListViewModule
     ],
     providers: [IndividualCollectionService],
     declarations: [

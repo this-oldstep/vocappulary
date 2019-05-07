@@ -1,6 +1,7 @@
-
 <ns-action-bar title="Collection"></ns-action-bar>
-<FlexboxLayout flexDirection="column">
-  <Button class="btn btn-primary" text="Add object!" (tap)="uploadPhoto()"></Button>
+<FlexboxLayout justifyContent="center" flexDirection="column">
+  <StackLayout>
+    <Button heigth="50" class="btn btn-primary" text="Add object!" (tap)="uploadPhoto()"></Button>
+  </StackLayout>
   <ns-item-list [activeItems]="activeItems"></ns-item-list>
 </FlexboxLayout>

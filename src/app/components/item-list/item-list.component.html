@@ -1,8 +1,17 @@
-<ListView [items]="activeItems">
-  <ng-template let-activeItem="item" let-index="index">
-    <FlexboxLayout justifyContent="center" (tap)="onItemTap(activeItem)" height="75%">
-      <Image id="image"  [src]="activeItem.url_image" ></Image>
-      <Label id="item-text" class="activeItem" [text]="activeItem.currentTranslation"></Label>
-    </FlexboxLayout>
-  </ng-template>
-</ListView>  
+<GridLayout tkExampleTitle tkToggleNavButton>
+  <RadListView [items]="activeItems" class="aaa">
+    <ng-template tkListItemTemplate let-activeItem="item">
+      <GridLayout backgroundColor="white" margin="15" (tap)="onItemTap(activeItem)">
+        <Image [src]="activeItem.url_image" stretch="aspectFill"></Image>
+        <GridLayout verticalAlignment="bottom">
+          <FlexboxLayout backgroundColor="#BBFFFFFF" paddingTop="15" paddingBottom="15" paddingLeft="16"
+            paddingRight="16">
+            <Label [text]="activeItem.currentTranslation" class="barNombre"></Label>
+          </FlexboxLayout>
+        </GridLayout>
+      </GridLayout>
+    </ng-template>
+    <ListViewGridLayout tkListViewLayout scrollDirection="Vertical" spanCount="1">
+    </ListViewGridLayout>
+  </RadListView>
+</GridLayout>

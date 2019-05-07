@@ -114,17 +114,18 @@ export class IndividualCollectionComponent implements OnInit {
                      .then((action) => { 
                         
                        console.log(action);
-                       let navigationExtras: NavigationExtras = {
-                         queryParams: {
-                           //"wordId": action.itemId,
-                           "url_image": action.image_url,
-                           "currentTranslation": action.currentLangText,
-                           //"nativeTranslation": action.nativeTranslation,
-                         }
-                       }
+                      //  let navigationExtras: NavigationExtras = {
+                      //    queryParams: {
+                      //      //"wordId": action.itemId,
+                      //      "url_image": action.image_url,
+                      //      "currentTranslation": action.currentLangText,
+                      //      //"nativeTranslation": action.nativeTranslation,
+                      //    }
+                      //  }
 
-                      self.router.navigate(['/item'], navigationExtras)
+                      // self.router.navigate(['/item'], navigationExtras)
                       
+                      self.getAllItems();
                      })
                 })
                 
