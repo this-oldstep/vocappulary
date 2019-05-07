@@ -52,11 +52,13 @@ export class AuthComponent implements OnInit {
     this.passwordControlIsValid = true;
     this.isLoading = true;
     if (this.isLogin) {
-      this.authService.login(email, password).subscribe(resData => {
+      this.authService.login(email, password).then(resData => {
         this.authService.user.subscribe(user => {
           if (user) {
             this.isLoading = false;
             this.router.navigate(["/landing"], {clearHistory: true});
+          } else {
+            this.isLoading = false;
           }
         }, err => {
           this.isLoading = false;
@@ -64,11 +66,17 @@ export class AuthComponent implements OnInit {
 
       });
     } else {
-      this.authService.signUp(email, password).subscribe(resData => {
-        this.isLoading = false;
-        this.router.navigate(["/landing"], {clearHistory: true});
-      }, err => {
-        this.isLoading = false;
+      this.authService.signUp(email, password).then(resData => {
+        this.authService.user.subscribe(user => {
+          if (user) {
+            this.isLoading = false;
+            this.router.navigate(["/landing"], {clearHistory: true});
+          } else {
+            this.isLoading = false;
+          }
+        }, err => {
+          this.isLoading = false;
+        })
       });
     }
   }
@@ -81,6 +89,10 @@ export class AuthComponent implements OnInit {
 
   onSwitch() {
     this.isLogin = !this.isLogin;
+  }
+
+  stopSpinner() {
+    this.isLoading = false;
   }
 
 }
