@@ -1,1 +1,10 @@
-/* Add mobile styles for the component here.  */
+#image{
+  width: 150px;
+  margin: 15px;
+  margin-right: 50px;
+}
+
+#item-text{
+  font-size: 20px;
+  font-weight: bold;
+}

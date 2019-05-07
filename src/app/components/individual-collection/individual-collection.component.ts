@@ -42,14 +42,18 @@ export class IndividualCollectionComponent implements OnInit {
               private router: RouterExtensions,
               private pageRoute: PageRoute) {
                 this.activatedRoute.queryParams.subscribe( params => {
-                  this.collection = params;
+                  
+                  if (params && params.id){
+                    this.collection = params;
+                  } 
+                  console.log('coming into individual coll id is', this.collection.id)
+
                 });
               }
 
   activeItems: any;
 
   ngOnInit() {
-    console.log('coming into individual coll', this.collection)
     this.getAllItems();
     //console.log('here are the items', this.activeItems);
 
@@ -62,7 +66,7 @@ export class IndividualCollectionComponent implements OnInit {
 
   getAllItems(){
     this.authService.user.pipe(switchMap(currentUser => {
-      return this.http.get(`https://449e90f7.ngrok.io/collectionItems/${this.collection.id}`)
+      return this.http.get(`https://bfb22891.ngrok.io/collectionItems/${this.collection.id}`)
     })).subscribe(items => {
       this.activeItems = items;
       console.log(items, 'items in collection');
@@ -76,6 +80,7 @@ export class IndividualCollectionComponent implements OnInit {
   uploadPhoto() {
     let http = this.http;
     let self = this;
+    let collectionId = this.collection.id;
     camera.requestPermissions().then(
       () => {
         console.log('yes')
@@ -90,7 +95,7 @@ export class IndividualCollectionComponent implements OnInit {
             fromAsset(imageAsset).then((result) => {
               this.authService.user.pipe(switchMap(currentUser => {
               let base64 = result.toBase64String("jpeg", 100);
-              let testUrl = `https://449e90f7.ngrok.io/images`;
+              let testUrl = `https://bfb22891.ngrok.io/images`;
               let options = {
                 base64: base64,
                 userId: currentUser.id,
@@ -99,7 +104,7 @@ export class IndividualCollectionComponent implements OnInit {
               }))
                 .subscribe((data) => {
                  // console.log(data);
-                 data['collectionId'] = self.collection.id
+                 data['collectionId'] = collectionId;
                   self.modalDialog.showModal(SelectWordComponent,
                     {
                       fullscreen: true,
