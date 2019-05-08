@@ -70,6 +70,7 @@ export class IndividualCollectionComponent implements OnInit {
       return this.http.get(`${NGROK}/collectionItems/${this.collection.id}`)
     })).subscribe(items => {
       this.activeItems = items;
+      this.activeItems.reverse();
       console.log(items, 'items in collection');
     })
   }
@@ -124,9 +125,9 @@ export class IndividualCollectionComponent implements OnInit {
                       //    }
                       //  }
 
-                      // self.router.navigate(['/item'], navigationExtras)
-                      
-                      self.getAllItems();
+      
+                      //  self.router.navigate(['/item'], navigationExtras)
+                       self.getAllItems();
                      })
                 })
                 
