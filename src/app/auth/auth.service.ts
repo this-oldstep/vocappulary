@@ -44,7 +44,7 @@ export class AuthService {
             , {email: email, password: password, returnSecureToken: true}
             ).toPromise().then((resData) => {
                 if (resData && resData.idToken) {
-                    this.handleLogin(email, resData.idToken, resData.localId, parseInt(resData.expiresIn), false);
+                    this.handleLogin(email, resData.idToken, resData.localId, parseInt(resData.expiresIn), true);
                 }
             }).catch((errorRes) => {
                 this.handleError(errorRes.error.error.message)
