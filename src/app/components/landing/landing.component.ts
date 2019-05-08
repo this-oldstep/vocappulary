@@ -49,7 +49,7 @@ export class LandingComponent implements OnInit {
     })).subscribe(collections => {
       //console.log(collections);
       this.activeCollections = collections;
-      console.log(this.activeCollections);
+      console.log('users collections', this.activeCollections);
     })
     
 
