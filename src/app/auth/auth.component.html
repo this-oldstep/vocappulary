@@ -46,6 +46,15 @@
       text="Please enter a valid 6 character or more password."
     ></Label>
   </StackLayout>
+  <StackLayout>
+    <Label
+    text="Native Language"
+    *ngIf="!isLogin"
+    >
+    </Label>
+    <ns-lang-picker
+    *ngIf="!isLogin"></ns-lang-picker>
+  </StackLayout>
   <Button [text]="isLogin ? 'Sign Up' : 'Log In'" class="btn" (tap)="onSwitch()"></Button>
   <Button
     [text]="isLogin ? 'Login' : 'Signup'"

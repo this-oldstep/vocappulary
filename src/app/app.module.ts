@@ -17,6 +17,7 @@ import { IndividualCollectionComponent} from './components/individual-collection
 import { SelectWordComponent } from './components/select-word/select-word.component'
 import {ItemComponent } from './components/item/item.component';
 import { ItemListComponent } from './components/item-list/item-list.component';
+import { LangPickerComponent } from './components/lang-picker/lang-picker.component';
 
 @NgModule({
     bootstrap: [
@@ -43,6 +44,7 @@ import { ItemListComponent } from './components/item-list/item-list.component';
         SelectWordComponent,
         ItemComponent,
         ItemListComponent,
+        LangPickerComponent,
     ],
     schemas: [
         NO_ERRORS_SCHEMA
