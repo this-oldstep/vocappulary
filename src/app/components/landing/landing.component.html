@@ -1,8 +1,11 @@
 <ns-action-bar title="My Collections"></ns-action-bar>
-<FlexboxLayout flexDirection="column">
+
+<StackLayout>
   <ns-collection-input (input)="onCollectionInput($event)"></ns-collection-input>
-  <ns-collections 
-  [collections]="activeCollections"
-  *ngIf="currentUser !== null"
-  ></ns-collections>
-</FlexboxLayout>
+  <FlexboxLayout flexDirection="column">
+    <ns-collections 
+    [collections]="activeCollections"
+    *ngIf="currentUser !== null"
+    ></ns-collections>
+  </FlexboxLayout>
+</StackLayout>

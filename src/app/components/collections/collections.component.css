@@ -39,5 +39,11 @@ FlexboxLayout {
   font-weight: bold;
   font-size: 25px;
   color: azure;
+  text-shadow: 2px 2px #ff0000;
+}
+
+
+FlexboxLayout {
   border-radius: 15px;
+  box-shadow: 10px 10px 8px #888888;
 }
