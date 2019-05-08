@@ -32,6 +32,7 @@ export class ItemListComponent  {
         "url_image": $event.url_image,
         "currentTranslation": $event.currentTranslation,
         "nativeTranslation": $event.nativeTranslation,
+        "audio_url": $event.currentAudioUrl
       }
     }
 

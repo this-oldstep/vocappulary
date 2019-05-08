@@ -18,6 +18,9 @@ import { SelectWordComponent } from './components/select-word/select-word.compon
 import {ItemComponent } from './components/item/item.component';
 import { ItemListComponent } from './components/item-list/item-list.component';
 import { LangPickerComponent } from './components/lang-picker/lang-picker.component';
+import { IndividualCollectionService } from "./components/individual-collection/individual-collection.service";
+import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
+import { PracticeComponent } from './components/practice/practice.component'
 
 @NgModule({
     bootstrap: [
@@ -30,8 +33,10 @@ import { LangPickerComponent } from './components/lang-picker/lang-picker.compon
         NativeScriptUISideDrawerModule,
         ReactiveFormsModule,
         NativeScriptCommonModule,
-        HttpClientModule
+        HttpClientModule,
+        NativeScriptUIListViewModule
     ],
+    providers: [IndividualCollectionService],
     declarations: [
         AppComponent,
         CollectionsComponent,
@@ -45,6 +50,7 @@ import { LangPickerComponent } from './components/lang-picker/lang-picker.compon
         ItemComponent,
         ItemListComponent,
         LangPickerComponent,
+        PracticeComponent,
     ],
     schemas: [
         NO_ERRORS_SCHEMA

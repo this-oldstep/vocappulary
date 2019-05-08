@@ -6,6 +6,17 @@
         nsRouterLink="/" 
         [clearHistory]="true" 
         (tap)="onLogout()"></Button>
+        <Button 
+        text="Collections" 
+        class="btn btn-primary" 
+        nsRouterLink="/landing" 
+        (tap)="onLogout()"></Button>
+        <Button 
+        text="Practice",
+        class="btn btn-primary",
+        nsRouterLink="/practice"
+        (tap)="onLogout()"
+        ></Button>
     </StackLayout>
     <StackLayout tkMainContent>
         <page-router-outlet></page-router-outlet>

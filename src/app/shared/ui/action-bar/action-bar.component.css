@@ -1,1 +1,7 @@
 /* Add mobile styles for the component here.  */
+
+ActionBar{
+  background-color: #4cdcc6;
+  text-align: center;
+  font-weight: bold;
+}
