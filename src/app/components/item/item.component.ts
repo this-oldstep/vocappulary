@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TNSPlayer } from 'nativescript-audio';
+import { TNSPlayer, TNSRecorder } from 'nativescript-audio';
+import { knownFolders, Folder, File } from "tns-core-modules/file-system";
+
 
 @Component({
   selector: 'ns-item',
@@ -12,6 +14,7 @@ export class ItemComponent implements OnInit {
 
   public item: any;
   private _player: TNSPlayer;
+  private _recorder: TNSRecorder;
 
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe( params => {
@@ -19,6 +22,7 @@ export class ItemComponent implements OnInit {
     })
     this._player = new TNSPlayer;
     this._player.debug = true;
+    this._recorder = new TNSRecorder;
 
    }
 
@@ -47,6 +51,12 @@ export class ItemComponent implements OnInit {
     this._player.playFromUrl(playerOptions);
 
   }
+
+  // recordWord(){
+
+  //   this._recorder.
+
+  // }
 
 
 

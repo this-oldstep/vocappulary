@@ -18,7 +18,8 @@ import { SelectWordComponent } from './components/select-word/select-word.compon
 import {ItemComponent } from './components/item/item.component';
 import { ItemListComponent } from './components/item-list/item-list.component';
 import { IndividualCollectionService } from "./components/individual-collection/individual-collection.service";
-import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular"
+import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
+import { PracticeComponent } from './components/practice/practice.component'
 
 @NgModule({
     bootstrap: [
@@ -47,6 +48,7 @@ import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular"
         SelectWordComponent,
         ItemComponent,
         ItemListComponent,
+        PracticeComponent,
     ],
     schemas: [
         NO_ERRORS_SCHEMA

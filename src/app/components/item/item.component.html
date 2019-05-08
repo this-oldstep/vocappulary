@@ -1,4 +1,5 @@
 <FlexboxLayout>
   <Image [src]="item.url_image"></Image>
   <Button class="btn btn-primary" [text] = "item.currentTranslation" (tap)="playWord()" ></Button>
+  <Button class="btn btn-primary" text = "pronounce!" (tap)="recordWord()" ></Button>
 </FlexboxLayout>
