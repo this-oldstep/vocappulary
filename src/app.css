@@ -20,6 +20,6 @@ components that have the btn class name.
 }
 
 .drawer-container {
-    background: linear-gradient(140deg, #ffffff, #757575 );
+    background: #4ddcc6;
     horizontal-align: left;
 }

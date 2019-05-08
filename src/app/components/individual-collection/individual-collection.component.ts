@@ -47,7 +47,7 @@ export class IndividualCollectionComponent implements OnInit {
                   if (params && params.id){
                     this.collection = params;
                   } 
-                  console.log('coming into individual coll id is', this.collection.id)
+                  //console.log('coming into individual coll id is', this.collection.id)
 
                 });
               }
@@ -70,6 +70,7 @@ export class IndividualCollectionComponent implements OnInit {
       return this.http.get(`${NGROK}/collectionItems/${this.collection.id}`)
     })).subscribe(items => {
       this.activeItems = items;
+      this.activeItems.reverse();
       console.log(items, 'items in collection');
     })
   }
@@ -105,7 +106,7 @@ export class IndividualCollectionComponent implements OnInit {
               }))
                 .subscribe((data) => {
                  // console.log(data);
-                 data['collectionId'] = collectionId;
+                  data['collectionId'] = collectionId;
                   self.modalDialog.showModal(SelectWordComponent,
                     {
                       fullscreen: true,
@@ -115,17 +116,18 @@ export class IndividualCollectionComponent implements OnInit {
                      .then((action) => { 
                         
                        console.log(action);
-                       let navigationExtras: NavigationExtras = {
-                         queryParams: {
-                           //"wordId": action.itemId,
-                           "url_image": action.image_url,
-                           "currentTranslation": action.currentLangText,
-                           //"nativeTranslation": action.nativeTranslation,
-                         }
-                       }
+                      //  let navigationExtras: NavigationExtras = {
+                      //    queryParams: {
+                      //      //"wordId": action.itemId,
+                      //      "url_image": action.image_url,
+                      //      "currentTranslation": action.currentLangText,
+                      //      //"nativeTranslation": action.nativeTranslation,
+                      //    }
+                      //  }
 
-                      self.router.navigate(['/item'], navigationExtras)
-                      
+      
+                      //  self.router.navigate(['/item'], navigationExtras)
+                       self.getAllItems();
                      })
                 })
                 
