@@ -32,7 +32,7 @@ export class ItemListComponent  {
         "url_image": $event.url_image,
         "currentTranslation": $event.currentTranslation,
         "nativeTranslation": $event.nativeTranslation,
-        "audio_url": 'https://s3.amazonaws.com/vocapp-bucket/words/party.mp3'
+        "audio_url": $event.currentAudioUrl
       }
     }
 
