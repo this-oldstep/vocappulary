@@ -20,7 +20,8 @@ import { ItemListComponent } from './components/item-list/item-list.component';
 import { LangPickerComponent } from './components/lang-picker/lang-picker.component';
 import { IndividualCollectionService } from "./components/individual-collection/individual-collection.service";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
-import { PracticeComponent } from './components/practice/practice.component'
+import { PracticeComponent } from './components/practice/practice.component';
+import { LangModalComponent } from './components/lang-modal/lang-modal.component'
 
 @NgModule({
     bootstrap: [
@@ -51,6 +52,7 @@ import { PracticeComponent } from './components/practice/practice.component'
         ItemListComponent,
         LangPickerComponent,
         PracticeComponent,
+        LangModalComponent,
     ],
     schemas: [
         NO_ERRORS_SCHEMA
