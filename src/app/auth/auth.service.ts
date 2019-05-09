@@ -38,13 +38,13 @@ export class AuthService {
         return this._user.asObservable();
     }
 
-    signUp(email: string, password: string) {
+    signUp(email: string, password: string, natLangId: number) {
        return this.http.post<AuthResponseData>(
             `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${FIREBASE_API_KEY}`
             , {email: email, password: password, returnSecureToken: true}
             ).toPromise().then((resData) => {
                 if (resData && resData.idToken) {
-                    this.handleLogin(email, resData.idToken, resData.localId, parseInt(resData.expiresIn), true);
+                    this.handleLogin(email, resData.idToken, resData.localId, natLangId, parseInt(resData.expiresIn), true);
                 }
             }).catch((errorRes) => {
                 this.handleError(errorRes.error.error.message)
@@ -57,7 +57,7 @@ export class AuthService {
             , {email: email, password: password, returnSecureToken: true}
             ).toPromise().then((resData) => {
                 if (resData && resData.idToken) {
-                    this.handleLogin(email, resData.idToken, resData.localId, parseInt(resData.expiresIn), false);
+                    this.handleLogin(email, resData.idToken, resData.localId, null, parseInt(resData.expiresIn), false);
                 }
             }).catch((errorRes) => {
                 this.handleError(errorRes.error.error.message)
@@ -74,11 +74,11 @@ export class AuthService {
             // }))
     }
 
-    private handleLogin(email: string, token: string, userId: number, expiresIn: number, newUser: boolean) {
+    private handleLogin(email: string, token: string, userId: number, natLang: number, expiresIn: number, newUser: boolean) {
         const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-        
+        console.log(natLang);
         return this.http.post<VocappResponseData>(`${NGROK}/auth/`, 
-        {token: token, email: email, userId: userId, expiresIn: expiresIn, currentLanguageId: 4, nativeLanguageId: 3, username: "Thomas Bahama", newUser: newUser}
+        {token: token, email: email, userId: userId, expiresIn: expiresIn, currentLanguageId: 4, nativeLanguageId: natLang, username: "Thomas Bahama", newUser: newUser}
         ).subscribe(response => {
             email = response.email;
             userId = response.id;

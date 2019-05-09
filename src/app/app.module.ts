@@ -57,6 +57,6 @@ import { LangModalComponent } from './components/lang-modal/lang-modal.component
     schemas: [
         NO_ERRORS_SCHEMA
     ],
-    entryComponents: [SelectWordComponent]
+    entryComponents: [SelectWordComponent, LangModalComponent]
 })
 export class AppModule { }

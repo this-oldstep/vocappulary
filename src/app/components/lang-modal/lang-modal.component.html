@@ -1,1 +1,6 @@
-<Button text="lang-modal works!" class="btn btn-primary"></Button>
+<FlexboxLayout>
+    <Label [text]="pickedLang"></Label>
+    <ns-lang-picker (onSelection)="onSelectLang($event)">
+    </ns-lang-picker>
+    <Button class="btn" text="Select" (tap)="closeModal()"></Button>
+</FlexboxLayout>

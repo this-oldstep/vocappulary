@@ -50,10 +50,16 @@
     <Label
     text="Native Language"
     *ngIf="!isLogin"
+    ></Label>
+    <Button class = "btn" 
+    [text]="natLangStr" 
+    (tap)="onChangeStatus()"
+    FormControlName = natLang
+    #natLangEl
+    *ngIf="!isLogin"
+    isEnabled="true";
     >
-    </Label>
-    <ns-lang-picker
-    *ngIf="!isLogin"></ns-lang-picker>
+  </Button>
   </StackLayout>
   <Button [text]="isLogin ? 'Sign Up' : 'Log In'" class="btn" (tap)="onSwitch()"></Button>
   <Button

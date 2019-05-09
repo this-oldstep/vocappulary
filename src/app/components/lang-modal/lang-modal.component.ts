@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ModalDialogParams } from 'nativescript-angular/modal-dialog';
 
 @Component({
   selector: 'ns-lang-modal',
@@ -8,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LangModalComponent implements OnInit {
 
-  constructor() { }
+  public pickedLang = "English";
+  public pickedLangId = 1;
+
+  constructor(
+    private modalParams: ModalDialogParams,
+    
+    ) { }
 
   ngOnInit() {
+
+  }
+  
+  onSelectLang(item: Array<any>) {
+    this.pickedLang = item[0];
+    this.pickedLangId = item[1];
+    console.log(this.pickedLang, 'modal');
   }
 
+  closeModal() {
+    this.modalParams.closeCallback([this.pickedLang, this.pickedLangId]);
+  }
 }
