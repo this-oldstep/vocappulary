@@ -25,6 +25,7 @@ export class PracticeComponent implements OnInit {
   constructor(private http: HttpClient) {
   
     this._recorder = new TNSRecorder;
+    this._recorder.debug = true;
 
   }
 
@@ -42,7 +43,7 @@ export class PracticeComponent implements OnInit {
 
 
   onRecord(){
-
+    let self = this;
     /*
     add functionality for is recording.
     */
@@ -52,6 +53,7 @@ export class PracticeComponent implements OnInit {
             console.log('I can record!');
 
             let audioFolder = knownFolders.currentApp().getFolder("audio");
+            console.log(audioFolder);
 
             let recorderOptions = {
               filename: audioFolder.path + '/macarena.mp3',
@@ -64,8 +66,9 @@ export class PracticeComponent implements OnInit {
               }
             };
 
+            console.log(recorderOptions);
 
-            this._recorder.start(recorderOptions)
+            self._recorder.start(recorderOptions)
               .then((result) => {
                 console.log('recording!!!!')
               }).catch((err) => {
@@ -73,12 +76,12 @@ export class PracticeComponent implements OnInit {
               });
 
 
-          } else{
+          }  else{
             alert('device cannot recourd audio');
           }
       })
       .catch(err => {
-        console.log('no permissions can\'t record');
+        console.log(err, 'no permissions can\'t record');
       })
 
   }
