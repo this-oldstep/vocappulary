@@ -105,7 +105,6 @@ export class IndividualCollectionComponent implements OnInit {
               return http.post(testUrl, options)
               }))
                 .subscribe((data) => {
-                 // console.log(data);
                   data['collectionId'] = collectionId;
                   self.modalDialog.showModal(SelectWordComponent,
                     {

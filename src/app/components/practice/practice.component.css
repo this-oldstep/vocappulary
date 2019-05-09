@@ -1,1 +1,11 @@
-/* Add mobile styles for the component here.  */
+FlexboxLayout {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20;
+}
+
+.Button {
+  width: 20%;
+  height: 20%;
+}

@@ -15,7 +15,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { PhotoComponentComponent} from './components/photo-component/photo-component.component'
 import { IndividualCollectionComponent} from './components/individual-collection/individual-collection.component';
 import { SelectWordComponent } from './components/select-word/select-word.component'
-import {ItemComponent } from './components/item/item.component';
+import { ItemComponent } from './components/item/item.component';
 import { ItemListComponent } from './components/item-list/item-list.component';
 import { IndividualCollectionService } from "./components/individual-collection/individual-collection.service";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
