@@ -1,0 +1,6 @@
+/* Add mobile styles for the component here.  */
+FlexboxLayout {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
