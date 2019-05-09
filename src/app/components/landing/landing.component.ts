@@ -34,6 +34,11 @@ export class LandingComponent implements OnInit {
     this.getAllCollections();
     this.authService.user.subscribe(userData=>{
       this.language = i18n[userData.nativeLanguageId.toString()];
+      let langCode = userData.nativeLanguageId.toString()
+      if (!langCode){
+        langCode = '1'
+      }
+      this.language = i18n[langCode]
       // console.log(userData)
       // this.language = i18n[this.nativeLang]
     })
