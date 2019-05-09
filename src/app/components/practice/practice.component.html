@@ -2,3 +2,10 @@
 <FlexboxLayout>
     <Button text="pronounce!" class = "btn btn-primary" (tap)="onRecord()"></Button>
 </FlexboxLayout>
+<StackLayout>
+<ActivityIndicator color="#3489db" busy="isRecording"></ActivityIndicator>
+<Button text="Start Recording" tap="start"></Button>
+<Button text="Stop Recording" tap="stop"></Button>
+<Button text="Get Recorded File" tap="getFile"></Button>
+<Label [text]="recordedAudioFile" color="#3489db" textWrap="true"></Label>
+</StackLayout>
