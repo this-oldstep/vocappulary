@@ -6,6 +6,7 @@ import { AuthService } from './auth.service';
 import { ModalDialogService } from 'nativescript-angular/modal-dialog';
 import { LangModalComponent } from '../components/lang-modal/lang-modal.component';
 import { UIService } from '../shared/ui.serivce';
+import { formControlBinding } from '@angular/forms/src/directives/reactive_directives/form_control_directive';
 
 
 @Component({
@@ -22,9 +23,11 @@ export class AuthComponent implements OnInit {
   isLoading = false;
   natLangStr = 'english';
   natLangId = 1;
+  learnLangStr = 'english';
+  learnLangId = 1;
   @ViewChild('passwordEl') passwordEl: ElementRef<TextField>;
   @ViewChild('emailEl') emailEl: ElementRef<TextField>;
-  @ViewChild('natLangEl') natLangEl: ElementRef<TextField>;
+  @ViewChild('usernameEl') usernameEl: ElementRef<TextField>;
 
 
   constructor(
@@ -37,7 +40,8 @@ export class AuthComponent implements OnInit {
   ngOnInit() {
     this.form = new FormGroup({
       email: new FormControl(null, {updateOn: 'blur', validators: [Validators.required, Validators.email]}),
-      password: new FormControl(null, {updateOn:'blur', validators: [Validators.required, Validators.minLength(6)]})
+      password: new FormControl(null, {updateOn:'blur', validators: [Validators.required, Validators.minLength(6)]}),
+      username: new FormControl(null, {updateOn: 'blur'})
     });
     this.form.get('email').statusChanges.subscribe(status => {
       this.emailControlIsValid = status === 'VALID';
@@ -45,6 +49,9 @@ export class AuthComponent implements OnInit {
 
     this.form.get('password').statusChanges.subscribe(status => {
       this.passwordControlIsValid = status === 'VALID';
+    });
+    this.form.get('username').statusChanges.subscribe(status => {
+
     });
 
   
@@ -61,6 +68,7 @@ export class AuthComponent implements OnInit {
     }
     const email = this.form.get('email').value;
     const password = this.form.get('password').value;
+    const username = this.form.get('username').value;
     this.form.reset();
     this.emailControlIsValid = true;
     this.passwordControlIsValid = true;
@@ -81,7 +89,7 @@ export class AuthComponent implements OnInit {
       });
     } else {
       // const natLang = this.form.get('natLang').value;
-      this.authService.signUp(email, password, this.natLangId).then(resData => {
+      this.authService.signUp(email, password, this.natLangId, this.learnLangId, username).then(resData => {
         this.authService.user.subscribe(user => {
           if (user) {
             this.isLoading = false;
@@ -110,7 +118,7 @@ export class AuthComponent implements OnInit {
     this.isLoading = false;
   }
 
-  onChangeStatus() {
+  onChangeNative() {
     console.log('press')
     this.modalDialog.showModal(LangModalComponent, {
       fullscreen: true, 
@@ -122,6 +130,20 @@ export class AuthComponent implements OnInit {
       this.natLangStr = action[0];
       this.natLangId = action[1];
       console.log(this.natLangStr, 'auth');
+    })
+  }
+  onChangeLearning() {
+    console.log('press')
+    this.modalDialog.showModal(LangModalComponent, {
+      fullscreen: true, 
+      viewContainerRef: this.uiService.getRootVCRef() 
+      ? this.uiService.getRootVCRef()
+      : this.vcRef
+    })
+    .then((action: Array<any>) => {
+      this.learnLangStr = action[0];
+      this.learnLangId = action[1];
+      console.log(this.learnLangStr, 'auth');
     })
   }
 }
