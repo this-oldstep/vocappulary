@@ -1,12 +1,12 @@
   <FlexboxLayout justifyContent="space-between">
   <TextField 
-   hint="add collection..." 
+   hint="{{language.addCollection}}" 
    [(ngModel)]="collectionDescription" 
    class="input input-border">
   </TextField>
   <Button
   class="btn btn-primary" 
   (tap)="onCreateCollection()"
-    text="Create">
+    text="{{language.create}}">
   </Button>
 </FlexboxLayout>
