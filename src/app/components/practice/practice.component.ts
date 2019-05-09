@@ -56,7 +56,7 @@ export class PracticeComponent implements OnInit {
             console.log(audioFolder);
 
             let recorderOptions = {
-              filename: audioFolder.path + '/macarena.mp3',
+              filename: audioFolder.path + '/buaah.mp3',
               infoCallback: function () {
                 console.log('infoCallback');
               },
@@ -93,6 +93,16 @@ export class PracticeComponent implements OnInit {
       this._recorder.stop()
         .then((result) => {
           console.log('stopped recording!')
+
+          try {
+            let audioFolder = knownFolders.currentApp().getFolder("audio");
+            var recordedFile = audioFolder.getFile('buaah.mp3');
+            console.log('here is recorded file', recordedFile);
+          } catch (ex) {
+            console.log(ex);
+          }
+
+
         }).catch((err) => {
           console.log('oh no can\'t stop recording!');
         });
