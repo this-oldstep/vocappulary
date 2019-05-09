@@ -19,8 +19,8 @@ const i18n = require('../../i18n/i18n.js')
 export class LandingComponent implements OnInit {
 
 
-  private myCollections: string;
-  private language: any;
+  private myCollections: string; 
+  public language: any;
 
 
   constructor(private router: RouterExtensions,
@@ -33,16 +33,12 @@ export class LandingComponent implements OnInit {
   ngOnInit(){
     this.getAllCollections();
     this.authService.user.subscribe(userData=>{
-      this.language = i18n[userData.nativeLanguageId.toString()];
       let langCode = userData.nativeLanguageId.toString()
       if (!langCode){
         langCode = '1'
       }
       this.language = i18n[langCode]
-      // console.log(userData)
-      // this.language = i18n[this.nativeLang]
     })
-   
   }
 
   onCollectionInput($event) {
