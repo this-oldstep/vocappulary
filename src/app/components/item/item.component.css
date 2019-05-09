@@ -3,9 +3,17 @@ FlexboxLayout {
   justify-content: center;
   align-items: center;
   padding: 20;
+  background-image: url("https://img.freepik.com/vector-gratis/fondo-textura-madera-blanca_64749-498.jpg?size=338&ext=jpg"); 
 }
 
 .Button {
   width: 20%;
   height: 20%;
+}
+
+#img{
+  border-color: #f6eec4;
+  border-width: 25px;
+  border-radius: 20px;
+  background-color: #f6eec4;
 }

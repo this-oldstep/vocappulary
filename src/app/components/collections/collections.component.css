@@ -40,6 +40,7 @@ FlexboxLayout {
   font-size: 25px;
   color: azure;
   text-shadow: 2px 2px #ff0000;
+  border-radius: 15px;
 }
 
 
@@ -47,3 +48,11 @@ FlexboxLayout {
   border-radius: 15px;
   box-shadow: 10px 10px 8px #888888;
 }
+
+
+#img{
+  background-color: #ca5a00;
+  border-radius: 15px;
+}
+
+

@@ -4,4 +4,8 @@ ActionBar{
   background-color: #4cdcc6;
   text-align: center;
   font-weight: bold;
+  font-family: 'Baloo Bhai', cursive;
+  justify-content: center;
+  color:white;
+  font-size: 80px;
 }
