@@ -1,1 +1,12 @@
-<ns-action-bar title="Practice Mode" textAlign="center"></ns-action-bar>
+<uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>
+<ns-action-bar title="Practice"></ns-action-bar>
+<FlexboxLayout>
+    <Button text="pronounce!" class = "btn btn-primary" (tap)="onRecord()"></Button>
+    <Button text="stop recording" (tap)="stopRecording()"></Button>
+</FlexboxLayout>
+<StackLayout>
+<Button text="Start Recording" tap="start"></Button>
+<Button text="Stop Recording" tap="stop"></Button>
+<Button text="Get Recorded File" tap="getFile"></Button>
+<Label [text]="recordedAudioFile" color="#3489db" textWrap="true"></Label>
+</StackLayout>
