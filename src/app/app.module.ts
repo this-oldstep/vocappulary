@@ -19,13 +19,15 @@ import {ItemComponent } from './components/item/item.component';
 import { ItemListComponent } from './components/item-list/item-list.component';
 import { IndividualCollectionService } from "./components/individual-collection/individual-collection.service";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
-import { PracticeComponent } from './components/practice/practice.component'
+import { PracticeComponent } from './components/practice/practice.component';
+// import { NativeScriptLocalizeModule } from "nativescript-localize/angular";/// added
 
 @NgModule({
     bootstrap: [
         AppComponent
     ],
     imports: [
+        // NativeScriptLocalizeModule,//added
         NativeScriptModule,
         AppRoutingModule,
         NativeScriptFormsModule,
