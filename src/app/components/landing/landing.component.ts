@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CollectionsComponent } from '../collections/collections.component'
 import { CollectionInputComponent} from '../collection-input/collection-input.component'
 import { RouterExtensions } from 'nativescript-angular/router';
@@ -22,6 +22,7 @@ export class LandingComponent implements OnInit {
   private myCollections: string; 
   public language: any;
 
+  @Output() languageEvent = new EventEmitter<Object>()
 
   constructor(private router: RouterExtensions,
               private http: HttpClient,
@@ -38,6 +39,7 @@ export class LandingComponent implements OnInit {
         langCode = '1'
       }
       this.language = i18n[langCode]
+      this.languageEvent.emit(this.language)
     })
   }
 
