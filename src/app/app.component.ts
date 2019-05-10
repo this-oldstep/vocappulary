@@ -25,7 +25,8 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
         private language: any = {
             practice: "Practice",
             logout: "Logout",
-            collections: "Collections"
+            collections: "Collections",
+            switchLanguage: 'Switch Language'
         } 
 
     ngOnInit() {
