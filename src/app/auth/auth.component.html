@@ -7,7 +7,7 @@
   <StackLayout class="input-field">
     <Label
       class="label"
-      text="E-Mail"
+      text="{{language.email}}"
       [ngClass]="{ invalid: !emailControlIsValid }"
     ></Label>
     <TextField
@@ -27,7 +27,7 @@
   <StackLayout class="input-field">
     <Label
       class="label"
-      text="Password"
+      text="{{language.password}}"
       [ngClass]="{ invalid: !passwordControlIsValid }"
     ></Label>
     <TextField
@@ -36,7 +36,7 @@
       [autocorrect]="false"
       autocapitalizationType="none"
       [secure]="true"
-      hint="Min 6 characters"
+      hint="{{language.sixChar}}"
       formControlName="password"
       (returnPress)="onDone()"
       #passwordEl
@@ -49,7 +49,7 @@
   <StackLayout>
     <Label
       class="label"
-      text="First Name"
+      text="{{language.firstName}}"
       *ngIf="!isLogin"
     ></Label>
     <TextField 
@@ -64,7 +64,7 @@
   </StackLayout>
   <StackLayout>
     <Label
-    text="Native Language"
+    text="{{language.nativeLanguage}}"
     *ngIf="!isLogin"
     ></Label>
     <Button class = "btn" 
@@ -79,7 +79,7 @@
   </StackLayout>
   <StackLayout>
     <Label
-    text="Learning Language"
+    text="{{language.learningLanguage}}"
     *ngIf="!isLogin"
     ></Label>
     <Button class = "btn" 
@@ -92,9 +92,9 @@
     >
   </Button>
   </StackLayout>
-  <Button [text]="isLogin ? 'Sign Up' : 'Log In'" class="btn" (tap)="onSwitch()"></Button>
+  <Button [text]="isLogin ? language.signup : language.login" class="btn" (tap)="onSwitch()"></Button>
   <Button
-    [text]="isLogin ? 'Login' : 'Signup'"
+    [text]="isLogin ? language.login : language.signup"
     class="btn btn-primary btn-rounded-lg"
     (tap)="onSubmit()"
     [isEnabled]="form.valid"

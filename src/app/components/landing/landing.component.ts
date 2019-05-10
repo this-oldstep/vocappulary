@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from '~/app/auth/auth.service';
 import { switchMap } from 'rxjs/operators';
 import { NGROK } from '../../../config'
+const i18n = require('../../i18n/i18n.js')
 
 
 
@@ -18,7 +19,8 @@ import { NGROK } from '../../../config'
 export class LandingComponent implements OnInit {
 
 
-  // private userId: number = 9;
+  private myCollections: string; 
+  public language: any;
 
 
   constructor(private router: RouterExtensions,
@@ -29,9 +31,14 @@ export class LandingComponent implements OnInit {
   activeCollections: any;
 
   ngOnInit(){
-
     this.getAllCollections();
-   
+    this.authService.user.subscribe(userData=>{
+      let langCode = userData.nativeLanguageId.toString()
+      if (!langCode){
+        langCode = '1'
+      }
+      this.language = i18n[langCode]
+    })
   }
 
   onCollectionInput($event) {
