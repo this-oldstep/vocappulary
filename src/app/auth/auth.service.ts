@@ -39,6 +39,7 @@ export class AuthService {
     }
 
     signUp(email: string, password: string, natLangId: number, learnLangId: number, username: string) {
+        console.log("hit");
        return this.http.post<AuthResponseData>(
             `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${FIREBASE_API_KEY}`
             , {email: email, password: password, returnSecureToken: true}

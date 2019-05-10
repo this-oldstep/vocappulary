@@ -50,13 +50,14 @@
     <Label
       class="label"
       text="First Name"
+      *ngIf="!isLogin"
     ></Label>
     <TextField 
       class="input"
       returnKeyType="done"
       [autocorrect]="false"
-      [secure]="true"
       formControlName="username"
+      *ngIf="!isLogin"
       #usernameEl
       >
     </TextField>
