@@ -6,6 +6,7 @@ import { alert } from 'tns-core-modules/ui/dialogs'
 import { User } from './user.model';
 import {NGROK, FIREBASE_API_KEY} from '../../config';
 
+
 // const FIREBASE_API_KEY = 'AIzaSyC8WpwuQBkU6xoVHnoZ59xyDk9pdvFNeR0'
 
 interface AuthResponseData {
@@ -105,5 +106,9 @@ export class AuthService {
             default:
             alert('Authentication failed, check your credentials');
         }
+    }
+
+    updateUser(user: User) {
+        this._user.next(user);
     }
 }
