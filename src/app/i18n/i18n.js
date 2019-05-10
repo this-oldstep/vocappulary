@@ -9,6 +9,7 @@ module.exports = {
     collections: 'Collections',
     practice: 'Practice',
     switchLanguage: 'Switch Language',
+    whatObject: "What is this Object?"
     
   },
   2: {
@@ -21,6 +22,7 @@ module.exports = {
     collections: 'Colecciones',
     practice: 'Practicar',
     switchLanguage: 'Cambiar Idioma',
+    whatObject: '¿Cuál es este objeto?',
   },
   3: { 
     language: 'Portugese',
@@ -32,6 +34,7 @@ module.exports = {
     collections: 'Coleções',
     practice: 'Prática',
     switchLanguage: 'Mudar Idioma',
+    whatObject: 'O que é esse objeto?',
   },
   4:{
     language: 'Italian',
@@ -43,6 +46,7 @@ module.exports = {
     collections: 'Collezioni',
     practice: 'Pratica',
     switchLanguage: 'Cambia Lingua',
+    whatObject: "Cos'è questo oggetto?",
   },
   5:{
     language: 'French',
@@ -54,6 +58,7 @@ module.exports = {
     collections: 'Collection',
     practice: 'Entraine toi',
     switchLanguage: 'Changer de Langue',
+    whatObject: 'Quel est cet objet?',
   },
   6: {
     language: 'German',
@@ -65,6 +70,7 @@ module.exports = {
     collections: 'Sammlungen',
     practice: 'Trainieren',
     switchLanguage: 'Sprache ändern',
+    whatObject: 'Was ist das für ein Objekt?',
 
   },
   7: {
@@ -77,6 +83,7 @@ module.exports = {
     collections: 'Samlinger',
     practice: 'Ove sig',
     switchLanguage: 'Skift sprog',
+    whatObject: 'Hvad er dette objekt?',
   },
   8: {
     language: 'Swahili',
@@ -88,9 +95,10 @@ module.exports = {
     collections: 'makusanyo',
     practice: 'Jitayarishe',
     switchLanguage: 'Badilisha lugha',
+    whatObject: 'Kitu hiki ni nini?',
   },
   9: {
-    language: 'tagalog',
+    language: 'Tagalog',
     hello: 'Kamusta',
     myCollection: 'Aking Mga Koleksyon',
     create: 'lumikha',
@@ -99,9 +107,10 @@ module.exports = {
     collections: 'mga koleksyon',
     practice: 'Pagsasanay',
     switchLanguage: 'Baguhin ang Wika',
+    whatObject: 'Ano ang bagay na ito?',
   },
   10: {
-    language: 'vietnamese',
+    language: 'Vietnamese',
     hello: 'Xin Chào',
     myCollection: 'Bộ sưu tập của tôi',
     create: 'tạo nên',
@@ -110,9 +119,10 @@ module.exports = {
     collections: 'bộ sưu tập',
     practice: 'Thực hành',
     switchLanguage: 'Thay đổi ngôn ngữ',
+    whatObject: 'Đối tượng này là gì?',
   },
   11: {
-    language: 'turkish',
+    language: 'Turkish',
     hello: 'Merhaba',
     myCollection: 'Benim Koleksiyonum',
     create: 'Yaratmak',
@@ -121,6 +131,7 @@ module.exports = {
     collections: 'Koleksiyonları',
     practice: 'Uygulama',
     switchLanguage: 'Dili değiştir',
+    whatObject: 'Bu nesne nedir?',
   },
   12: {
     language: 'Basque',
@@ -132,6 +143,7 @@ module.exports = {
     collections: 'Bilduma',
     practice: 'Praktika',
     switchLanguage: 'Aldatu hizkuntza',
+    whatObject: 'Zer da hau?',
   },
   13: {
     language: 'Zulu',
@@ -143,6 +155,7 @@ module.exports = {
     collections: 'Amaqoqo',
     practice: 'Hlanganisa',
     switchLanguage: 'Shintsha ulimi',
+    whatObject: 'Iyini le nto?',
   },
 
 }
