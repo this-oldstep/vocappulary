@@ -24,7 +24,7 @@ export class PracticeComponent implements OnInit {
 
   constructor(private http: HttpClient) {
   
-    this._recorder = new TNSRecorder;
+    this._recorder = new TNSRecorder();
     this._recorder.debug = true;
 
   }
@@ -56,12 +56,15 @@ export class PracticeComponent implements OnInit {
             console.log(audioFolder);
 
             let recorderOptions = {
-              filename: audioFolder.path + '/buaah.mp3',
-              infoCallback: function () {
-                console.log('infoCallback');
+              filename: audioFolder.path + '/ragga.mp4',
+              format: 2,
+              encoder: 3,
+              metering: true,
+              infoCallback: infoObject => {
+                console.log(JSON.stringify(infoObject));
               },
-              errorCallback: function () {
-                console.log('errorCallback');
+              errorCallback: errorObject => {
+                console.log(JSON.stringify(errorObject));
                 alert('Error recording.');
               }
             };
@@ -92,12 +95,23 @@ export class PracticeComponent implements OnInit {
     if (this._recorder !== undefined){
       this._recorder.stop()
         .then((result) => {
-          console.log('stopped recording!')
+          console.log('stopped recording!', result);
 
           try {
             let audioFolder = knownFolders.currentApp().getFolder("audio");
-            var recordedFile = audioFolder.getFile('buaah.mp3');
+            var recordedFile = audioFolder.getFile('ragga.mp4');
+
+            
+
+            const recording: File = File.fromPath(recordedFile.path);
+            const binarySource = recording.readSync(err => {
+              console.log('couldnt convert', err);
+            })
+
+            console.log('binary file', binarySource);
+
             console.log('here is recorded file', recordedFile);
+            console.log(JSON.stringify(recordedFile));
           } catch (ex) {
             console.log(ex);
           }
