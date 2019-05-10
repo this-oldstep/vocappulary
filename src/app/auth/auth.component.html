@@ -46,6 +46,52 @@
       text="Please enter a valid 6 character or more password."
     ></Label>
   </StackLayout>
+  <StackLayout>
+    <Label
+      class="label"
+      text="First Name"
+      *ngIf="!isLogin"
+    ></Label>
+    <TextField 
+      class="input"
+      returnKeyType="done"
+      [autocorrect]="false"
+      formControlName="username"
+      *ngIf="!isLogin"
+      #usernameEl
+      >
+    </TextField>
+  </StackLayout>
+  <StackLayout>
+    <Label
+    text="Native Language"
+    *ngIf="!isLogin"
+    ></Label>
+    <Button class = "btn" 
+    [text]="natLangStr" 
+    (tap)="onChangeNative()"
+    FormControlName = natLang
+    #natLangEl
+    *ngIf="!isLogin"
+    isEnabled="true";
+    >
+  </Button>
+  </StackLayout>
+  <StackLayout>
+    <Label
+    text="Learning Language"
+    *ngIf="!isLogin"
+    ></Label>
+    <Button class = "btn" 
+    [text]="learnLangStr" 
+    (tap)="onChangeLearning()"
+    FormControlName = learnLang
+    #learnLangEl
+    *ngIf="!isLogin"
+    isEnabled="true";
+    >
+  </Button>
+  </StackLayout>
   <Button [text]="isLogin ? 'Sign Up' : 'Log In'" class="btn" (tap)="onSwitch()"></Button>
   <Button
     [text]="isLogin ? 'Login' : 'Signup'"
