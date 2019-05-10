@@ -9,15 +9,6 @@ const permissions = require('nativescript-permissions');
 var bghttp = require("nativescript-background-http");
 
 
-
-
-// import '../../../async-await'
-// import * as permissions from 'nativescript-permissions'
-// import * as app from 'tns-core-modules/application'
-// import {TNSRecordI, TNSRecorderUtil, TNS_Recorder_Log } from '../../../common'
-
-
-
 declare var android: any;
 
 
@@ -66,7 +57,7 @@ export class PracticeComponent implements OnInit {
             console.log(audioFolder);
 
             let recorderOptions = {
-              filename: audioFolder.path + '/muffin.mp4',
+              filename: audioFolder.path + '/muffin.aac',
               format: 2,
               encoder: 3,
               metering: true,
@@ -101,7 +92,6 @@ export class PracticeComponent implements OnInit {
 
   stopRecording(){
 
-
     if (this._recorder !== undefined){
       this._recorder.stop()
         .then((result) => {
@@ -109,7 +99,7 @@ export class PracticeComponent implements OnInit {
 
           try {
             let audioFolder = knownFolders.currentApp().getFolder("audio");
-            var recordedFile = audioFolder.getFile('muffin.mp4');
+            var recordedFile = audioFolder.getFile('muffin.aac');
 
             
 
@@ -127,15 +117,11 @@ export class PracticeComponent implements OnInit {
             var session = bghttp.session("recording-upload");
 
             var request = {
-              url: `http://localhost:8080/upload`,
+              url: `${NGROK}/upload`,
               method: "POST",
               headers: {
-                // "accept-encoding": "gzip, deflate",
-                // "cache-control": "no-cache",
-                // 'connection': "keep-alive",
                 "Content-Type": "multipart/form-data"
               },
-              // description: "Uploading word" 
             };
 
             //let task = session.uploadFile(recordedFile.path, request);
@@ -150,15 +136,9 @@ export class PracticeComponent implements OnInit {
             task.on("error", errorHandler);
             task.on("complete", completeHandler);
             task.on("cancelled", cancelledHandler);
-
-        
-
-
           } catch (ex) {
             console.log(ex);
           }
-
-
         }).catch((err) => {
           console.log('oh no can\'t stop recording!');
         });
@@ -182,8 +162,6 @@ function completeHandler(e) {
   var serverResponse = e.response;
 }
 
-// event arguments:
-// task: Task
 function cancelledHandler(e) {
   alert("upload cancelled");
 }
