@@ -5,8 +5,8 @@ export class User {
         public currentLanguageId: number,
         public nativeLanguageId: number,
         public points: number,
-        private _token: string, 
-        private _tokenExpirationDate: Date,
+        public _token: string, 
+        public _tokenExpirationDate: Date,
 
         
         ) {}
