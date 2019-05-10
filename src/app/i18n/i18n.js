@@ -16,7 +16,8 @@ module.exports = {
     password: 'password',
     firstName: 'First Name',
     nativeLanguage: 'Native Language',
-    learningLanguage: 'Learning Language'
+    learningLanguage: 'Learning Language',
+    addObject: 'Add Object',
 
     
   },
@@ -37,6 +38,7 @@ module.exports = {
     password: 'contraseña',
     firstName: 'Primer Nombre',
     nativeLanguage: 'Lengua materna',
+    addObject: 'Agregar Objeto',
   },
   3: { 
     language: 'Portugese',
@@ -55,6 +57,7 @@ module.exports = {
     password: 'senha',
     firstName: 'Primeiro nome',
     nativeLanguage: 'Língua nativa',
+    addObject: 'Adicionar Objeto',
   },
   4:{
     language: 'Italian',
@@ -73,6 +76,7 @@ module.exports = {
     password: "parola d'ordine",
     firstName: 'Nome di battesimo',
     nativeLanguage: 'Lingua nativa',
+    addObject: 'Aggiungi Oggetto',
   },
   5:{
     language: 'French',
@@ -91,7 +95,8 @@ module.exports = {
     password: 'mot de passe',
     firstName: 'Prénom',
     nativeLanguage: 'Langue Maternelle',
-    learningLanguage: 'Langue à Apprendre'
+    learningLanguage: 'Langue à Apprendre', 
+    addObject: 'Ajouter un Objet',
   },
   6: {
     language: 'German',
@@ -111,6 +116,7 @@ module.exports = {
     firstName: 'Vorname',
     nativeLanguage: 'Muttersprache',
     learningLanguage: 'Sprache zu lernen',
+    addObject: 'Objekt hinzufügen',
 
   },
   7: {
@@ -131,6 +137,7 @@ module.exports = {
     firstName: 'Fornavn',
     nativeLanguage: 'Modersprog',
     learningLanguage: 'Sprog at Laere',
+    addObject: 'Tilføj Objekt',
   },
   8: {
     language: 'Swahili',
@@ -150,6 +157,7 @@ module.exports = {
     firstName: 'jina la kwanza',
     nativeLanguage: 'lugha ya asili',
     learningLanguage: 'lugha ya kujifunza',
+    addObject: 'Ongeza Kitu',
   },
   9: {
     language: 'Tagalog',
@@ -169,6 +177,7 @@ module.exports = {
     firstName: 'pangalan',
     nativeLanguage: 'katutubong wika',
     learningLanguage: 'wika upang matuto',
+    addObject: 'magdagdag ng bagay',
   },
   10: {
     language: 'Vietnamese',
@@ -188,6 +197,7 @@ module.exports = {
     firstName: 'tên đầu tiên',
     nativeLanguage: 'tiếng mẹ đẻ',
     learningLanguage: 'ngôn ngữ để học',
+    addObject: 'thêm đối tượng',
   },
   11: {
     language: 'Turkish',
@@ -207,6 +217,7 @@ module.exports = {
     firstName: 'İsim',
     nativeLanguage: 'anadil',
     learningLanguage: 'öğrenmek için dil',
+    addObject: 'Nesne Ekle',
   },
   12: {
     language: 'Basque',
@@ -226,6 +237,7 @@ module.exports = {
     firstName: 'izena',
     nativeLanguage: 'ama-hizkuntza',
     learningLanguage: 'ikasteko hizkuntza',
+    addObject: 'gehitu objektua',
   },
   13: {
     language: 'Zulu',
@@ -245,6 +257,7 @@ module.exports = {
     firstName: 'igama',
     nativeLanguage: 'ulimi olukhulunywayo',
     learningLanguage: 'ulimi lokufunda',
+    addObject: 'engeza into',
   },
 
 }
