@@ -101,7 +101,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
                   })
               })
     }).then(resData => {
-        this.router.navigate(["/landing"])
         this.uiService.toggleDrawer();
         this.authService.updateUser(this.user)
         }).catch(err => {
