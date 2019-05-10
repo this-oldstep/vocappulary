@@ -22,11 +22,24 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
         private authService: AuthService,// added by pat
         ) {}
 
-        private language: any; // added by pat
+        private language: any = {
+            practice: "Practice",
+            logout: "Logout",
+            collections: "Collections"
+        } 
 
     ngOnInit() {
         this.drawerSub = this.uiService.drawerState.subscribe( () => {
             if (this.drawer) {
+                this.authService.user.subscribe(userData => {
+                    console.log("hello" + userData.nativeLanguageId)
+                    let langCode = userData.nativeLanguageId.toString()
+                    if (!langCode) {
+                        langCode = '1'
+                    }
+                    console.log(i18n[langCode])
+                    this.language = i18n[langCode]
+                })
                 this.drawer.toggleDrawerState();
             }
         });
@@ -39,13 +52,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
         this.drawer = this.drawerComponent.sideDrawer;
         this.changeDetectionRef.detectChanges();
 
-        // this.authService.user.subscribe(userData => {
-        //     let langCode = userData.nativeLanguageId.toString()
-        //     if (!langCode) {
-        //         langCode = '1'
-        //     }
-        //     this.language = i18n[langCode]
-        // })
 
     }
 
