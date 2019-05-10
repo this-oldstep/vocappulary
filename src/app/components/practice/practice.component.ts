@@ -66,7 +66,7 @@ export class PracticeComponent implements OnInit {
             console.log(audioFolder);
 
             let recorderOptions = {
-              filename: audioFolder.path + '/ragga.mp4',
+              filename: audioFolder.path + '/muffin.mp4',
               format: 2,
               encoder: 3,
               metering: true,
@@ -109,7 +109,7 @@ export class PracticeComponent implements OnInit {
 
           try {
             let audioFolder = knownFolders.currentApp().getFolder("audio");
-            var recordedFile = audioFolder.getFile('ragga.mp4');
+            var recordedFile = audioFolder.getFile('muffin.mp4');
 
             
 
@@ -130,12 +130,22 @@ export class PracticeComponent implements OnInit {
               url: `http://localhost:8080/upload`,
               method: "POST",
               headers: {
+                // "accept-encoding": "gzip, deflate",
+                // "cache-control": "no-cache",
+                // 'connection': "keep-alive",
                 "Content-Type": "multipart/form-data"
               },
-              description: "Uploading " + recordedFile.path
+              // description: "Uploading word" 
             };
 
-            let task = session.uploadFile(recordedFile.path, request);
+            //let task = session.uploadFile(recordedFile.path, request);
+
+            let params = [
+              {name: "test", value: "value"},
+              {name:"fileUploaded", filename: recordedFile.path, mimeType: "audio/mpeg"}
+            ]
+
+            var task = session.multipartUpload(params, request);
 
             task.on("error", errorHandler);
             task.on("complete", completeHandler);
@@ -163,7 +173,7 @@ export class PracticeComponent implements OnInit {
 }
 
 function errorHandler(e) {
-  alert("received " + e.responseCode + " code.");
+  alert("errored " + e.responseCode + " code.");
   var serverResponse = e.response;
 }
 
