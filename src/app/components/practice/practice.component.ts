@@ -6,6 +6,16 @@ import { TNSPlayer, TNSRecorder } from 'nativescript-audio';
 import { knownFolders, Folder, File } from "tns-core-modules/file-system";
 import { hasPermission, requestPermission, requestPermissions} from 'nativescript-permissions';
 const permissions = require('nativescript-permissions');
+var bghttp = require("nativescript-background-http");
+
+
+
+
+// import '../../../async-await'
+// import * as permissions from 'nativescript-permissions'
+// import * as app from 'tns-core-modules/application'
+// import {TNSRecordI, TNSRecorderUtil, TNS_Recorder_Log } from '../../../common'
+
 
 
 declare var android: any;
@@ -112,6 +122,28 @@ export class PracticeComponent implements OnInit {
 
             console.log('here is recorded file', recordedFile);
             console.log(JSON.stringify(recordedFile));
+
+            //file upload
+            var session = bghttp.session("recording-upload");
+
+            var request = {
+              url: `http://localhost:8080/upload`,
+              method: "POST",
+              headers: {
+                "Content-Type": "multipart/form-data"
+              },
+              description: "Uploading " + recordedFile.path
+            };
+
+            let task = session.uploadFile(recordedFile.path, request);
+
+            task.on("error", errorHandler);
+            task.on("complete", completeHandler);
+            task.on("cancelled", cancelledHandler);
+
+        
+
+
           } catch (ex) {
             console.log(ex);
           }
@@ -128,4 +160,20 @@ export class PracticeComponent implements OnInit {
 
 
 
+}
+
+function errorHandler(e) {
+  alert("received " + e.responseCode + " code.");
+  var serverResponse = e.response;
+}
+
+function completeHandler(e) {
+  alert("received " + e.responseCode + " code");
+  var serverResponse = e.response;
+}
+
+// event arguments:
+// task: Task
+function cancelledHandler(e) {
+  alert("upload cancelled");
 }
