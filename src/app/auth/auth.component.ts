@@ -7,6 +7,8 @@ import { ModalDialogService } from 'nativescript-angular/modal-dialog';
 import { LangModalComponent } from '../components/lang-modal/lang-modal.component';
 import { UIService } from '../shared/ui.serivce';
 import { formControlBinding } from '@angular/forms/src/directives/reactive_directives/form_control_directive';
+const Platform = require('platform')
+const i18nAbbr = require('../i18n/i18n.abbr.js')
 
 
 @Component({
@@ -36,6 +38,9 @@ export class AuthComponent implements OnInit {
     private modalDialog: ModalDialogService,
     private vcRef: ViewContainerRef,
     private uiService: UIService) { }
+
+
+  private language: any = i18nAbbr[Platform.device.language]
 
   ngOnInit() {
     this.form = new FormGroup({
