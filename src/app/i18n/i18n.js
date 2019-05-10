@@ -11,7 +11,18 @@ module.exports = {
     switchLanguage: 'Switch Language',
     
   },
-  2: { 
+  2: {
+    language: 'Spanish',
+    hello: 'Hola',
+    myCollection: 'Mi colección',
+    create: 'Crear',
+    addCollection: 'add collection...',
+    logout: 'Cerrar Sesión',
+    collections: 'Colecciones',
+    practice: 'Practicar',
+    switchLanguage: 'Cambiar Idioma',
+  },
+  3: { 
     language: 'Portugese',
     hello: 'hello portugese',
     myCollection: 'Minha coleção',
@@ -22,7 +33,7 @@ module.exports = {
     practice: 'Prática',
     switchLanguage: 'Mudar Idioma',
   },
-  3:{
+  4:{
     language: 'Italian',
     hello: 'hello portugese',
     myCollection: 'Minha coleção',
@@ -32,17 +43,6 @@ module.exports = {
     collections: 'Collezioni',
     practice: 'Pratica',
     switchLanguage: 'Cambia Lingua',
-  },
-  4: {
-    language: 'Spanish',
-    hello: 'Hola',
-    myCollection: 'Mi colección',
-    create: 'Crear',
-    addCollection: 'add collection...',
-    logout: 'Cerrar Sesión',
-    collections: 'Colecciones',
-    practice: 'Practicar',
-    switchLanguage: 'Cambiar Idioma',
   },
   5:{
     language: 'French',
