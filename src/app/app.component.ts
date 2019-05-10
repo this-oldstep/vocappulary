@@ -11,7 +11,7 @@ import { AuthService } from "./auth/auth.service";
 import { take, switchMap } from 'rxjs/operators';
 import { RouterExtensions } from "nativescript-angular/router";
 import { User } from "./auth/user.model";
- 
+const i18n = require('./i18n/i18n.js')
 
 @Component({
     moduleId: module.id,
@@ -34,19 +34,38 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
         // public user: User
         ) {}
 
+        private language: any = {
+            practice: "Practice",
+            logout: "Logout",
+            collections: "Collections",
+            switchLanguage: 'Switch Language'
+        } 
+
     ngOnInit() {
         this.drawerSub = this.uiService.drawerState.subscribe( () => {
             if (this.drawer) {
+                this.authService.user.subscribe(userData => {
+                    console.log("hello" + userData.nativeLanguageId)
+                    let langCode = userData.nativeLanguageId.toString()
+                    if (!langCode) {
+                        langCode = '1'
+                    }
+                    console.log(i18n[langCode])
+                    this.language = i18n[langCode]
+                })
                 this.drawer.toggleDrawerState();
             }
         });
         this.uiService.setRootVCRef(this.vcRef);
+
     }
     activeCollections: string[] = [];
 
     ngAfterViewInit() {
         this.drawer = this.drawerComponent.sideDrawer;
         this.changeDetectionRef.detectChanges();
+
+
     }
 
     onCollectionInput(collectionDescription: string) {
