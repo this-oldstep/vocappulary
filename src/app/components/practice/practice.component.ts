@@ -116,6 +116,10 @@ export class PracticeComponent implements OnInit {
             //file upload
             var session = bghttp.session("recording-upload");
 
+            ////////////////////////////////////////////
+            //change /upload to actual server endpoint
+            /////////////////////////////////////////
+
             var request = {
               url: `${NGROK}/upload`,
               method: "POST",
