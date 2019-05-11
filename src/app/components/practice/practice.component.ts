@@ -1,10 +1,17 @@
-import { AfterContentInit, Component, OnInit, ChangeDetectorRef } from "@angular/core";
+import { AfterContentInit, Component, OnInit, ViewContainerRef, ChangeDetectorRef } from "@angular/core";
 import { animate, style, transition, trigger } from "@angular/animations";
 import { HttpClient } from "@angular/common/http";
 import { NGROK } from '../../../config'
 import { TNSPlayer, TNSRecorder } from 'nativescript-audio';
 import { knownFolders, Folder, File } from "tns-core-modules/file-system";
 import { hasPermission, requestPermission, requestPermissions} from 'nativescript-permissions';
+import { ModalDialogService, ModalDialogParams } from 'nativescript-angular/modal-dialog'
+import { UIService } from '~/app/shared/ui.serivce';
+import { ResultsComponent } from '../results/results.component'
+import { RouterExtensions } from 'nativescript-angular/router';
+import { NgOnChangesFeature } from "@angular/core/src/render3";
+
+
 const permissions = require('nativescript-permissions');
 var bghttp = require("nativescript-background-http");
 
@@ -25,11 +32,29 @@ export class PracticeComponent implements OnInit {
   public index: number;
   private userId: number;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+    private modalDialog: ModalDialogService,
+    private vcRef: ViewContainerRef,
+    private uiService: UIService,
+    private router: RouterExtensions,
+    ) {
   
     this._recorder = new TNSRecorder();
     this._recorder.debug = true;
     this.index = 0;
+
+  }
+
+ 
+  ngOnChanges (){
+    if (this.index ==== this.cards.length < 1) {
+      this.modalDialog.showModal(ResultsComponent, {
+        viewContainerRef: this.vcRef,
+      })
+        .then(action => {
+          this.router.navigate(['/landing']);
+        })
+    }
 
   }
 
@@ -111,8 +136,6 @@ export class PracticeComponent implements OnInit {
               console.log('couldnt convert', err);
             })
 
-            console.log('binary file', binarySource);
-
             console.log('here is recorded file', recordedFile);
             console.log(JSON.stringify(recordedFile));
 
@@ -141,7 +164,9 @@ export class PracticeComponent implements OnInit {
 
             var task = session.multipartUpload(params, request);
 
-            this.index += 1;
+              this.index += 1;
+        
+           
 
             task.on("error", errorHandler);
             task.on("complete", completeHandler);
@@ -164,15 +189,15 @@ export class PracticeComponent implements OnInit {
 }
 
 function errorHandler(e) {
-  alert("errored " + e.responseCode + " code.");
+  console.log("errored " + e.responseCode + " code.");
   var serverResponse = e.response;
 }
 
 function completeHandler(e) {
-  alert("received " + e.responseCode + " code");
+  console.log("received " + e.responseCode + " code");
   var serverResponse = e.response;
 }
 
 function cancelledHandler(e) {
-  alert("upload cancelled");
-}
+  console.log("upload cancelled");
+} 
