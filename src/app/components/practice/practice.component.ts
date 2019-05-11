@@ -1,15 +1,12 @@
 import { AfterContentInit, Component, OnInit, ViewContainerRef, ChangeDetectorRef } from "@angular/core";
-import { animate, style, transition, trigger } from "@angular/animations";
 import { HttpClient } from "@angular/common/http";
 import { NGROK } from '../../../config'
-import { TNSPlayer, TNSRecorder } from 'nativescript-audio';
+import { TNSRecorder } from 'nativescript-audio';
 import { knownFolders, Folder, File } from "tns-core-modules/file-system";
 import { hasPermission, requestPermission, requestPermissions} from 'nativescript-permissions';
 import { ModalDialogService, ModalDialogParams } from 'nativescript-angular/modal-dialog'
 import { UIService } from '~/app/shared/ui.serivce';
-import { ResultsComponent } from '../results/results.component'
 import { RouterExtensions } from 'nativescript-angular/router';
-import { NgOnChangesFeature } from "@angular/core/src/render3";
 import { AuthService } from "~/app/auth/auth.service";
 import { switchMap, take } from "rxjs/operators";
 import { User } from "~/app/auth/user.model"
@@ -37,6 +34,8 @@ export class PracticeComponent implements OnInit {
   public index: number;
   private userId: number;
   public end: boolean;
+  public points: number;
+  public message: string;
 
   constructor(private http: HttpClient,
     private modalDialog: ModalDialogService,
@@ -49,9 +48,9 @@ export class PracticeComponent implements OnInit {
     this._recorder = new TNSRecorder();
     this._recorder.debug = true;
     this.index = 0;
-    this.userId = 21;
     this.end = false;
-
+    this.points = 0;
+    this.message = `You got ${this.points} points!`
   }
 
  
@@ -68,7 +67,7 @@ export class PracticeComponent implements OnInit {
 
     this.http.get(`${NGROK}/user/${this.user.id}/items`)
     .subscribe( items => {
-      this.cards = items;
+      this.cards = shuffleItems(items);
       console.log('items coming into practice component', this.cards);
     })
 
@@ -133,11 +132,13 @@ export class PracticeComponent implements OnInit {
 
   stopRecording(){
 
-    let self = this;
-    if (this._recorder !== undefined){
-      this._recorder.stop()
-        .then((result) => {
-          console.log('stopped recording!', result);
+  let self = this;
+
+  if (this._recorder !== undefined){
+    this._recorder.stop()
+      .then((result) => {
+          
+          console.log('stopped recording!');
 
           try {
             let audioFolder = knownFolders.currentApp().getFolder("audio");
@@ -145,20 +146,16 @@ export class PracticeComponent implements OnInit {
 
             
 
-            const recording: File = File.fromPath(recordedFile.path);
-            const binarySource = recording.readSync(err => {
-              console.log('couldnt convert', err);
-            })
-
-            console.log('here is recorded file', recordedFile);
-            console.log(JSON.stringify(recordedFile));
+            //const recording: File = File.fromPath(recordedFile.path);
+            // const binarySource = recording.readSync(err => {
+            //   console.log('couldnt convert', err);
+            // })
+            // console.log('here is recorded file', recordedFile);
+            // console.log(JSON.stringify(recordedFile));
 
             //file upload
-            var session = bghttp.session("recording-upload");
 
-            ////////////////////////////////////////////
-            //change /upload to actual server endpoint
-            /////////////////////////////////////////
+            var session = bghttp.session("recording-upload");
 
             var request = {
               url: `${NGROK}/upload`,
@@ -168,33 +165,45 @@ export class PracticeComponent implements OnInit {
               },
             };
 
-            //let task = session.uploadFile(recordedFile.path, request);
-
             let params = [
               {name: "word", value: this.cards[this.index].currentTranslation},
               {name: "userId", value: this.user.id.toString()},
+              {name: "currentLanguageId", value: this.user.currentLanguageId.toString()},
               {name:"fileUploaded", filename: recordedFile.path, mimeType: "audio/mpeg"}
             ]
 
             var task = session.multipartUpload(params, request);
 
-              this.index += 1;
-              this.end = true;
+          
+            task.on("error", (err) => {
+              console.log(err);
+            });
            
+            task.on("cancelled", (e) => {
+              console.log(e);
+            });
 
-            task.on("error", errorHandler);
-            task.on("complete", completeHandler);
-            task.on("cancelled", cancelledHandler);
+            this.index += 1;
+            this.end = true;
+            
+            task.on("responded", (response) => {
+              console.log(response.data);
+
+              if (response.data){
+                this.points += 1;
+              }
+
+            
+            });
+
 
           } catch (ex) {
             console.log(ex);
           }
-        }).catch((err) => {
+      }).catch((err) => {
           console.log('oh no can\'t stop recording!');
-        });
+      });
     }
-
-
   }
 
 
@@ -202,16 +211,22 @@ export class PracticeComponent implements OnInit {
 
 }
 
-function errorHandler(e) {
-  console.log("errored " + e.responseCode + " code.");
-  var serverResponse = e.response;
-}
+function shuffleItems(itemList) {
+  // Your code here
 
-function completeHandler(e) {
-  console.log("received " + e.responseCode + " code");
-  var serverResponse = e.response;
-}
+  let randomIndex;
+  let holder;
 
-function cancelledHandler(e) {
-  console.log("upload cancelled");
-} 
+  for (let i = itemList.length - 1; i >= 0; i--) {
+    randomIndex = Math.floor(Math.random() * (i + 1));
+
+    holder = itemList[i];
+    itemList[i] = itemList[randomIndex];
+    itemList[randomIndex] = holder;
+
+  }
+
+  return itemList;
+
+
+};

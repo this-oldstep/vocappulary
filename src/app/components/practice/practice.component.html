@@ -1,12 +1,14 @@
 
 <ns-action-bar title="Say it!"></ns-action-bar>
 <ng-template [ngIf]="cards && index < cards.length" [ngIfElse]="end ? results : ready">
-
-    <FlexboxLayout>
-        <Image  id="img" [src]="cards[index].url_image"></Image>
-        <Button text="pronounce!" class = "btn btn-primary" (tap)="onRecord()"></Button>
-        <Button text="stop recording" class="btn" (tap)="stopRecording()"></Button>
-    </FlexboxLayout>
+    <StackLayout>
+        <Image id="points" src="https://res.cloudinary.com/dlqxzhifw/image/upload/v1557608399/frtgi4svk7votxl2du57.png"></Image>
+        <FlexboxLayout>
+            <Image  id="img" [src]="cards[index].url_image"></Image>
+            <Button text="pronounce!" class = "btn btn-primary" (tap)="onRecord()"></Button>
+            <Button text="stop recording" class="btn" (tap)="stopRecording()"></Button>
+        </FlexboxLayout>
+    </StackLayout>
     
 </ng-template>
 
@@ -18,7 +20,7 @@
 
 <ng-template #results>
     <FlexboxLayout>
-        <Label text="good job!"></Label>
+        <Label [text]="message"></Label>
         <Button text="practice some more!" class="btn btn-primary" (tap)="ngOnInit()"></Button>
         <Button text="Back to Collections" class="btn btn-primary" (tap)="backToCollections()"></Button>
     </FlexboxLayout>

@@ -17,3 +17,8 @@ FlexboxLayout {
   border-radius: 20px;
   background-color: #f6eec4;
 }
+
+#points{
+  width: 30px;
+  margin-bottom: 50px;
+}
