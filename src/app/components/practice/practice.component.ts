@@ -31,6 +31,7 @@ export class PracticeComponent implements OnInit {
   private _recorder: TNSRecorder;
   public index: number;
   private userId: number;
+  public end: boolean;
 
   constructor(private http: HttpClient,
     private modalDialog: ModalDialogService,
@@ -42,30 +43,38 @@ export class PracticeComponent implements OnInit {
     this._recorder = new TNSRecorder();
     this._recorder.debug = true;
     this.index = 0;
+    this.userId = 21;
+    this.end =false;
 
   }
 
  
-  ngOnChanges (){
-    if (this.index ==== this.cards.length < 1) {
-      this.modalDialog.showModal(ResultsComponent, {
-        viewContainerRef: this.vcRef,
-      })
-        .then(action => {
-          this.router.navigate(['/landing']);
-        })
-    }
+  // ngOnChanges (){
+  //   if (this.index === this.cards.length - 1){
+  //     this.modalDialog.showModal(ResultsComponent, {
+  //       viewContainerRef: this.vcRef,
+  //     })
+  //       .then(action => {
+  //         this.router.navigate(['/landing']);
+  //       })
+  //   }
 
-  }
+  // }
 
 
   ngOnInit(): void {
     
-    this.http.get(`${NGROK}/collectionItems/45`)
+    this.index = 0;
+
+    this.http.get(`${NGROK}/user/${this.userId}/items`)
     .subscribe( items => {
       this.cards = items;
       console.log('items coming into practice component', this.cards);
     })
+
+    if (this.cards.length > 10){
+      this.cards = this.cards.slice(5);
+    }
 
   }
 

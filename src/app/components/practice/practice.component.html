@@ -1,7 +1,18 @@
 
 <ns-action-bar title="Say it!"></ns-action-bar>
-<FlexboxLayout>
-    <Image id="img" [src]="cards[index].url_image"></Image>
-    <Button text="pronounce!" class = "btn btn-primary" (tap)="onRecord()"></Button>
-    <Button text="stop recording" class="btn" (tap)="stopRecording()"></Button>
-</FlexboxLayout>
+<ng-template [ngIf]="cards && index < cards.length" [ngIfElse]="results">
+
+    <FlexboxLayout>
+        <Image  id="img" [src]="cards[index].url_image"></Image>
+        <Button text="pronounce!" class = "btn btn-primary" (tap)="onRecord()"></Button>
+        <Button text="stop recording" class="btn" (tap)="stopRecording()"></Button>
+    </FlexboxLayout>
+    
+</ng-template>
+
+<ng-template #results>
+    <FlexboxLayout>
+        <Label text="good job!"></Label>
+        <Button text="practice some more!" (tap)="ngOnInit()"></Button>
+    </FlexboxLayout>
+</ng-template>
