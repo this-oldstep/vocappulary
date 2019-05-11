@@ -19,6 +19,7 @@ export class CollectionInputComponent implements OnInit  {
 
   collectionDescription = "";
   currentCollection = '';
+  isLoading = false;
 
   // private userId: number = 9;
   constructor(private http: HttpClient,
