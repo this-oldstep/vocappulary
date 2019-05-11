@@ -21,12 +21,13 @@ export class PracticeComponent implements OnInit {
   
   public cards: any;
   private _recorder: TNSRecorder;
-
+  public index: number;
 
   constructor(private http: HttpClient) {
   
     this._recorder = new TNSRecorder();
     this._recorder.debug = true;
+    this.index = 0;
 
   }
 
@@ -92,6 +93,7 @@ export class PracticeComponent implements OnInit {
 
   stopRecording(){
 
+    let self = this;
     if (this._recorder !== undefined){
       this._recorder.stop()
         .then((result) => {
@@ -131,15 +133,19 @@ export class PracticeComponent implements OnInit {
             //let task = session.uploadFile(recordedFile.path, request);
 
             let params = [
-              {name: "test", value: "value"},
+              {name: "word", value: this.cards[this.index].currentTranslation},
+              {name: "userId", value: "21"},
               {name:"fileUploaded", filename: recordedFile.path, mimeType: "audio/mpeg"}
             ]
 
             var task = session.multipartUpload(params, request);
 
+            this.index += 1;
+
             task.on("error", errorHandler);
             task.on("complete", completeHandler);
             task.on("cancelled", cancelledHandler);
+
           } catch (ex) {
             console.log(ex);
           }
