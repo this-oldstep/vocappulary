@@ -10,7 +10,8 @@ import { AuthService } from '~/app/auth/auth.service';
 import { switchMap } from 'rxjs/operators';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { NavigationExtras } from "@angular/router";
-import { NGROK } from '../../../config'
+import { NGROK } from '../../../config';
+const i18n = require('../../i18n/i18n.js')
 
 
 var camera = require("nativescript-camera"); //import * as camera from "nativescript-camera";
@@ -53,8 +54,16 @@ export class IndividualCollectionComponent implements OnInit {
               }
 
   activeItems: any;
+  private language: any;
 
   ngOnInit() {
+    this.authService.user.subscribe(userData => {
+      let langCode = userData.nativeLanguageId.toString()
+      if (!langCode) {
+        langCode = '1'
+      }
+      this.language = i18n[langCode]
+    })
     this.getAllItems();
     //console.log('here are the items', this.activeItems);
 
