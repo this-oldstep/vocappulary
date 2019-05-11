@@ -1,7 +1,7 @@
 <ns-action-bar title="Collection"></ns-action-bar>
 
 <StackLayout>
-  <Button id="object-button" class="btn btn-primary" text="Add object!" (tap)="uploadPhoto()"></Button>
+  <Button id="object-button" class="btn btn-primary" text="{{language.addObject}}!" (tap)="uploadPhoto()"></Button>
   <FlexboxLayout justifyContent="center" flexDirection="column">
     <ns-item-list [activeItems]="activeItems"></ns-item-list>
   </FlexboxLayout>
