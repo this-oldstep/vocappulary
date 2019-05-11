@@ -18,7 +18,7 @@ const i18n = require('../../i18n/i18n.js')
 })
 export class LandingComponent implements OnInit {
 
-
+  isLoading = false;
   private myCollections: string; 
   public language: any;
 
@@ -48,7 +48,7 @@ export class LandingComponent implements OnInit {
   }
 
   getAllCollections(){
-    
+    this.isLoading = true;
     this.authService.user.pipe(switchMap(currentUser => {
       const URL = `${NGROK}/collections/get`
       const options = { userId: currentUser.id }
@@ -57,6 +57,7 @@ export class LandingComponent implements OnInit {
       //console.log(collections);
       this.activeCollections = collections;
       console.log('users collections', this.activeCollections);
+      this.isLoading = false;
     })
     
 
