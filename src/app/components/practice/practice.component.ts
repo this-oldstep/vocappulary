@@ -57,9 +57,9 @@ export class PracticeComponent implements OnInit {
             console.log(audioFolder);
 
             let recorderOptions = {
-              filename: audioFolder.path + '/muffin.aac',
-              format: 2,
-              encoder: 3,
+              filename: audioFolder.path + '/muffin.ogg',
+              format: 4, //originally 2
+              encoder: 2,// 3
               metering: true,
               infoCallback: infoObject => {
                 console.log(JSON.stringify(infoObject));
@@ -76,7 +76,7 @@ export class PracticeComponent implements OnInit {
               .then((result) => {
                 console.log('recording!!!!')
               }).catch((err) => {
-                console.log('not recording :(')
+                console.log(err)
               });
 
 
@@ -99,7 +99,7 @@ export class PracticeComponent implements OnInit {
 
           try {
             let audioFolder = knownFolders.currentApp().getFolder("audio");
-            var recordedFile = audioFolder.getFile('muffin.aac');
+            var recordedFile = audioFolder.getFile('muffin.ogg');
 
             
 
