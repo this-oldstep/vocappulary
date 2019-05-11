@@ -10,7 +10,9 @@ import { UIService } from '~/app/shared/ui.serivce';
 import { ResultsComponent } from '../results/results.component'
 import { RouterExtensions } from 'nativescript-angular/router';
 import { NgOnChangesFeature } from "@angular/core/src/render3";
-
+import { AuthService } from "~/app/auth/auth.service";
+import { switchMap, take } from "rxjs/operators";
+import { User } from "~/app/auth/user.model"
 
 const permissions = require('nativescript-permissions');
 var bghttp = require("nativescript-background-http");
@@ -27,6 +29,9 @@ declare var android: any;
 })
 export class PracticeComponent implements OnInit {
   
+ 
+  user;
+
   public cards: any;
   private _recorder: TNSRecorder;
   public index: number;
@@ -38,35 +43,30 @@ export class PracticeComponent implements OnInit {
     private vcRef: ViewContainerRef,
     private uiService: UIService,
     private router: RouterExtensions,
+    private authService: AuthService,
     ) {
   
     this._recorder = new TNSRecorder();
     this._recorder.debug = true;
     this.index = 0;
     this.userId = 21;
-    this.end =false;
+    this.end = false;
 
   }
 
  
-  // ngOnChanges (){
-  //   if (this.index === this.cards.length - 1){
-  //     this.modalDialog.showModal(ResultsComponent, {
-  //       viewContainerRef: this.vcRef,
-  //     })
-  //       .then(action => {
-  //         this.router.navigate(['/landing']);
-  //       })
-  //   }
-
-  // }
-
 
   ngOnInit(): void {
     
-    this.index = 0;
+    this.authService.user.pipe(take(1)).subscribe( currentUser => {
+       this.user = currentUser;
+    });
 
-    this.http.get(`${NGROK}/user/${this.userId}/items`)
+    console.log('user is here!!!', this.user);
+    this.index = 0;
+    this.end = false;
+
+    this.http.get(`${NGROK}/user/${this.user.id}/items`)
     .subscribe( items => {
       this.cards = items;
       console.log('items coming into practice component', this.cards);
@@ -78,6 +78,11 @@ export class PracticeComponent implements OnInit {
 
   }
 
+  backToCollections(){
+    this.router.navigate(['/landing'], { clearHistory: true });
+    this.index = 0;
+    this.end = false;
+  }
 
   onRecord(){
     let self = this;
@@ -167,14 +172,14 @@ export class PracticeComponent implements OnInit {
 
             let params = [
               {name: "word", value: this.cards[this.index].currentTranslation},
-              {name: "userId", value: "21"},
+              {name: "userId", value: this.user.id.toString()},
               {name:"fileUploaded", filename: recordedFile.path, mimeType: "audio/mpeg"}
             ]
 
             var task = session.multipartUpload(params, request);
 
               this.index += 1;
-        
+              this.end = true;
            
 
             task.on("error", errorHandler);

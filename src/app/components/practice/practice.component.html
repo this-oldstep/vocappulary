@@ -1,6 +1,6 @@
 
 <ns-action-bar title="Say it!"></ns-action-bar>
-<ng-template [ngIf]="cards && index < cards.length" [ngIfElse]="results">
+<ng-template [ngIf]="cards && index < cards.length" [ngIfElse]="end ? results : ready">
 
     <FlexboxLayout>
         <Image  id="img" [src]="cards[index].url_image"></Image>
@@ -10,9 +10,16 @@
     
 </ng-template>
 
+<ng-template #ready>
+
+<Label text="Get Ready!"></Label>
+
+</ng-template>
+
 <ng-template #results>
     <FlexboxLayout>
         <Label text="good job!"></Label>
-        <Button text="practice some more!" (tap)="ngOnInit()"></Button>
+        <Button text="practice some more!" class="btn btn-primary" (tap)="ngOnInit()"></Button>
+        <Button text="Back to Collections" class="btn btn-primary" (tap)="backToCollections()"></Button>
     </FlexboxLayout>
 </ng-template>
