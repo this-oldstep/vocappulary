@@ -33,6 +33,7 @@ export class IndividualCollectionComponent implements OnInit {
 
   //public collection: {id: string, name: string, public: boolean, count: string, createdAt: string, updatedAt: string, userId: string};
   public collection: any;
+  isLoading = false;
 
   constructor(private activatedRoute: ActivatedRoute, 
               private modalDialog: ModalDialogService,
@@ -66,11 +67,13 @@ export class IndividualCollectionComponent implements OnInit {
   }
 
   getAllItems(){
+    this.isLoading = true
     this.authService.user.pipe(switchMap(currentUser => {
       return this.http.get(`${NGROK}/collectionItems/${this.collection.id}`)
     })).subscribe(items => {
       this.activeItems = items;
       this.activeItems.reverse();
+      this.isLoading = false;
       console.log(items, 'items in collection');
     })
   }

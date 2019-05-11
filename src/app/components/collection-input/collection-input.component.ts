@@ -46,6 +46,7 @@ export class CollectionInputComponent implements OnInit  {
 
   onCreateCollection() {
     console.log(this.collectionDescription);
+    this.isLoading = true;
     this.authService.user.pipe(switchMap(currentUser => {
       const URL =  `${NGROK}/collections`;
     //should also include active status and userId
@@ -57,7 +58,7 @@ export class CollectionInputComponent implements OnInit  {
     return this.http.post(URL, options)
       })).subscribe((response) =>{
       console.log('saved in database');
-      
+      this.isLoading = false;
       this.input.emit(response);
       /*
         this response gives me the id of the collection created,
