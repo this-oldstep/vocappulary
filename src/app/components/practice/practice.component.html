@@ -1,12 +1,7 @@
 
-<uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>
-<ns-action-bar title="Practice"></ns-action-bar>
-<StackLayout>
-
-        <Image [src]="cards[index].url_image"></Image>I
-       
-    <FlexboxLayout>
-        <Button text="pronounce!" class = "btn btn-primary" (tap)="onRecord()"></Button>
-        <Button text="stop recording" (tap)="stopRecording()"></Button>
-    </FlexboxLayout>
-</StackLayout>
+<ns-action-bar title="Say it!"></ns-action-bar>
+<FlexboxLayout>
+    <Image id="img" [src]="cards[index].url_image"></Image>
+    <Button text="pronounce!" class = "btn btn-primary" (tap)="onRecord()"></Button>
+    <Button text="stop recording" class="btn" (tap)="stopRecording()"></Button>
+</FlexboxLayout>

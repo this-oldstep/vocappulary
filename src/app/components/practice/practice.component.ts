@@ -16,12 +16,14 @@ declare var android: any;
   selector: "ns-practice",
   moduleId: module.id,
   templateUrl: "./practice.component.html",
+  styleUrls: ['./practice.component.css'],
 })
 export class PracticeComponent implements OnInit {
   
   public cards: any;
   private _recorder: TNSRecorder;
   public index: number;
+  private userId: number;
 
   constructor(private http: HttpClient) {
   
@@ -36,7 +38,6 @@ export class PracticeComponent implements OnInit {
     
     this.http.get(`${NGROK}/collectionItems/45`)
     .subscribe( items => {
-      console.log(items, 'http getting practice collection')
       this.cards = items;
       console.log('items coming into practice component', this.cards);
     })
