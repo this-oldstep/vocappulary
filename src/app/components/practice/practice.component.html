@@ -1,8 +1,25 @@
-<uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>
-<ns-action-bar title="Practice"></ns-action-bar>
-<FlexboxLayout>
-    <Button text="pronounce!" class = "btn btn-primary" (tap)="onRecord()"></Button>
-    <Button text="stop recording" (tap)="stopRecording()"></Button>
-</FlexboxLayout>
-<StackLayout>
-</StackLayout>
+
+<ns-action-bar title="Say it!"></ns-action-bar>
+<ng-template [ngIf]="cards && index < cards.length" [ngIfElse]="end ? results : ready">
+
+    <FlexboxLayout>
+        <Image  id="img" [src]="cards[index].url_image"></Image>
+        <Button text="pronounce!" class = "btn btn-primary" (tap)="onRecord()"></Button>
+        <Button text="stop recording" class="btn" (tap)="stopRecording()"></Button>
+    </FlexboxLayout>
+    
+</ng-template>
+
+<ng-template #ready>
+
+<Label text="Get Ready!"></Label>
+
+</ng-template>
+
+<ng-template #results>
+    <FlexboxLayout>
+        <Label text="good job!"></Label>
+        <Button text="practice some more!" class="btn btn-primary" (tap)="ngOnInit()"></Button>
+        <Button text="Back to Collections" class="btn btn-primary" (tap)="backToCollections()"></Button>
+    </FlexboxLayout>
+</ng-template>

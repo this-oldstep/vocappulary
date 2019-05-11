@@ -90,6 +90,7 @@ export class AuthService {
             const username = response.username;
             const user = new User(email, userId, username, currentLanguageId, nativeLanguageId, points, token, expirationDate,  );
             this._user.next(user);
+            console.log(user);
         })
         
         

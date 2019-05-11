@@ -21,7 +21,8 @@ import { LangPickerComponent } from './components/lang-picker/lang-picker.compon
 import { IndividualCollectionService } from "./components/individual-collection/individual-collection.service";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 import { PracticeComponent } from './components/practice/practice.component';
-import { LangModalComponent } from './components/lang-modal/lang-modal.component'
+import { LangModalComponent } from './components/lang-modal/lang-modal.component';
+import { ResultsComponent } from './components/results/results.component'
 
 @NgModule({
     bootstrap: [
@@ -53,6 +54,7 @@ import { LangModalComponent } from './components/lang-modal/lang-modal.component
         LangPickerComponent,
         PracticeComponent,
         LangModalComponent,
+        ResultsComponent,
     ],
     schemas: [
         NO_ERRORS_SCHEMA
