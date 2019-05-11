@@ -1,8 +1,27 @@
 <uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>
 <ns-action-bar title="Practice"></ns-action-bar>
-<FlexboxLayout>
-    <Button text="pronounce!" class = "btn btn-primary" (tap)="onRecord()"></Button>
-    <Button text="stop recording" (tap)="stopRecording()"></Button>
-</FlexboxLayout>
 <StackLayout>
+<ns:Carousel height="100%" width="100%" pageChanged="myChangeEvent" pageTapped="mySelectedEvent"
+    indicatorColor="#fff000" finite="true" bounce="false" showIndicator="true" verticalAlignment="top"
+    android:indicatorAnimation="swap" color="white">
+    <ns:CarouselItem id="slide1" backgroundColor="#b3cde0" verticalAlignment="middle">
+        <Label text="cards[0].currentLanguage" backgroundColor="#50000000" horizontalAlignment="center"></Label>
+        <Image src="cards[0].url_image">
+        </Image>
+    </ns:CarouselItem>
+    <ns:CarouselItem id="slide1" backgroundColor="#b3cde0" verticalAlignment="middle">
+        <Label text="cards[1].currentLanguage" backgroundColor="#50000000" horizontalAlignment="center"></Label>
+        <Image src="cards[1].url_image">
+        </Image>
+    </ns:CarouselItem>
+    <ns:CarouselItem id="slide1" backgroundColor="#b3cde0" verticalAlignment="middle">
+        <Label text="cards[2].currentLanguage" backgroundColor="#50000000" horizontalAlignment="center"></Label>
+        <Image src="cards[2].url_image">
+        </Image>
+    </ns:CarouselItem
+</ns:Carousel>
+    <FlexboxLayout>
+        <Button text="pronounce!" class = "btn btn-primary" (tap)="onRecord()"></Button>
+        <Button text="stop recording" (tap)="stopRecording()"></Button>
+    </FlexboxLayout>
 </StackLayout>

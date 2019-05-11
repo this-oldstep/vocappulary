@@ -52,12 +52,6 @@ export class ItemComponent implements OnInit {
 
   }
 
-  // recordWord(){
-
-  //   this._recorder.
-
-  // }
-
 
 
 }

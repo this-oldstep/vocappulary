@@ -33,7 +33,7 @@ export class PracticeComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.http.get(`${NGROK}/collectionItems/8`)
+    this.http.get(`${NGROK}/collectionItems/45`)
     .subscribe( items => {
       console.log(items, 'http getting practice collection')
       this.cards = items;
