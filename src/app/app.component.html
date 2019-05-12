@@ -22,6 +22,12 @@
         class="btn btn-primary"
         (tap)="langSelect()"
         ></Button>
+        <Button
+        text="Buddies"
+        class='btn btn-primary'
+        nsRouterLink="/buddies"
+        (tap)="onLogout()"
+        ></Button>
     </StackLayout>
     <StackLayout tkMainContent>
         <page-router-outlet></page-router-outlet>

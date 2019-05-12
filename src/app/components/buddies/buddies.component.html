@@ -1,6 +1,7 @@
 <StackLayout>
-    <ns-individual-buddy-component>
-    </ns-individual-buddy-component>
-    <ns-individual-buddy-component>        
-    </ns-individual-buddy-component>
+    <ng-container *ngFor="let buddy of buddies">
+        <Button
+        [text]="buddy.username"
+        ></Button>
+    </ng-container>
 </StackLayout>
