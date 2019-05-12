@@ -1,0 +1,16 @@
+<ActionBar title="Messaging Component"></ActionBar>
+<GridLayout rows="*, auto" columns="*">
+  <ListView [items]="messages" class="list-group" row="0" col="0">
+    <Template message="item">
+      <GridLayout class="list-group-item">
+        <Label text=" message.content "></Label>
+      </GridLayout>
+    </Template>
+  </ListView>
+  <StackLayout class="chat-area" row="1" col="0">
+    <GridLayout rows="auto" columns="*, auto">
+      <TextField [(ngModel)]="chatBox" class="input" row="0" col="0"></TextField>
+      <Button text="Send" (tap)="send()" class="btn btn-primary" row="0" col="1"></Button>
+    </GridLayout>
+  </StackLayout>
+</GridLayout>

@@ -8,6 +8,7 @@ import { IndividualCollectionComponent } from "./components/individual-collectio
 import { ItemComponent } from './components/item/item.component'
 import { PracticeComponent } from "./components/practice/practice.component";
 import { Buddies } from "./components/buddies/buddies.component";
+import { MessagesComponent } from "./components/messages/messages.component";
 // you can pass data to a path after component like 
 // so: data: {anyData: 'anyValue}
 //path could be ':anywordofchoice'  
@@ -16,8 +17,8 @@ import { Buddies } from "./components/buddies/buddies.component";
 
 const routes: Routes = [
     { path: "", component: AuthComponent },
-    { path: "landing", component: LandingComponent },
-    { path: "collection", component: IndividualCollectionComponent},
+    { path: "landing", component: MessagesComponent }, //landing, LandingComponent
+    { path: "collection", component: IndividualCollectionComponent}, // collection
     { path: "item", component: ItemComponent},
     { path: "practice", component: PracticeComponent},
     { path: "buddies", component: Buddies}

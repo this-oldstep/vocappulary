@@ -25,6 +25,7 @@ import { LangModalComponent } from './components/lang-modal/lang-modal.component
 import { ResultsComponent } from './components/results/results.component'
 import { Buddies } from "./components/buddies/buddies.component";
 import { IndividualBuddyComponentComponent } from './components/individual-buddy-component/individual-buddy-component.component';
+import { MessagesComponent } from './components/messages/messages.component';
 
 @NgModule({
     bootstrap: [
@@ -59,6 +60,7 @@ import { IndividualBuddyComponentComponent } from './components/individual-buddy
         ResultsComponent,
         Buddies,
         IndividualBuddyComponentComponent,
+        MessagesComponent,
     ],
     schemas: [
         NO_ERRORS_SCHEMA
