@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '~/app/auth/auth.service';
+import { findBuddyService } from './find-buddy.service';
 
 @Component({
   selector: 'ns-find-buddy',
@@ -9,8 +10,10 @@ import { AuthService } from '~/app/auth/auth.service';
 })
 export class FindBuddyComponent implements OnInit {
   user;
+  users;
   constructor(
     private authService: AuthService,
+    private findBuddyService: findBuddyService,
 
   ) { }
 
@@ -18,7 +21,13 @@ export class FindBuddyComponent implements OnInit {
     this.authService.user.subscribe(user => {
       this.user = user;
     })
-    
+    this.findBuddyService.getPotentialBuddies(this.user.id)
+    this.findBuddyService.users.subscribe(users => {
+      this.users = users;
+      console.log(this.users);
+    })
+
+
   }
 
 }
