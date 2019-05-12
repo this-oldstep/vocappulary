@@ -36,6 +36,7 @@ export class PracticeComponent implements OnInit {
   public end: boolean;
   public points: number;
   public message: string;
+  public pointList: any;
 
   constructor(private http: HttpClient,
     private modalDialog: ModalDialogService,
@@ -51,6 +52,7 @@ export class PracticeComponent implements OnInit {
     this.end = false;
     this.points = 0;
     this.message = `You got ${this.points} points!`
+    this.pointList = [];
   }
 
  
@@ -64,6 +66,7 @@ export class PracticeComponent implements OnInit {
     console.log('user is here!!!', this.user);
     this.index = 0;
     this.end = false;
+    this.pointList = [];
 
     this.http.get(`${NGROK}/user/${this.user.id}/items`)
     .subscribe( items => {
@@ -183,16 +186,19 @@ export class PracticeComponent implements OnInit {
               console.log(e);
             });
 
-            this.index += 1;
-            this.end = true;
             
             task.on("responded", (response) => {
-              console.log(response.data);
-
-              if (response.data){
+              console.log(response);
+              
+              if (response.data === 'true'){
                 this.points += 1;
+                this.pointList.push({value: 1});
+              } else{
+                this.pointList.push({value: 0});
               }
-
+              
+              this.index += 1;
+              this.end = true;
             
             });
 

@@ -1,13 +1,18 @@
 
 <ns-action-bar title="Say it!"></ns-action-bar>
 <ng-template [ngIf]="cards && index < cards.length" [ngIfElse]="end ? results : ready">
-    <StackLayout>
-        <Image id="points" src="https://res.cloudinary.com/dlqxzhifw/image/upload/v1557608399/frtgi4svk7votxl2du57.png"></Image>
-        <FlexboxLayout>
+    <StackLayout >
+        <FlexboxLayout id="main">
             <Image  id="img" [src]="cards[index].url_image"></Image>
             <Button text="pronounce!" class = "btn btn-primary" (tap)="onRecord()"></Button>
-            <Button text="stop recording" class="btn" (tap)="stopRecording()"></Button>
+            <Button id = "stop" text="stop recording" class="btn" (tap)="stopRecording()"></Button>
         </FlexboxLayout>
+            <StackLayout orientation="horizontal">
+                <ng-container *ngFor="let point of pointList">
+                <Image *ngIf="point.value" class="points" src="https://res.cloudinary.com/dlqxzhifw/image/upload/v1557608414/igxiv6p8yrkfk2zkvjfa.png"></Image>
+                <Image *ngIf="!point.value" class="points" src="https://res.cloudinary.com/dlqxzhifw/image/upload/v1557608399/frtgi4svk7votxl2du57.png"></Image>
+                </ng-container>
+         </StackLayout>
     </StackLayout>
     
 </ng-template>

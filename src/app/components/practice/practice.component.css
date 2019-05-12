@@ -18,7 +18,17 @@ FlexboxLayout {
   background-color: #f6eec4;
 }
 
-#points{
-  width: 30px;
-  margin-bottom: 50px;
+.points{
+  width: 35px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  margin: 25px;
 }
+
+StackLayout{
+  background-color: #f6eec4;
+}
+
+/* #stop{
+  ba: red;
+} */
