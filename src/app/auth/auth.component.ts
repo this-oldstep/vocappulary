@@ -23,10 +23,10 @@ export class AuthComponent implements OnInit {
   passwordControlIsValid = true;
   isLogin = true;
   isLoading = false;
-  natLangStr = 'english';
-  natLangId = 1;
-  learnLangStr = 'english';
-  learnLangId = 1;
+  natLangStr
+  natLangId
+  learnLangStr
+  learnLangId
   @ViewChild('passwordEl') passwordEl: ElementRef<TextField>;
   @ViewChild('emailEl') emailEl: ElementRef<TextField>;
   @ViewChild('usernameEl') usernameEl: ElementRef<TextField>;
