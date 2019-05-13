@@ -19,11 +19,11 @@ import { MessagesComponent } from "./components/messages/messages.component";
 const routes: Routes = [
     { path: "", component: AuthComponent },
     { path: "landing", component: LandingComponent },
-    { path: "collection", component: IndividualCollectionComponent},
-    { path: "item", component: ItemComponent},
-    { path: "practice", component: PracticeComponent},
-    { path: "buddies", component: BuddiesTabComponent},
-    {path: "messages", component: MessagesComponent}
+    { path: "collection", component: IndividualCollectionComponent },
+    { path: "item", component: ItemComponent },
+    { path: "practice", component: PracticeComponent },
+    { path: "buddies", component: BuddiesTabComponent },
+    { path: "messages", component: MessagesComponent }
 ];
 
 @NgModule({
