@@ -4,9 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from "~/app/auth/auth.service";
 import { User } from '~/app/auth/user.model.js';
-
-
-require("nativescript-websockets");
 const SocketIO = require('nativescript-socket.io');
 
 
@@ -17,16 +14,14 @@ const SocketIO = require('nativescript-socket.io');
   moduleId: module.id,
 })
 export class MessagesComponent implements OnInit, OnDestroy {
-
-  private socket: any;
-        
+  
   public messages: Array<any>;
   public chatBox: string;
   public user: any;
   public port: any;
   public buddy: any;
   public status: any;
-  private socketio: any;
+  private socket: any;
 
   public constructor(
     private authService: AuthService,
@@ -36,7 +31,6 @@ export class MessagesComponent implements OnInit, OnDestroy {
 
     
     ) {
-    this.socket;
     this.messages = [];
     this.chatBox = "";
     this.activatedRoute.queryParams.subscribe( params => {
@@ -49,14 +43,14 @@ export class MessagesComponent implements OnInit, OnDestroy {
       this.user = user;
     })
 
-    this.socketio = await SocketIO.connect(NGROK);
+    this.socket = await SocketIO.connect(NGROK);
 
 
-    this.socketio.on('connect', ()=> {
+    this.socket.on('connect', ()=> {
       console.log('connect');
-      this.socketio.emit('connectMessage', { userId: this.user.id, buddyId: this.buddy.id })
+      this.socket.emit('connectMessage', { userId: this.user.id, buddyId: this.buddy.id })
     });
-    this.socketio.on('recieve', (event)=>{
+    this.socket.on('recieve', (event)=>{
       console.log('this is console loggin even', event.text, event.senderId, this.user.id)
       if (event.senderId === this.user.id){
         this.messages.push(JSON.stringify({user: event.text}))
@@ -69,8 +63,8 @@ export class MessagesComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy() {
-      this.socketio.emit('discon', this.user.id)
-      this.socketio.disconnect();
+      this.socket.emit('discon', this.user.id)
+      this.socket.disconnect();
   }
 
   public send() {
@@ -81,7 +75,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
         userId: this.user.id,
         buddyId: this.buddy.id
       }
-      this.socketio.emit('message', options)
+      this.socket.emit('message', options)
       this.chatBox = "";
     }
   }
