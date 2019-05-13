@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { NGROK, SOCKET } from '../../../config.js';
-const WebSocket = require("nativescript-websockets");
+require("nativescript-websockets");
 
 
 @Component({
@@ -16,12 +16,13 @@ export class MessagesComponent implements OnInit, OnDestroy {
   public chatBox: string;
 
   public constructor(private zone: NgZone) {
-    this.socket = new WebSocket(`${SOCKET}`, []);
+    this.socket = new WebSocket(SOCKET, []);
     this.messages = [];
     this.chatBox = "";
   }
 
   public ngOnInit() {
+    console.log('messaging component initialized')
     this.socket.addEventListener('open', event => {
       this.zone.run(() => {
         console.log('looks like you successfully connected')
@@ -30,7 +31,10 @@ export class MessagesComponent implements OnInit, OnDestroy {
     });
     this.socket.addEventListener('message', event => {
       this.zone.run(() => {
-        this.messages.push(JSON.parse(event.data));
+        console.log(event.data.message)
+        let message = JSON.parse(event.data)
+        console.log(message)
+        this.messages.push(message.message);
       });
     });
     this.socket.addEventListener('close', event => {
