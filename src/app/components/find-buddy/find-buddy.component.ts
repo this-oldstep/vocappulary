@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '~/app/auth/auth.service';
 import { findBuddyService } from './find-buddy.service';
+import { HttpClient } from '@angular/common/http';
+import { NGROK } from '../../../config'
+
 
 @Component({
   selector: 'ns-find-buddy',
@@ -14,7 +17,7 @@ export class FindBuddyComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private findBuddyService: findBuddyService,
-
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
@@ -24,9 +27,18 @@ export class FindBuddyComponent implements OnInit {
     this.findBuddyService.getPotentialBuddies(this.user.id)
     this.findBuddyService.users.subscribe(users => {
       this.users = users;
-      console.log(this.users);
+      console.log('potential buddies', this.users);
     })
+  }
 
+  buddyRequest(potentialBuddy){
+    console.log('wanna be budies with', potentialBuddy);
+    this.http.post(`${NGROK}/requests/new`,
+     {userId: this.user.id, 
+      potentialBuddyId: potentialBuddy.id})
+      .subscribe(response => {
+        console.log(response);
+      })
 
   }
 
