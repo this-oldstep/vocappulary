@@ -1,0 +1,8 @@
+<ns-action-bar title="Find a Buddy"></ns-action-bar>
+<StackLayout>
+    <ng-container *ngFor="let buddy of users">
+        <Button
+        [text]=buddy.username
+        ></Button>
+    </ng-container>
+</StackLayout>
