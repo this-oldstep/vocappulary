@@ -19,14 +19,13 @@ const SocketIO = require('nativescript-socket.io');
 export class MessagesComponent implements OnInit, OnDestroy {
 
   private socket: any;
+        
   public messages: Array<any>;
   public chatBox: string;
   public user: any;
   public port: any;
   public buddy: any;
   public status: any;
-  public statusMessage: Array<any>;
-  public token: any;
   private socketio: any;
 
   public constructor(
@@ -48,95 +47,30 @@ export class MessagesComponent implements OnInit, OnDestroy {
   public async ngOnInit() {
     await this.authService.user.subscribe(user=>{
       this.user = user;
-      this.token = user._token;
     })
 
-    const optionsIO = {
-      query: {
-        token: this.token,
-      },
-      android: {
-        // http://socketio.github.io/socket.io-client-java/apidocs/io/socket/client/IO.Options.html
-      },
-  ios: {
-        // https://nuclearace.github.io/Socket.IO-Client-Swift/Enums/SocketIOClientOption.html
-      }
-    };
+    this.socketio = await SocketIO.connect(NGROK);
 
 
-    this.socketio = await SocketIO.connect(NGROK, optionsIO);
-
-
-    this.socketio.on('connect', function () {
+    this.socketio.on('connect', ()=> {
       console.log('connect');
+      this.socketio.emit('connectMessage', { userId: this.user.id, buddyId: this.buddy.id })
     });
-
-    this.socketio.on('message', function (event) {
-      console.log('messages recieved!!!', JSON.stringify(event));
-    });
-
-    this.socketio.on('request', function (info, ack) {
-      console.log('request', info);
-      if (info === 'datetime') {
-        ack(new Date());
-      } else if(info === 'random') {
-        ack(Math.random());
-      } else {
-        ack(null);
+    this.socketio.on('recieve', (event)=>{
+      console.log('this is console loggin even', event.text, event.senderId, this.user.id)
+      if (event.senderId === this.user.id){
+        this.messages.push(JSON.stringify({user: event.text}))
+        console.log(this.messages)
       }
-    });
-
-    this.socketio.emit('hello', {
-      username: 'someone',
-    });
-
-    this.socketio.emit('hello-ack', {
-      username: 'someone',
-    }, function ack() {
-      console.log('hello-ack', arguments);
+      else{
+        this.messages.push(JSON.stringify({buddy: event.text}))
+      }
     })
-    // console.log(this.user, this.buddy)
-    // let options = {
-    //   userId: this.user,
-    //   buddyId: this.buddy,
-    //   hello: 'hello steve'
-    // }
-    // this.http.get(`${NGROK}/newConnection/${this.user.id}/${this.buddy.id}`)
-    // .subscribe((port)=>{
-    //   console.log(port, 'inner')
-    //   this.port = port;
-    //   this.socket = new WebSocket(`${SOCKET}`, []);
-
-    //   this.socket.addEventListener('open', event => {
-    //     this.zone.run(() => {
-    //       console.log('looks like you successfully connected')
-    //       this.status = 'open'
-    //       // this.messages.push({ content: "Welcome to the chat!" });
-    //     });
-    //   });
-    //   this.socket.addEventListener('message', event => {
-    //     this.zone.run(() => {
-    //       console.log(event.data.message)
-    //       let message = JSON.parse(event.data)
-    //       console.log(message)
-    //       this.messages.push(message.text);
-    //     });
-    //   });
-    //   this.socket.addEventListener('close', event => {
-    //     this.zone.run(() => {
-    //       this.status = 'closed'
-    //       this.messages.push({ content: "You have been disconnected" });
-    //     });
-    //   });
-    //   this.socket.addEventListener('error', event => {
-    //     console.log("The socket had an error", event.error);
-    //   });
-
-    // })
   }
 
   public ngOnDestroy() {
-    this.socketio.close();
+      this.socketio.emit('discon', this.user.id)
+      this.socketio.disconnect();
   }
 
   public send() {
@@ -148,7 +82,6 @@ export class MessagesComponent implements OnInit, OnDestroy {
         buddyId: this.buddy.id
       }
       this.socketio.emit('message', options)
-      // this.socketio.emit(JSON.stringify(options));
       this.chatBox = "";
     }
   }
