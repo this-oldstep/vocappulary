@@ -1,4 +1,6 @@
-import { Component } from "@angular/core"
+import { Component, OnInit } from "@angular/core"
+import { BuddiesService } from "./buddies.service";
+import { AuthService } from "~/app/auth/auth.service";
 
 @Component({
   selector: 'buddies',
@@ -6,4 +8,24 @@ import { Component } from "@angular/core"
   styleUrls: ['/buddies.component.css'],
   moduleId: module.id
 })
-export class Buddies { } 
+export class Buddies implements OnInit {
+  user;
+  buddies;
+  constructor(
+    private buddiesService: BuddiesService,
+    private authService: AuthService
+  ) {}
+  
+  ngOnInit() {
+    this.authService.user.subscribe(user => {
+      this.user = user;
+    })
+    this.buddiesService.getBuddies(this.user.id)
+
+    this.buddiesService.buddies.subscribe(buddies => {
+      this.buddies = buddies;
+    })
+
+
+  }
+ } 
