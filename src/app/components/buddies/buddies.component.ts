@@ -6,4 +6,4 @@ import { Component } from "@angular/core"
   styleUrls: ['/buddies.component.css'],
   moduleId: module.id
 })
-export class Buddies { } 
+export class BuddiesComponent { } 

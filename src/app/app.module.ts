@@ -23,8 +23,9 @@ import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 import { PracticeComponent } from './components/practice/practice.component';
 import { LangModalComponent } from './components/lang-modal/lang-modal.component';
 import { ResultsComponent } from './components/results/results.component'
-import { Buddies } from "./components/buddies/buddies.component";
+import { BuddiesComponent } from "./components/buddies/buddies.component";
 import { IndividualBuddyComponentComponent } from './components/individual-buddy-component/individual-buddy-component.component';
+import { BuddiesTabComponent } from './components/buddies-tab/buddies-tab.component';
 
 @NgModule({
     bootstrap: [
@@ -57,8 +58,9 @@ import { IndividualBuddyComponentComponent } from './components/individual-buddy
         PracticeComponent,
         LangModalComponent,
         ResultsComponent,
-        Buddies,
+        BuddiesComponent,
         IndividualBuddyComponentComponent,
+        BuddiesTabComponent,
     ],
     schemas: [
         NO_ERRORS_SCHEMA
