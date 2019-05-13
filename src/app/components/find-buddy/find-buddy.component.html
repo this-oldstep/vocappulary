@@ -1,8 +1,21 @@
 <ns-action-bar title="Buddies!"></ns-action-bar>
-<StackLayout>
-    <ng-container *ngFor="let buddy of users">
-        <Button
-        [text]=buddy.username
-        ></Button>
-    </ng-container>
-</StackLayout>
+
+<GridLayout tkExampleTitle tkToggleNavButton>
+    <RadListView [items]="users" class="aaa">
+        <ng-template tkListItemTemplate let-user="item">
+            <GridLayout backgroundColor="white" margin="15" (tap)="buddyRequest(user)">
+                <GridLayout verticalAlignment="bottom">
+                    <FlexboxLayout backgroundColor="#f6eec4" paddingTop="15" paddingBottom="15" paddingLeft="16"
+                        paddingRight="20">
+                        <Label id="col-text" [text]="user.username"></Label>
+                        <Label id="col-text" [text]="user.nativeLanguage.name"></Label>
+                        <Label id="col-text" [text]="user.currentLanguage.name"></Label>
+                    </FlexboxLayout>
+                </GridLayout>
+            </GridLayout>
+        </ng-template>
+        <ListViewGridLayout tkListViewLayout scrollDirection="Vertical" spanCount="1">
+        </ListViewGridLayout>
+    </RadListView>
+</GridLayout>
+

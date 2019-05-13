@@ -49,8 +49,6 @@ export class IndividualCollectionComponent implements OnInit {
                   if (params && params.id){
                     this.collection = params;
                   } 
-                  //console.log('coming into individual coll id is', this.collection.id)
-
                 });
               }
 
