@@ -8,7 +8,7 @@ import { IndividualCollectionComponent } from "./components/individual-collectio
 import { ItemComponent } from './components/item/item.component'
 import { PracticeComponent } from "./components/practice/practice.component";
 import { Buddies } from "./components/buddies/buddies.component";
-// import { MessagesComponent } from "./components/messages/messages.component";
+import { FindBuddyComponent } from "./components/find-buddy/find-buddy.component";
 // you can pass data to a path after component like 
 // so: data: {anyData: 'anyValue}
 //path could be ':anywordofchoice'  
@@ -21,7 +21,8 @@ const routes: Routes = [
     { path: "collection", component: IndividualCollectionComponent},
     { path: "item", component: ItemComponent},
     { path: "practice", component: PracticeComponent},
-    { path: "buddies", component: Buddies}
+    { path: "buddies", component: Buddies},
+    { path: "addBuddies", component: FindBuddyComponent}
 ];
 
 @NgModule({

@@ -5,7 +5,7 @@ import { NativeScriptFormsModule } from 'nativescript-angular/forms'
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AuthComponent } from './auth/auth.component';
-import {CollectionsComponent} from './components/collections/collections.component';
+import { CollectionsComponent } from './components/collections/collections.component';
 import { CollectionInputComponent } from './components/collection-input/collection-input.component';
 import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular/side-drawer-directives'
 import { HttpClientModule } from '@angular/common/http';
@@ -24,8 +24,8 @@ import { PracticeComponent } from './components/practice/practice.component';
 import { LangModalComponent } from './components/lang-modal/lang-modal.component';
 import { ResultsComponent } from './components/results/results.component'
 import { Buddies } from "./components/buddies/buddies.component";
-import { IndividualBuddyComponentComponent } from './components/individual-buddy-component/individual-buddy-component.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { FindBuddyComponent } from './components/find-buddy/find-buddy.component';
 
 @NgModule({
     bootstrap: [
@@ -59,8 +59,8 @@ import { MessagesComponent } from './components/messages/messages.component';
         LangModalComponent,
         ResultsComponent,
         Buddies,
-        IndividualBuddyComponentComponent,
         MessagesComponent,
+        FindBuddyComponent,
     ],
     schemas: [
         NO_ERRORS_SCHEMA
