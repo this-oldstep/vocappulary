@@ -24,6 +24,7 @@ import { PracticeComponent } from './components/practice/practice.component';
 import { LangModalComponent } from './components/lang-modal/lang-modal.component';
 import { ResultsComponent } from './components/results/results.component'
 import { Buddies } from "./components/buddies/buddies.component";
+import { MessagesComponent } from './components/messages/messages.component';
 import { FindBuddyComponent } from './components/find-buddy/find-buddy.component';
 
 @NgModule({
@@ -58,6 +59,7 @@ import { FindBuddyComponent } from './components/find-buddy/find-buddy.component
         LangModalComponent,
         ResultsComponent,
         Buddies,
+        MessagesComponent,
         FindBuddyComponent,
     ],
     schemas: [
