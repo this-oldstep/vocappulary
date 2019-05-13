@@ -48,7 +48,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
 
     this.socket.on('connect', ()=> {
       console.log('connect');
-      this.socket.emit('connectMessage', { userId: this.user.id, buddyId: this.buddy.id })
+      this.socket.emit('connectMessage', { userId: this.user.id, buddyId: parseInt(this.buddy.id )})
     });
     this.socket.on('recieve', (event)=>{
       console.log('this is console loggin even', event.text, event.senderId, this.user.id)
