@@ -29,7 +29,9 @@ export class BuddyRequestsComponent implements OnInit {
     })
   }
 
-
+  acceptRequest(request){
+    console.log(request);
+  }
 
 
 }

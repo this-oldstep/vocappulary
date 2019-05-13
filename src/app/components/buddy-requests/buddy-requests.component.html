@@ -1,1 +1,16 @@
-<Button [text]="this.requests[0].username" class="btn btn-primary"></Button>
+<GridLayout tkExampleTitle tkToggleNavButton>
+  <RadListView [items]="requests" class="aaa">
+    <ng-template tkListItemTemplate let-request="item">
+      <GridLayout backgroundColor="white" margin="15" (tap)="acceptRequest(request)">
+        <GridLayout verticalAlignment="bottom">
+          <FlexboxLayout backgroundColor="#f6eec4" paddingTop="15" paddingBottom="15" paddingLeft="16"
+            paddingRight="20">
+            <Label id="col-text" [text]="request.username"></Label>
+          </FlexboxLayout>
+        </GridLayout>
+      </GridLayout>
+    </ng-template>
+    <ListViewGridLayout tkListViewLayout scrollDirection="Vertical" spanCount="1">
+    </ListViewGridLayout>
+  </RadListView>
+</GridLayout>
