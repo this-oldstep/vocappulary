@@ -16,7 +16,7 @@ const i18n = require('../../i18n/i18n.js');
   moduleId: module.id,
 })
 export class CollectionInputComponent implements OnInit  {
-
+  user;
   collectionDescription = "";
   currentCollection = '';
   isLoading = false;
@@ -36,6 +36,7 @@ export class CollectionInputComponent implements OnInit  {
 
   ngOnInit(){
     this.authService.user.subscribe(userData => {
+      this.user = userData;
       let langCode = userData.nativeLanguageId.toString()
       if (!langCode) {
         langCode = '1'
@@ -47,16 +48,16 @@ export class CollectionInputComponent implements OnInit  {
   onCreateCollection() {
     console.log(this.collectionDescription);
     this.isLoading = true;
-    this.authService.user.pipe(switchMap(currentUser => {
+  
       const URL =  `${NGROK}/collections`;
     //should also include active status and userId
     const options = {
       name: this.collectionDescription,
-      userId: currentUser.id,
+      userId: this.user.id,
       public: true
     }
     return this.http.post(URL, options)
-      })).subscribe((response) =>{
+      .subscribe((response) =>{
       console.log('saved in database');
       this.isLoading = false;
       this.input.emit(response);
