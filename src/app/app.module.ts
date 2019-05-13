@@ -5,7 +5,7 @@ import { NativeScriptFormsModule } from 'nativescript-angular/forms'
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AuthComponent } from './auth/auth.component';
-import {CollectionsComponent} from './components/collections/collections.component';
+import { CollectionsComponent } from './components/collections/collections.component';
 import { CollectionInputComponent } from './components/collection-input/collection-input.component';
 import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular/side-drawer-directives'
 import { HttpClientModule } from '@angular/common/http';
@@ -23,9 +23,14 @@ import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 import { PracticeComponent } from './components/practice/practice.component';
 import { LangModalComponent } from './components/lang-modal/lang-modal.component';
 import { ResultsComponent } from './components/results/results.component'
+<<<<<<< HEAD
 import { BuddiesComponent } from "./components/buddies/buddies.component";
 import { IndividualBuddyComponentComponent } from './components/individual-buddy-component/individual-buddy-component.component';
 import { BuddiesTabComponent } from './components/buddies-tab/buddies-tab.component';
+=======
+import { Buddies } from "./components/buddies/buddies.component";
+import { FindBuddyComponent } from './components/find-buddy/find-buddy.component';
+>>>>>>> f34195f62ad50701786679867e4c85e944cb7416
 
 @NgModule({
     bootstrap: [
