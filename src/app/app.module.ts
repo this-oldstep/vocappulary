@@ -23,10 +23,12 @@ import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 import { PracticeComponent } from './components/practice/practice.component';
 import { LangModalComponent } from './components/lang-modal/lang-modal.component';
 import { ResultsComponent } from './components/results/results.component'
-import { Buddies } from "./components/buddies/buddies.component";
-import { MessagesComponent } from './components/messages/messages.component';
-import { FindBuddyComponent } from './components/find-buddy/find-buddy.component';
-
+import { BuddiesComponent } from "./components/buddies/buddies.component";
+import { BuddiesTabComponent } from './components/buddies-tab/buddies-tab.component';
+import { FindBuddyComponent } from "./components/find-buddy/find-buddy.component";
+import { BuddyRequestsComponent } from './components/buddy-requests/buddy-requests.component';
+import { BuddySocketComponent } from './components/buddy-socket/buddy-socket.component';
+import { MessagesComponent } from './components/messages/messages.component'
 @NgModule({
     bootstrap: [
         AppComponent
@@ -58,9 +60,12 @@ import { FindBuddyComponent } from './components/find-buddy/find-buddy.component
         PracticeComponent,
         LangModalComponent,
         ResultsComponent,
-        Buddies,
+        BuddiesComponent,
         MessagesComponent,
         FindBuddyComponent,
+        BuddyRequestsComponent,
+        BuddySocketComponent,
+        BuddiesTabComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA

@@ -7,8 +7,9 @@ import { LandingComponent } from "./components/landing/landing.component";
 import { IndividualCollectionComponent } from "./components/individual-collection/individual-collection.component";
 import { ItemComponent } from './components/item/item.component'
 import { PracticeComponent } from "./components/practice/practice.component";
-import { Buddies } from "./components/buddies/buddies.component";
-import { FindBuddyComponent } from "./components/find-buddy/find-buddy.component";
+import { BuddiesComponent } from "./components/buddies/buddies.component";
+import { BuddiesTabComponent } from "./components/buddies-tab/buddies-tab.component";
+import { MessagesComponent } from "./components/messages/messages.component";
 // you can pass data to a path after component like 
 // so: data: {anyData: 'anyValue}
 //path could be ':anywordofchoice'  
@@ -21,8 +22,8 @@ const routes: Routes = [
     { path: "collection", component: IndividualCollectionComponent},
     { path: "item", component: ItemComponent},
     { path: "practice", component: PracticeComponent},
-    { path: "buddies", component: Buddies},
-    { path: "addBuddies", component: FindBuddyComponent}
+    { path: "buddies", component: BuddiesTabComponent},
+    {path: "messages", component: MessagesComponent}
 ];
 
 @NgModule({

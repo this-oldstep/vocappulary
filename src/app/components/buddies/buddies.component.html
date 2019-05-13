@@ -1,7 +1,17 @@
-<StackLayout>
-    <ng-container *ngFor="let buddy of buddies">
-        <Button
-        [text]="buddy.username"
-        ></Button>
-    </ng-container>
-</StackLayout>
+<GridLayout tkExampleTitle tkToggleNavButton>
+    <RadListView [items]="buddies" class="aaa">
+        <ng-template tkListItemTemplate let-buddy="item">
+            <GridLayout backgroundColor="white" margin="15" (tap)="chat(buddy)">
+                <GridLayout verticalAlignment="bottom">
+                    <FlexboxLayout backgroundColor="#f6eec4" paddingTop="15" paddingBottom="15" paddingLeft="16"
+                        paddingRight="20">
+                        <Label id="col-text" [text]="buddy.username"></Label>
+                    </FlexboxLayout>
+                </GridLayout>
+            </GridLayout>
+        </ng-template>
+        <ListViewGridLayout tkListViewLayout scrollDirection="Vertical" spanCount="1">
+        </ListViewGridLayout>
+    </RadListView>
+</GridLayout>
+

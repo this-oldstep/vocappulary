@@ -17,16 +17,15 @@
         nsRouterLink="/practice"
         (tap)="onLogout()"
         ></Button>
+        <Button text="Buddies" 
+        class="btn btn-primary" 
+        (tap)="onLogout()" 
+        nsRouterLink="/buddies">
+        </Button>
         <Button
         text="{{language.switchLanguage}}"
         class="btn btn-primary"
         (tap)="langSelect()"
-        ></Button>
-        <Button
-        text="Buddies"
-        class='btn btn-primary'
-        nsRouterLink="/buddies"
-        (tap)="onLogout()"
         ></Button>
     </StackLayout>
     <StackLayout tkMainContent>
@@ -34,4 +33,3 @@
     </StackLayout>
 </RadSideDrawer>
     
-
