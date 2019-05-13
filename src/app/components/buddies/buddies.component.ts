@@ -8,7 +8,7 @@ import { AuthService } from "~/app/auth/auth.service";
   styleUrls: ['/buddies.component.css'],
   moduleId: module.id
 })
-export class Buddies implements OnInit {
+export class BuddiesComponent implements OnInit {
   user;
   buddies;
   constructor(
