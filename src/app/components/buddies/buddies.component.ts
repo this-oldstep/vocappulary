@@ -3,7 +3,7 @@ import { BuddiesService } from "./buddies.service";
 import { AuthService } from "~/app/auth/auth.service";
 
 @Component({
-  selector: 'buddies',
+  selector: 'ns-buddies',
   templateUrl: './buddies.component.html',
   styleUrls: ['/buddies.component.css'],
   moduleId: module.id
