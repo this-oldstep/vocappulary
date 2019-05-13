@@ -32,10 +32,10 @@ export class BuddyRequestsComponent implements OnInit {
   acceptRequest(request){
     console.log(request);
 
-    this.http.post(`${NGROK}/requests/accept`, {userId: this.user.id, newBuddyId: })
-      .subscribe( response => {
+    // this.http.post(`${NGROK}/requests/accept`, {userId: this.user.id, newBuddyId: })
+    //   .subscribe( response => {
 
-      })
+    //   })
 
 
   }
