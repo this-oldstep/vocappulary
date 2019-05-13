@@ -26,6 +26,8 @@ import { ResultsComponent } from './components/results/results.component'
 import { BuddiesComponent } from "./components/buddies/buddies.component";
 import { BuddiesTabComponent } from './components/buddies-tab/buddies-tab.component';
 import { FindBuddyComponent } from "./components/find-buddy/find-buddy.component";
+import { BuddyRequestsComponent } from './components/buddy-requests/buddy-requests.component';
+import { BuddySocketComponent } from './components/buddy-socket/buddy-socket.component';
 
 @NgModule({
     bootstrap: [
@@ -60,7 +62,9 @@ import { FindBuddyComponent } from "./components/find-buddy/find-buddy.component
         ResultsComponent,
         BuddiesComponent,
         BuddiesTabComponent,
-        FindBuddyComponent
+        FindBuddyComponent,
+        BuddyRequestsComponent,
+        BuddySocketComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA

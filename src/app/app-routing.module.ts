@@ -21,8 +21,7 @@ const routes: Routes = [
     { path: "collection", component: IndividualCollectionComponent},
     { path: "item", component: ItemComponent},
     { path: "practice", component: PracticeComponent},
-    { path: "buddies", component: BuddiesComponent},
-    { path: "buddyTabs", component: BuddiesTabComponent }
+    { path: "buddies", component: BuddiesTabComponent},
 ];
 
 @NgModule({
