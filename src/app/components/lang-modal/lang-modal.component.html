@@ -1,5 +1,7 @@
 <FlexboxLayout>
-    <Label [text]="pickedLang"></Label>
+    <Label [text]="pickedLang"
+    fontSize="36px"
+    ></Label>
     <ns-lang-picker (onSelection)="onSelectLang($event)">
     </ns-lang-picker>
     <Button class="btn" text="Select" (tap)="closeModal()"></Button>

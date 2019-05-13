@@ -23,9 +23,9 @@ export class AuthComponent implements OnInit {
   passwordControlIsValid = true;
   isLogin = true;
   isLoading = false;
-  natLangStr = 'english';
+  natLangStr
   natLangId = 1;
-  learnLangStr = 'english';
+  learnLangStr
   learnLangId = 1;
   @ViewChild('passwordEl') passwordEl: ElementRef<TextField>;
   @ViewChild('emailEl') emailEl: ElementRef<TextField>;
