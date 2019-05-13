@@ -1,7 +1,7 @@
 <StackLayout>
     <ng-container *ngFor="let buddy of buddies">
         <Button
-        [text]="buddy.username"
+        [text]="buddy.username" (tap)="chat()"
         ></Button>
     </ng-container>
 </StackLayout>
