@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { NGROK, SOCKET } from '../../../config.js';
+import { ActivatedRoute } from '@angular/router';
+
 require("nativescript-websockets");
 
 
@@ -14,11 +16,18 @@ export class MessagesComponent implements OnInit, OnDestroy {
   private socket: any;
   public messages: Array<any>;
   public chatBox: string;
+  public user: any;
 
-  public constructor(private zone: NgZone) {
+  public constructor(
+    
+    private activatedRoute: ActivatedRoute,
+    private zone: NgZone) {
     this.socket = new WebSocket(SOCKET, []);
     this.messages = [];
     this.chatBox = "";
+    this.activatedRoute.queryParams.subscribe( params => {
+      this.user = params;
+    })
   }
 
   public ngOnInit() {

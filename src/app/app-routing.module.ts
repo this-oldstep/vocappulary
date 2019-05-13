@@ -9,6 +9,7 @@ import { ItemComponent } from './components/item/item.component'
 import { PracticeComponent } from "./components/practice/practice.component";
 import { BuddiesComponent } from "./components/buddies/buddies.component";
 import { BuddiesTabComponent } from "./components/buddies-tab/buddies-tab.component";
+import { MessagesComponent } from "./components/messages/messages.component";
 // you can pass data to a path after component like 
 // so: data: {anyData: 'anyValue}
 //path could be ':anywordofchoice'  
@@ -22,6 +23,7 @@ const routes: Routes = [
     { path: "item", component: ItemComponent},
     { path: "practice", component: PracticeComponent},
     { path: "buddies", component: BuddiesTabComponent},
+    {path: "messages", component: MessagesComponent}
 ];
 
 @NgModule({

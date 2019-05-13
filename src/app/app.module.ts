@@ -64,7 +64,8 @@ import { MessagesComponent } from './components/messages/messages.component'
         MessagesComponent,
         FindBuddyComponent,
         BuddyRequestsComponent,
-        BuddySocketComponent
+        BuddySocketComponent,
+        BuddiesTabComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
