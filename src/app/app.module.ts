@@ -28,7 +28,7 @@ import { BuddiesTabComponent } from './components/buddies-tab/buddies-tab.compon
 import { FindBuddyComponent } from "./components/find-buddy/find-buddy.component";
 import { BuddyRequestsComponent } from './components/buddy-requests/buddy-requests.component';
 import { BuddySocketComponent } from './components/buddy-socket/buddy-socket.component';
-
+import { MessagesComponent } from './components/messages/messages.component'
 @NgModule({
     bootstrap: [
         AppComponent
@@ -61,7 +61,7 @@ import { BuddySocketComponent } from './components/buddy-socket/buddy-socket.com
         LangModalComponent,
         ResultsComponent,
         BuddiesComponent,
-        BuddiesTabComponent,
+        MessagesComponent,
         FindBuddyComponent,
         BuddyRequestsComponent,
         BuddySocketComponent
