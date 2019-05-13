@@ -17,7 +17,7 @@ module.exports = {
     firstName: 'First Name',
     nativeLanguage: 'Native Language',
     learningLanguage: 'Learning Language',
-    sixChar: 'Min 6 Characters!!',
+    sixChar: 'Minimum 6 Characters',
 
 
   },
