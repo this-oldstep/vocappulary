@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone, ChangeDetectorRef } from '@angular/core';
 import { NGROK, SOCKET } from '../../../config.js';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -22,8 +22,10 @@ export class MessagesComponent implements OnInit, OnDestroy {
   public buddy: any;
   public status: any;
   private socket: any;
+  public data: any;
 
   public constructor(
+    private chRef: ChangeDetectorRef,
     private authService: AuthService,
     private http: HttpClient,
     private activatedRoute: ActivatedRoute,
@@ -43,26 +45,25 @@ export class MessagesComponent implements OnInit, OnDestroy {
       this.user = user;
     })
 
-    // await this.http.get(`${NGROK}/messages/all/${this.user.id}/${this.buddy.id}`)
-    // .subscribe((allMessages)=>{
-    //   this.messages = allMessages
-    //   // if (this.messages.length > 0){
-    //   //   this.messages.map((message)=>{
-    //   //     if (message.senderId === this.user.id){
-    //   //       return {
-    //   //         user: message.text
-    //   //       }
-    //   //     }
-    //   //     else{
-    //   //       return {
-    //   //         buddy: message.text
-    //   //       }
-    //   //     }
-    //   //   })
-    //   // }
-    //   });
+    await this.http.get(`${NGROK}/messages/all/${this.user.id}/${this.buddy.id}`)
+    .subscribe((data)=>{
+      this.data = data
+      this.messages = this.data.messages.map((message)=>{
+        if (message.senderId === this.user.id){
+          return {
+            user: message.text
+          }
+        }
+        else {
+          return {
+            buddy: message.text
+          }
+        }
+      })
+    })
+    console.log(this.messages)
 
-      console.log(this.messages)
+
 
 
 
@@ -78,10 +79,12 @@ export class MessagesComponent implements OnInit, OnDestroy {
       if (event.senderId === this.user.id){
         this.messages.push({user: event.text})
         console.log(this.messages)
+        this.chRef.detectChanges();
       }
       else {
         console.log('recieved messages', JSON.stringify(event.text))
         this.messages.push({buddy: event.text});
+        this.chRef.detectChanges();
       }
     })
   }
