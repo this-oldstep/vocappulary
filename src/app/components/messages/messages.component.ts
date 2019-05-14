@@ -1,12 +1,10 @@
-import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone, ChangeDetectorRef } from '@angular/core';
 import { NGROK, SOCKET } from '../../../config.js';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from "~/app/auth/auth.service";
 import { User } from '~/app/auth/user.model.js';
-
-
-require("nativescript-websockets");
+const SocketIO = require('nativescript-socket.io');
 
 
 @Component({
@@ -16,15 +14,18 @@ require("nativescript-websockets");
   moduleId: module.id,
 })
 export class MessagesComponent implements OnInit, OnDestroy {
-
-  private socket: any;
-  public messages: Array<any>;
+  
+  public messages: any;
   public chatBox: string;
   public user: any;
   public port: any;
   public buddy: any;
+  public status: any;
+  private socket: any;
+  public data: any;
 
   public constructor(
+    private chRef: ChangeDetectorRef,
     private authService: AuthService,
     private http: HttpClient,
     private activatedRoute: ActivatedRoute,
@@ -32,7 +33,6 @@ export class MessagesComponent implements OnInit, OnDestroy {
 
     
     ) {
-    this.socket;
     this.messages = [];
     this.chatBox = "";
     this.activatedRoute.queryParams.subscribe( params => {
@@ -44,68 +44,54 @@ export class MessagesComponent implements OnInit, OnDestroy {
     await this.authService.user.subscribe(user=>{
       this.user = user;
     })
-    console.log(this.user, this.buddy)
-    let options = {
-      userId: this.user,
-      buddyId: this.buddy,
-      hello: 'hello steve'
-    }
-    this.http.get(`${NGROK}/newConnection/${this.user.id}/${this.buddy.id}`)
-    .subscribe((port)=>{
-      console.log(port, 'inner')
-      this.port = port;
-      this.socket = new WebSocket(`${SOCKET}`, []);
 
-      this.socket.addEventListener('open', event => {
-        this.zone.run(() => {
-          console.log('looks like you successfully connected')
-          this.messages.push({ content: "Welcome to the chat!" });
-        });
-      });
-      this.socket.addEventListener('message', event => {
-        this.zone.run(() => {
-          console.log(event.data.message)
-          let message = JSON.parse(event.data)
-          console.log(message)
-          this.messages.push(message.text);
-        });
-      });
-      this.socket.addEventListener('close', event => {
-        this.zone.run(() => {
-          this.messages.push({ content: "You have been disconnected" });
-        });
-      });
-      this.socket.addEventListener('error', event => {
-        console.log("The socket had an error", event.error);
-      });
-
+    await this.http.get(`${NGROK}/messages/all/${this.user.id}/${this.buddy.id}`)
+    .subscribe((data)=>{
+      this.data = data
+      this.messages = this.data.messages.map((message)=>{
+        if (message.senderId === this.user.id){
+          return {
+            user: message.text
+          }
+        }
+        else {
+          return {
+            buddy: message.text
+          }
+        }
+      })
     })
-    // this.socket.addEventListener('open', event => {
-    //   this.zone.run(() => {
-    //     console.log('looks like you successfully connected')
-    //     this.messages.push({ content: "Welcome to the chat!" });
-    //   });
-    // });
-    // this.socket.addEventListener('message', event => {
-    //   this.zone.run(() => {
-    //     console.log(event.data.message)
-    //     let message = JSON.parse(event.data)
-    //     console.log(message)
-    //     this.messages.push(message.message);
-    //   });
-    // });
-    // this.socket.addEventListener('close', event => {
-    //   this.zone.run(() => {
-    //     this.messages.push({ content: "You have been disconnected" });
-    //   });
-    // });
-    // this.socket.addEventListener('error', event => {
-    //   console.log("The socket had an error", event.error);
-    // });
+    console.log(this.messages)
+
+
+
+
+
+
+    this.socket = await SocketIO.connect(NGROK);
+
+
+    this.socket.on('connect', ()=> {
+      console.log('connect');
+      this.socket.emit('connectMessage', { userId: this.user.id, buddyId: parseInt(this.buddy.id )})
+    });
+    this.socket.on('recieve', (event)=>{
+      if (event.senderId === this.user.id){
+        this.messages.push({user: event.text})
+        console.log(this.messages)
+        this.chRef.detectChanges();
+      }
+      else {
+        console.log('recieved messages', JSON.stringify(event.text))
+        this.messages.push({buddy: event.text});
+        this.chRef.detectChanges();
+      }
+    })
   }
 
   public ngOnDestroy() {
-    this.socket.close();
+      this.socket.emit('discon', this.user.id)
+      this.socket.disconnect();
   }
 
   public send() {
@@ -116,7 +102,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
         userId: this.user.id,
         buddyId: this.buddy.id
       }
-      this.socket.send(JSON.stringify(options));
+      this.socket.emit('message', options)
       this.chatBox = "";
     }
   }

@@ -26,7 +26,7 @@ export class BuddyRequestsComponent implements OnInit {
     })
     this.buddyRequestsService.getRequests(this.user.id);
     this.buddyRequestsService.requests.subscribe(currentRequests => {
-      this.requests = currentRequests;
+        this.requests = currentRequests;
     })
   }
 
