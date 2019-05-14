@@ -43,24 +43,24 @@ export class MessagesComponent implements OnInit, OnDestroy {
       this.user = user;
     })
 
-    await this.http.get(`${NGROK}/messages/all/${this.user.id}/${this.buddy.id}`)
-    .subscribe((allMessages)=>{
-      this.messages = allMessages
-      // if (this.messages.length > 0){
-      //   this.messages.map((message)=>{
-      //     if (message.senderId === this.user.id){
-      //       return {
-      //         user: message.text
-      //       }
-      //     }
-      //     else{
-      //       return {
-      //         buddy: message.text
-      //       }
-      //     }
-      //   })
-      // }
-      });
+    // await this.http.get(`${NGROK}/messages/all/${this.user.id}/${this.buddy.id}`)
+    // .subscribe((allMessages)=>{
+    //   this.messages = allMessages
+    //   // if (this.messages.length > 0){
+    //   //   this.messages.map((message)=>{
+    //   //     if (message.senderId === this.user.id){
+    //   //       return {
+    //   //         user: message.text
+    //   //       }
+    //   //     }
+    //   //     else{
+    //   //       return {
+    //   //         buddy: message.text
+    //   //       }
+    //   //     }
+    //   //   })
+    //   // }
+    //   });
 
       console.log(this.messages)
 
