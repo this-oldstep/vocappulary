@@ -3,15 +3,15 @@
   selectedTabTextColor="white" 
   tabBackgroundColor="#4cdcc6"
   tabTextFontSize="12">
-  <StackLayout *tabItem="{title: 'buddy'}">
-    <Label text="f002"></Label>
+  <StackLayout *tabItem="{iconSource: 'res://buds'}">
+    <Label text="your buddies"></Label>
     <ns-buddies></ns-buddies>
   </StackLayout>
-  <StackLayout *tabItem="{title: 'Find Buddy'}">
+  <StackLayout *tabItem="{iconSource: 'res://search'}">
     <Label text="find buddies"></Label>
     <ns-find-buddy></ns-find-buddy>
   </StackLayout>
-  <StackLayout *tabItem="{title: 'Buddy Requests'}">
+  <StackLayout *tabItem="{iconSource: 'res://check'}">
     <Label text="They wanna be your buddy!"></Label>
     <ns-buddy-requests></ns-buddy-requests>
   </StackLayout>

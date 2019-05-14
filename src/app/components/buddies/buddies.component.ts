@@ -27,7 +27,7 @@ export class BuddiesComponent implements OnInit {
     this.buddiesService.getBuddies(this.user.id)
 
     this.buddiesService.buddies.subscribe(buddies => {
-      this.buddies = buddies;
+        this.buddies = buddies;
       console.log('your buddies are', this.buddies);
     })
   }
