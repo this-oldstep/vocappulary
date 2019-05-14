@@ -1,5 +1,5 @@
 
-import { Component,  EventEmitter, Output, OnInit } from '@angular/core';
+import { Component,  EventEmitter, Output, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '~/app/auth/auth.service';
@@ -7,8 +7,7 @@ import { switchMap } from 'rxjs/operators';
 import { NGROK } from '../../../config';
 import { TextField } from 'tns-core-modules/ui/text-field/text-field';
 const i18n = require('../../i18n/i18n.js');
-import * as app from 'tns-core-modules/application';
-import { isAndroid } from 'platform';
+
 
 @Injectable()
 @Component({
@@ -31,6 +30,7 @@ export class CollectionInputComponent implements OnInit  {
 
   @Output() input = new EventEmitter <Object>();
 
+  @ViewChild("test") test: ElementRef;
 
   ngOnInit(){
     this.authService.user.subscribe(userData => {
@@ -43,6 +43,11 @@ export class CollectionInputComponent implements OnInit  {
     })
   }
 
+  clearKeyboard(){
+    let test = <TextField>this.test.nativeElement;
+    test.dismissSoftInput();
+    test.android.clearFocus();
+  }
 
 
   onCreateCollection() {
@@ -64,8 +69,8 @@ export class CollectionInputComponent implements OnInit  {
         console.log('saved in database');
         this.isLoading = false;
         this.collectionDescription = '';
-        let tab = 
         this.input.emit(response); 
+        this.clearKeyboard();
       });
     }
   }
