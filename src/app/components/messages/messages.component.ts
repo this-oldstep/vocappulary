@@ -15,7 +15,7 @@ const SocketIO = require('nativescript-socket.io');
 })
 export class MessagesComponent implements OnInit, OnDestroy {
   
-  public messages: Array<any>;
+  public messages: any;
   public chatBox: string;
   public user: any;
   public port: any;
@@ -43,6 +43,30 @@ export class MessagesComponent implements OnInit, OnDestroy {
       this.user = user;
     })
 
+    await this.http.get(`${NGROK}/messages/all/${this.user.id}/${this.buddy.id}`)
+    .subscribe((allMessages)=>{
+      this.messages = allMessages
+      // if (this.messages.length > 0){
+      //   this.messages.map((message)=>{
+      //     if (message.senderId === this.user.id){
+      //       return {
+      //         user: message.text
+      //       }
+      //     }
+      //     else{
+      //       return {
+      //         buddy: message.text
+      //       }
+      //     }
+      //   })
+      // }
+      });
+
+      console.log(this.messages)
+
+
+
+
     this.socket = await SocketIO.connect(NGROK);
 
 
@@ -51,12 +75,11 @@ export class MessagesComponent implements OnInit, OnDestroy {
       this.socket.emit('connectMessage', { userId: this.user.id, buddyId: parseInt(this.buddy.id )})
     });
     this.socket.on('recieve', (event)=>{
-      console.log('this is console loggin even', event.text, event.senderId, this.user.id)
       if (event.senderId === this.user.id){
-        this.messages.push(JSON.stringify({user: event.text}))
+        this.messages.push({user: event.text})
         console.log(this.messages)
       }
-      else{
+      else {
         this.messages.push(JSON.stringify({buddy: event.text}))
       }
     })

@@ -1,1 +1,18 @@
-/* Add mobile styles for the component here.  */
+.buddy-message{
+  background-color: #f6eec4;
+  border-radius: 30px;
+  text-align: left;
+}
+
+.user-message{
+  background-color: #4cdcc6;
+  border-radius: 30px;
+  text-align: right;
+}
+
+/* .list-group-item{
+  /* background-color: #ca5a00; */
+  /* border-radius: 15px; */
+} */
+
+

@@ -2,8 +2,9 @@
 <GridLayout rows="*, auto" columns="*">
   <ListView [items]="messages" class="list-group" row="0" col="0">
     <Template message="item">
-      <GridLayout class="list-group-item">
-        <Label text="{{messages}}"></Label>
+      <GridLayout class="list-group-item" *ngFor="let message of messages">
+        <Label *ngIf="(message.user)" [text]="message.user" class="user-message"></Label>
+        <Label *ngIf="(message.buddy)" [text]="message.user" class="buddy-message"></Label>
       </GridLayout>
     </Template>
   </ListView>
