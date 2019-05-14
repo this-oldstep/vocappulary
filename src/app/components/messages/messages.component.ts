@@ -80,7 +80,8 @@ export class MessagesComponent implements OnInit, OnDestroy {
         console.log(this.messages)
       }
       else {
-        this.messages.push(JSON.stringify({buddy: event.text}))
+        console.log('recieved messages', JSON.stringify(event.text))
+        this.messages.push({buddy: event.text});
       }
     })
   }

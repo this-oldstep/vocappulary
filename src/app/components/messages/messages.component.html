@@ -1,12 +1,12 @@
 <ActionBar title="Messaging Component"></ActionBar>
 <GridLayout rows="*, auto" columns="*">
   <ListView [items]="messages" class="list-group" row="0" col="0">
-    <Template message="item">
-      <GridLayout class="list-group-item" *ngFor="let message of messages">
-        <Label *ngIf="(message.user)" [text]="message.user" class="user-message"></Label>
-        <Label *ngIf="(message.buddy)" [text]="message.user" class="buddy-message"></Label>
+    <ng-template let-message="item">
+      <GridLayout class="list-group-item">
+        <Label *ngIf=(message.user) [text]="message.user" class="user-message"></Label>
+        <Label *ngIf=(message.buddy) [text]="message.buddy" class="buddy-message"></Label>
       </GridLayout>
-    </Template>
+    </ng-template>
   </ListView>
   <StackLayout class="chat-area" row="1" col="0">
     <GridLayout rows="auto" columns="*, auto">
