@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BuddyRequestsService } from './buddy-requests.service';
 import { AuthService } from '~/app/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
+import { NGROK } from '../../../config'
 
 
 @Component({
@@ -32,10 +33,10 @@ export class BuddyRequestsComponent implements OnInit {
   acceptRequest(request){
     console.log(request);
 
-    // this.http.post(`${NGROK}/requests/accept`, {userId: this.user.id, newBuddyId: })
-    //   .subscribe( response => {
-
-    //   })
+    this.http.post(`${NGROK}/requests/accept`, {userId: this.user.id, newBuddyId: request.id })
+      .subscribe( response => {
+        console.log('response from server', response);
+      })
 
 
   }
