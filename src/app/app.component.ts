@@ -93,7 +93,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
               return new Promise((resolve)=> {
                 this.authService.user.pipe(take(1)).subscribe(currentUser => {
                     console.log(currentUser);
-                    this.user = new User(currentUser.email, currentUser.id, currentUser.username, action[1], currentUser.nativeLanguageId, currentUser.points, currentUser._token, currentUser._tokenExpirationDate)
+                    this.user = new User(currentUser.email, currentUser.id, currentUser.username, action[1], currentUser.nativeLanguageId, currentUser.points, currentUser._token, currentUser._tokenExpirationDate, currentUser.firebase)
                       
                     this.http.patch(
                         `${NGROK}/user/edit/`

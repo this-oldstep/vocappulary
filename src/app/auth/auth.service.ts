@@ -7,8 +7,6 @@ import { User } from './user.model';
 import {NGROK, FIREBASE_API_KEY} from '../../config';
 
 
-// const FIREBASE_API_KEY = 'AIzaSyC8WpwuQBkU6xoVHnoZ59xyDk9pdvFNeR0'
-
 interface AuthResponseData {
     kind: string;
     idToken: string;
@@ -26,6 +24,7 @@ interface VocappResponseData {
     currentLanguageId: number;
     id: number;
     email: string;
+    firebase: string;
 
 }
 
@@ -65,15 +64,6 @@ export class AuthService {
                 this.handleError(errorRes.error.error.message)
                 return errorRes;
             });
-            // (catchError(errorRes => {
-            //     this.handleError(errorRes.error.error.message)
-            //     return throwError(errorRes);
-            // }),
-            // tap(resData => {
-            //     if (resData && resData.idToken) {
-            //         this.handleLogin(email, resData.idToken, resData.localId, parseInt(resData.expiresIn), false);
-            //     }
-            // }))
     }
 
     private handleLogin(email: string, token: string, userId: number, username: string, natLang: number, learnLang: number, expiresIn: number, newUser: boolean) {
@@ -88,7 +78,8 @@ export class AuthService {
             const nativeLanguageId = response.nativeLanguageId;
             const points = response.points;
             const username = response.username;
-            const user = new User(email, userId, username, currentLanguageId, nativeLanguageId, points, token, expirationDate,  );
+            const firebase = response.firebase;
+            const user = new User(email, userId, username, currentLanguageId, nativeLanguageId, points, token, expirationDate, firebase );
             this._user.next(user);
             console.log(user);
         })
