@@ -13,7 +13,6 @@ android {
   defaultConfig {
     minSdkVersion 17
     generatedDensities = []
-    // flavorDimensions "default" // added
   }
   aaptOptions {
     additionalParameters "--no-version-vectors"
