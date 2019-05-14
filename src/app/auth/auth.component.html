@@ -72,9 +72,16 @@
     (tap)="onChangeNative()"
     FormControlName = natLang
     #natLangEl
-    *ngIf="!isLogin"
+    *ngIf="!isLogin && natLangStr"
     isEnabled="true";
     >
+  </Button>
+  <Button class = "btn" 
+  text="Select Language" 
+  (tap)="onChangeNative()"
+  isEnabled="true";
+  *ngIf="!isLogin && !natLangStr"
+  >
   </Button>
   </StackLayout>
   <StackLayout>
@@ -87,9 +94,16 @@
     (tap)="onChangeLearning()"
     FormControlName = learnLang
     #learnLangEl
-    *ngIf="!isLogin"
+    *ngIf="!isLogin && learnLangStr"
     isEnabled="true";
     >
+  </Button>
+  <Button class = "btn" 
+  text="Select Language" 
+  (tap)="onChangeLearning()"
+  isEnabled="true";
+  *ngIf="!isLogin && !learnLangStr"
+  >
   </Button>
   </StackLayout>
   <Button [text]="isLogin ? language.signup : language.login" class="btn" (tap)="onSwitch()"></Button>
