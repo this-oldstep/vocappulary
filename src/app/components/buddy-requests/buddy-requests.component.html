@@ -1,14 +1,16 @@
 <GridLayout tkExampleTitle tkToggleNavButton>
   <RadListView [items]="requests" class="aaa">
     <ng-template tkListItemTemplate let-request="item">
-      <GridLayout backgroundColor="white" margin="15" (tap)="acceptRequest(request)">
+      <GridLayout backgroundColor="white" margin="15">
         <GridLayout verticalAlignment="bottom" >
           <FlexboxLayout backgroundColor="#f6eec4" paddingTop="15" paddingBottom="15" paddingLeft="16"
             paddingRight="20">
-            <GridLayout rows="1*,*" columns="2*,*">
-              <Label id="col-text" col="0" row="0" [text]="request.username"></Label>
-              <Button id="accept" col="1" row="1" text="accept" (tap)="acceptRequest(request)"></Button>
-              <Button id="reject" col="1" row="1" text="reject" (tap)="rejectRequest(request)"></Button>
+            <GridLayout rows="*,*,*" columns="*,2*">
+                <Label id="username" col="0" row="0" [text]="request.username"></Label>
+                <Label row='1' col='0' text="speaks gibberish"></Label>
+                <Label row='2' col='0' text="learning french"></Label>
+                <Button class="btn " id="accept" col="1" row="1" text="accept" (tap)="acceptRequest(request)"></Button>
+                <Button class="btn" id="reject" col="1" row="2" text="reject" (tap)="rejectRequest(request)"></Button>
             </GridLayout>
           </FlexboxLayout>
         </GridLayout>

@@ -1,7 +1,23 @@
 #accept{
   background-color: green; 
+  font-weight: bold;
+  color: white;
+  padding-bottom: 5px;
 }
 
 #reject{
   background-color: red;
+  font-weight: bold;
+  color: white;
+  padding-bottom: 5px;
+}
+
+FlexboxLayout{
+  border-width: 10px;
+  border-radius: 10px;
+  border-color: #4cdcc6;
+}
+
+#username{
+  font-size: 25px;
 }
