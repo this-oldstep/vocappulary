@@ -2,10 +2,14 @@
   <RadListView [items]="requests" class="aaa">
     <ng-template tkListItemTemplate let-request="item">
       <GridLayout backgroundColor="white" margin="15" (tap)="acceptRequest(request)">
-        <GridLayout verticalAlignment="bottom">
+        <GridLayout verticalAlignment="bottom" >
           <FlexboxLayout backgroundColor="#f6eec4" paddingTop="15" paddingBottom="15" paddingLeft="16"
             paddingRight="20">
-            <Label id="col-text" [text]="request.username"></Label>
+            <GridLayout rows="1*,*" columns="2*,*">
+              <Label id="col-text" col="0" row="0" [text]="request.username"></Label>
+              <Button id="accept" col="1" row="1" text="accept" (tap)="acceptRequest(request)"></Button>
+              <Button id="reject" col="1" row="1" text="reject" (tap)="rejectRequest(request)"></Button>
+            </GridLayout>
           </FlexboxLayout>
         </GridLayout>
       </GridLayout>

@@ -1,1 +1,7 @@
-/* Add mobile styles for the component here.  */
+#accept{
+  background-color: green; 
+}
+
+#reject{
+  background-color: red;
+}
