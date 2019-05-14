@@ -5,8 +5,10 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '~/app/auth/auth.service';
 import { switchMap } from 'rxjs/operators';
 import { NGROK } from '../../../config';
-// import { LandingComponent } from '../landing/landing.component';
+import { TextField } from 'tns-core-modules/ui/text-field/text-field';
 const i18n = require('../../i18n/i18n.js');
+import * as app from 'tns-core-modules/application';
+import { isAndroid } from 'platform';
 
 @Injectable()
 @Component({
@@ -21,14 +23,10 @@ export class CollectionInputComponent implements OnInit  {
   currentCollection = '';
   isLoading = false;
 
-  // private userId: number = 9;
   constructor(private http: HttpClient,
-    private authService: AuthService, 
-    // private landing: LandingComponent
-    ) { }
+              private authService: AuthService,) {}
 
     private language: any; 
-
 
 
   @Output() input = new EventEmitter <Object>();
@@ -45,30 +43,30 @@ export class CollectionInputComponent implements OnInit  {
     })
   }
 
-  onCreateCollection() {
-    console.log(this.collectionDescription);
-    this.isLoading = true;
-  
-      const URL =  `${NGROK}/collections`;
-    //should also include active status and userId
-    const options = {
-      name: this.collectionDescription,
-      userId: this.user.id,
-      public: true
-    }
-    return this.http.post(URL, options)
-      .subscribe((response) =>{
-      console.log('saved in database');
-      this.isLoading = false;
-      this.input.emit(response);
-      /*
-        this response gives me the id of the collection created,
-        figure out how to attach that id to the button created
-        so that when that button is clicked, on ngOninit for 
-        individualCollection, I can use that collection id to get 
-        all the items from a collection. also its name
-      */
-    })
-  }
 
+
+  onCreateCollection() {
+
+    if (this.collectionDescription.length){
+
+      console.log(this.collectionDescription);
+      this.isLoading = true;
+      
+      const URL =  `${NGROK}/collections`;
+      const options = {
+        name: this.collectionDescription,
+        userId: this.user.id,
+        public: true
+      }
+      
+      return this.http.post(URL, options)
+      .subscribe((response) =>{
+        console.log('saved in database');
+        this.isLoading = false;
+        this.collectionDescription = '';
+        let tab = 
+        this.input.emit(response); 
+      });
+    }
+  }
 }
