@@ -75,6 +75,11 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
     onLogout() {
         this.uiService.toggleDrawer();
+        this.authService.logout();
+    }
+
+    onClick() {
+        this.uiService.toggleDrawer();
     }
 
     ngOnDestroy() {

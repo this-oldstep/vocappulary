@@ -5,6 +5,7 @@ import { throwError, BehaviorSubject } from 'rxjs';
 import { alert } from 'tns-core-modules/ui/dialogs'
 import { User } from './user.model';
 import {NGROK, FIREBASE_API_KEY} from '../../config';
+import { RouterExtensions } from 'nativescript-angular/router';
 
 
 interface AuthResponseData {
@@ -32,7 +33,10 @@ interface VocappResponseData {
 export class AuthService {
     private _user = new BehaviorSubject<User>(null);
 
-    constructor(private http: HttpClient ) {}
+    constructor(
+        private http: HttpClient, 
+        private router: RouterExtensions,
+        ) {}
 
     get user() {
         return this._user.asObservable();
@@ -64,6 +68,11 @@ export class AuthService {
                 this.handleError(errorRes.error.error.message)
                 return errorRes;
             });
+    }
+
+    logout() {
+        this._user.next(null);
+        this.router.navigate(['/'], {clearHistory: true});
     }
 
     private handleLogin(email: string, token: string, userId: number, username: string, natLang: number, learnLang: number, expiresIn: number, newUser: boolean) {
