@@ -38,6 +38,7 @@ export class LandingComponent implements OnInit {
         langCode = '1'
       }
       this.language = i18n[langCode]
+      console.log("testing", this.language)
     })
     this.getAllCollections();
   }
