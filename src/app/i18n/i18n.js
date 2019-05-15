@@ -1,6 +1,7 @@
 module.exports = {
   1: {
     language: 'English',
+    google: true,
     hello: 'hi there pal',
     myCollection: 'My Collection',
     create: 'Create',
@@ -39,6 +40,7 @@ module.exports = {
   },
   2: {
     language: 'Spanish',
+    google: true,
     hello: 'Hola',
     myCollection: 'Mi colección',
     create: 'Crear',
@@ -76,6 +78,7 @@ module.exports = {
   },
   3: { 
     language: 'Portugese',
+    google: true,
     hello: 'hello portugese',
     myCollection: 'Minha coleção',
     create: 'Crio',
@@ -114,6 +117,7 @@ module.exports = {
   },
   4:{
     language: 'Italian',
+    google: true,
     hello: 'hello portugese',
     myCollection: 'Minha coleção',
     create: 'Creare',
@@ -151,6 +155,7 @@ module.exports = {
   },
   5:{
     language: 'French',
+    google: true,
     hello: 'Bonjour',
     myCollection: 'Mes Collections',
     create: 'Créer',
@@ -189,6 +194,7 @@ module.exports = {
   },
   6: {
     language: 'German',
+    google: true,
     hello: 'Hallo',
     myCollection: 'Meine Sammlungen',
     create: 'Erstellen',
@@ -227,6 +233,7 @@ module.exports = {
   },
   7: {
     language: 'Danish',
+    google: true,
     hello: 'Hej',
     myCollection: 'Mine Samlinger',
     create: 'Skab',
@@ -265,6 +272,7 @@ module.exports = {
   },
   8: {
     language: 'Swahili',
+    google: false,
     hello: 'Kuwakaribisha',
     myCollection: "Makusanyo Yangu",
     create: 'makusanyo',
@@ -303,6 +311,7 @@ module.exports = {
   },
   9: {
     language: 'Tagalog',
+    google: false,
     hello: 'Kamusta',
     myCollection: 'Aking Mga Koleksyon',
     create: 'lumikha',
@@ -341,6 +350,7 @@ module.exports = {
   },
   10: {
     language: 'Vietnamese',
+    google: false,
     hello: 'Xin Chào',
     myCollection: 'Bộ sưu tập của tôi',
     create: 'tạo nên',
@@ -379,6 +389,7 @@ module.exports = {
   },
   11: {
     language: 'Turkish',
+    google: true,
     hello: 'Merhaba',
     myCollection: 'Benim Koleksiyonum',
     create: 'Yaratmak',
@@ -417,6 +428,7 @@ module.exports = {
   },
   12: {
     language: 'Basque',
+    google: false,
     hello: 'Kaixo',
     myCollection: "Nire Bildumak",
     create: 'Sortzen',
@@ -455,6 +467,7 @@ module.exports = {
   },
   13: {
     language: 'Zulu',
+    google: false,
     hello: 'Sawubona',
     myCollection: 'Amaqoqo ami',
     create: 'Dala',
