@@ -97,7 +97,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
                       
                     this.http.patch(
                         `${NGROK}/user/edit/`
-                        , {id: currentUser.id, currentLanguageId: action[1]}
+                        , {id: currentUser.id, currentLanguageId: action[1], firebase: currentUser.firebase}
                     ).subscribe(resData => {resolve(resData)})
                   })
               })
