@@ -14,7 +14,7 @@ const i18n = require('../../i18n/i18n.js')
 })
 
 export class SelectWordComponent implements OnInit {
-
+  user;
   public words: {
     data: [
   { wordId: number
@@ -62,10 +62,14 @@ private language: any;
       imgUrl: string,
       wordId: number,
       collectionId: number,
+      userId: number,
+      firebase: string
     } = {
       imgUrl: this.imgUrl,
       wordId: action,
-      collectionId: this.collectionId
+      collectionId: this.collectionId,
+      userId: this.user.id,
+      firebase: this.user.firebase,
     }
     
     const URL = `${NGROK}/collectionItems`
@@ -89,6 +93,7 @@ private language: any;
       }
       console.log(i18n[langCode])
       this.language = i18n[langCode]
+      this.user = userData;
     })
 
 

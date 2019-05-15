@@ -17,7 +17,7 @@ const i18n = require('../../i18n/i18n.js')
   moduleId: module.id,
 })
 export class LandingComponent implements OnInit {
-
+  user;
   isLoading = false;
   private myCollections: string; 
   public language: any;
@@ -31,14 +31,16 @@ export class LandingComponent implements OnInit {
   activeCollections: any;
 
   ngOnInit(){
-    this.getAllCollections();
     this.authService.user.subscribe(userData=>{
+      this.user = userData;
       let langCode = userData.nativeLanguageId.toString()
       if (!langCode){
         langCode = '1'
       }
       this.language = i18n[langCode]
+      console.log("testing", this.language)
     })
+    this.getAllCollections();
   }
 
   onCollectionInput($event) {
@@ -49,11 +51,11 @@ export class LandingComponent implements OnInit {
 
   getAllCollections(){
     this.isLoading = true;
-    this.authService.user.pipe(switchMap(currentUser => {
+    
       const URL = `${NGROK}/collections/get`
-      const options = { userId: currentUser.id }
+      const options = { userId: this.user.id, firebase: this.user.firebase }
       return this.http.post(URL, options)
-    })).subscribe(collections => {
+      .subscribe(collections => {
       //console.log(collections);
       this.activeCollections = collections;
       console.log('users collections', this.activeCollections);

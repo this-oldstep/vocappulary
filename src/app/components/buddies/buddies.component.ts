@@ -24,7 +24,7 @@ export class BuddiesComponent implements OnInit {
     this.authService.user.subscribe(user => {
       this.user = user;
     })
-    this.buddiesService.getBuddies(this.user.id)
+    this.buddiesService.getBuddies(this.user.id, this.user.firebase)
 
     this.buddiesService.buddies.subscribe(buddies => {
         this.buddies = buddies;

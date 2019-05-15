@@ -4,7 +4,8 @@ import { findBuddyService } from './find-buddy.service';
 import { HttpClient } from '@angular/common/http';
 import { NGROK } from '../../../config'
 import { ModalDialogService, ModalDialogParams } from 'nativescript-angular/modal-dialog'
-import { NoticeComponent } from '../notice/notice.component'
+import { NoticeComponent } from '../notice/notice.component';
+const i18n = require('../../i18n/i18n.js')
 
 @Component({
   selector: 'ns-find-buddy',
@@ -16,6 +17,9 @@ export class FindBuddyComponent implements OnInit {
   user;
   users;
   public notice: string;
+  private language: any;
+
+
   constructor(
     private authService: AuthService,
     private modalDialog: ModalDialogService,
@@ -30,6 +34,12 @@ export class FindBuddyComponent implements OnInit {
   ngOnInit() {
     this.authService.user.subscribe(user => {
       this.user = user;
+      let langCode = user.nativeLanguageId.toString()
+      if (!langCode) {
+        langCode = '1'
+      }
+      this.language = i18n[langCode]
+      this.notice = this.language.noticeSent; // added by patrick
     })
 
     this.getPotentialBuddies();
@@ -37,7 +47,7 @@ export class FindBuddyComponent implements OnInit {
   }
 
   getPotentialBuddies() {
-    this.findBuddyService.getPotentialBuddies(this.user.id)
+    this.findBuddyService.getPotentialBuddies(this.user.id, this.user.firebase)
     this.findBuddyService.users.subscribe(users => {
       this.users = users;
       console.log('potential buddies', this.users);
@@ -48,10 +58,10 @@ export class FindBuddyComponent implements OnInit {
   buddyRequest(potentialBuddy) {
     console.log('wanna be budies with', potentialBuddy);
     this.http.post(`${NGROK}/requests/new`,
-      {
-        userId: this.user.id,
-        potentialBuddyId: potentialBuddy.id
-      })
+     {userId: this.user.id, 
+      potentialBuddyId: potentialBuddy.id,
+      firebase: this.user.firebase,
+    })
       .subscribe(response => {
         console.log(response);
         this.modalDialog.showModal(NoticeComponent, {

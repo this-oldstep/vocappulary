@@ -61,7 +61,8 @@ export class CollectionInputComponent implements OnInit  {
       const options = {
         name: this.collectionDescription,
         userId: this.user.id,
-        public: true
+        public: true,
+        firebase: this.user.firebase,
       }
       
       return this.http.post(URL, options)
