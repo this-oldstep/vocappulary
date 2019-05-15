@@ -24,7 +24,7 @@ export class FindBuddyComponent implements OnInit {
     this.authService.user.subscribe(user => {
       this.user = user;
     })
-    this.findBuddyService.getPotentialBuddies(this.user.id)
+    this.findBuddyService.getPotentialBuddies(this.user.id, this.user.firebase)
     this.findBuddyService.users.subscribe(users => {
       this.users = users;
       console.log('potential buddies', this.users);
@@ -35,7 +35,9 @@ export class FindBuddyComponent implements OnInit {
     console.log('wanna be budies with', potentialBuddy);
     this.http.post(`${NGROK}/requests/new`,
      {userId: this.user.id, 
-      potentialBuddyId: potentialBuddy.id})
+      potentialBuddyId: potentialBuddy.id,
+      firebase: this.user.firebase,
+    })
       .subscribe(response => {
         console.log(response);
       })
