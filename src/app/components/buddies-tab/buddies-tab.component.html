@@ -1,18 +1,17 @@
-<TabView
+<StackLayout>
+  <TabView
   androidTabsPosition="bottom"
   selectedTabTextColor="white" 
   tabBackgroundColor="#4cdcc6"
   tabTextFontSize="12">
   <StackLayout *tabItem="{iconSource: 'res://buds'}">
-    <Label text="{{language.your}} {{language.buddies}}"></Label>
     <ns-buddies></ns-buddies>
   </StackLayout>
   <StackLayout *tabItem="{iconSource: 'res://search'}">
-    <Label text="{{language.find}} {{language.buddies}}"></Label>
     <ns-find-buddy></ns-find-buddy>
   </StackLayout>
   <StackLayout *tabItem="{iconSource: 'res://check'}">
-    <Label text="{{language.theyWantToBeYourBuddy}}"></Label>
     <ns-buddy-requests></ns-buddy-requests>
   </StackLayout>
 </TabView>
+</StackLayout>

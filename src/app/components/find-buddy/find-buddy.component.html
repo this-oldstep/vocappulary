@@ -1,21 +1,23 @@
-<ns-action-bar title="Buddies!"></ns-action-bar>
+<StackLayout>
 
-<GridLayout tkExampleTitle tkToggleNavButton>
-    <RadListView [items]="users" class="aaa">
-        <ng-template tkListItemTemplate let-user="item">
-            <GridLayout backgroundColor="white" margin="15" (tap)="buddyRequest(user)">
-                <GridLayout verticalAlignment="bottom">
-                    <FlexboxLayout backgroundColor="#f6eec4" paddingTop="15" paddingBottom="15" paddingLeft="16"
+    <ns-action-bar title="Buddies!"></ns-action-bar>
+    <GridLayout tkExampleTitle tkToggleNavButton>
+        <RadListView [items]="users" class="aaa">
+            <ng-template tkListItemTemplate let-user="item">
+                <StackLayout>
+                    <GridLayout verticalAlignment="bottom">
+                        <FlexboxLayout backgroundColor="#f6eec4" paddingTop="15" paddingBottom="15" paddingLeft="16"
                         paddingRight="20">
-                        <Label id="col-text" [text]="user.username"></Label>
-                        <Label id="col-text" [text]="user.nativeLanguage.name"></Label>
-                        <Label id="col-text" [text]="user.currentLanguage.name"></Label>
+                        <StackLayout >
+                            <Button id="col-text" [text]="user.username" (tap)="buddyRequest(user)" ></Button>
+                            <Label id="col-text" [text]="user.nativeLanguage.name"></Label>
+                            <Label id="col-text" [text]="user.currentLanguage.name"></Label>
+                        </StackLayout>    
                     </FlexboxLayout>
                 </GridLayout>
-            </GridLayout>
+            </StackLayout>
         </ng-template>
-        <ListViewGridLayout tkListViewLayout scrollDirection="Vertical" spanCount="1">
-        </ListViewGridLayout>
     </RadListView>
 </GridLayout>
 
+</StackLayout>
