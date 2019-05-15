@@ -79,26 +79,7 @@ export class FindBuddyComponent implements OnInit {
         this.getPotentialBuddies();
       })
 
-  
   }
-
-  // openModal(){
-  //   let notice = {
-  //     notice: this.notice
-  //   }
-
-  //   this.modalDialog.showModal(NoticeComponent, {
-  //     fullscreen: false,
-  //     viewContainerRef: this.vcRef,
-  //     context: {
-  //       notice: notice
-  //     }
-  //   })
-  //     .then(action => {
-  //       console.log(action);
-  //       this.getPotentialBuddies();
-  //     })
-  // }
 
 
 }
