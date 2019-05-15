@@ -3,9 +3,16 @@
         <FlexboxLayout 
         flexDirection="column"
         backgroundColor="#00caab"
-        paddingTop="50px"
-        >
-        <Label
+        paddingTop="25"
+        paddingBottom="25"
+        paddingLeft="25"
+        paddingRight="25"
+        ><FlexboxLayout
+        flexDirection="row"
+        justifyContent= "space-between";
+        backgroundColor="#4cdcc6"
+        paddingLeft="5"
+        ><Label
         text="{{user.username}}"
         class="personalized"
         *ngIf="user"
@@ -15,11 +22,15 @@
         class="personalized"
         *ngIf="user"
         ></Label>
+        <FlexboxLayout> 
+        </FlexboxLayout>
         <Label
         text={{languages[user.currentLanguageId]}}
         class="personalized"
         *ngIf="user"
         ></Label>
+        </FlexboxLayout>    
+        
         </FlexboxLayout>
         <Button 
         text="{{language.logout}}" 
