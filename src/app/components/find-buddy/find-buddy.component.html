@@ -4,19 +4,20 @@
         <RadListView [items]="users" class="aaa">
             <ng-template tkListItemTemplate let-user="item">
                 <StackLayout>
+                 <GridLayout backgroundColor="white" margin="15" (tap)="chat(buddy)">
                     <GridLayout verticalAlignment="bottom">
                         <FlexboxLayout backgroundColor="#f6eec4" paddingTop="15" paddingBottom="15" paddingLeft="16"
                         paddingRight="20">
-                        <StackLayout >
-                            <Button id="col-text" [text]="user.username" (tap)="buddyRequest(user)" ></Button>
-                            <Label id="col-text" [text]="user.nativeLanguage.name"></Label>
-                            <Label id="col-text" [text]="user.currentLanguage.name"></Label>
-                        </StackLayout>    
+                        <GridLayout rows="40,20,*" columns="auto,20,*" >
+                            <Button id="col-text" row="0" col="0" rowSpan="2" class="btn btn-primary" [text]="user.username" (tap)="buddyRequest(user)" ></Button>
+                            <Label id="col-text" row="0" col="2" text="speaks: {{user.nativeLanguage.name}}"></Label>
+                            <Label id="col-text" row="1" col="2" text="learning: {{user.currentLanguage.name}}"></Label>
+                        </GridLayout>    
                     </FlexboxLayout>
+                    </GridLayout>
                 </GridLayout>
             </StackLayout>
         </ng-template>
     </RadListView>
 </GridLayout>
-
 </StackLayout>
