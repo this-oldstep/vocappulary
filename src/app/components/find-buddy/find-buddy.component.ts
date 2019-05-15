@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { AuthService } from '~/app/auth/auth.service';
 import { findBuddyService } from './find-buddy.service';
 import { HttpClient } from '@angular/common/http';
 import { NGROK } from '../../../config'
-
+import { ModalDialogService, ModalDialogParams } from 'nativescript-angular/modal-dialog'
+import { NoticeComponent } from '../notice/notice.component'
 
 @Component({
   selector: 'ns-find-buddy',
@@ -14,16 +15,28 @@ import { NGROK } from '../../../config'
 export class FindBuddyComponent implements OnInit {
   user;
   users;
+  public notice: string;
   constructor(
     private authService: AuthService,
+    private modalDialog: ModalDialogService,
+    private vcRef: ViewContainerRef,
     private findBuddyService: findBuddyService,
     private http: HttpClient
-  ) { }
+  ) {
+
+    this.notice = "Request has been sent"
+  }
 
   ngOnInit() {
     this.authService.user.subscribe(user => {
       this.user = user;
     })
+
+    this.getPotentialBuddies();
+
+  }
+
+  getPotentialBuddies() {
     this.findBuddyService.getPotentialBuddies(this.user.id, this.user.firebase)
     this.findBuddyService.users.subscribe(users => {
       this.users = users;
@@ -31,7 +44,8 @@ export class FindBuddyComponent implements OnInit {
     })
   }
 
-  buddyRequest(potentialBuddy){
+
+  buddyRequest(potentialBuddy) {
     console.log('wanna be budies with', potentialBuddy);
     this.http.post(`${NGROK}/requests/new`,
      {userId: this.user.id, 
@@ -40,6 +54,16 @@ export class FindBuddyComponent implements OnInit {
     })
       .subscribe(response => {
         console.log(response);
+        this.modalDialog.showModal(NoticeComponent, {
+          fullscreen: false,
+          viewContainerRef: this.vcRef,
+          context: {
+            notice: this.notice
+          }
+        })
+          .then(action => {
+            this.getPotentialBuddies();
+          })
       })
 
   }
