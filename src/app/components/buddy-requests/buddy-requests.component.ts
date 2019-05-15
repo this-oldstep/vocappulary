@@ -24,7 +24,7 @@ export class BuddyRequestsComponent implements OnInit {
     this.authService.user.subscribe(currentUser => {
       this.user = currentUser;
     })
-    this.buddyRequestsService.getRequests(this.user.id);
+    this.buddyRequestsService.getRequests(this.user.id, this.user.firebase);
     this.buddyRequestsService.requests.subscribe(currentRequests => {
         this.requests = currentRequests;
     })
@@ -33,7 +33,7 @@ export class BuddyRequestsComponent implements OnInit {
   acceptRequest(request){
     console.log(request);
 
-    this.http.post(`${NGROK}/requests/accept`, {userId: this.user.id, newBuddyId: request.id })
+    this.http.post(`${NGROK}/requests/accept`, {userId: this.user.id, newBuddyId: request.id, firebase: this.user.firebase })
       .subscribe( response => {
         console.log('response from server', response);
       })

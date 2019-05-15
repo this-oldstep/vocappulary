@@ -7,6 +7,7 @@ export class User {
         public points: number,
         public _token: string, 
         public _tokenExpirationDate: Date,
+        public firebase: string,
 
         
         ) {}

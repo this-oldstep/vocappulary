@@ -13,9 +13,15 @@ export class BuddyRequestsService {
         return this._requests.asObservable();
     }
 
-    getRequests(userId: number) {
+    getRequests(userId, firebase) {
+        console.log("1231233")
         return this.http.get(
-            `${NGROK}/requests/all/${userId}`
+            `${NGROK}/requests/all`,  {
+                params: {
+                    id: userId,
+                    firebase: firebase,
+                }
+            }
         ).subscribe(response => {
             this._requests.next(response);
             console.log(response)
