@@ -4,7 +4,7 @@ import { PageRoute } from 'nativescript-angular/router';
 import { ModalDialogService, ModalDialogParams } from 'nativescript-angular/modal-dialog'
 import { SelectWordComponent } from '../select-word/select-word.component'
 import { UIService } from '~/app/shared/ui.serivce';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { Observable } from 'tns-core-modules/ui/page/page';
 import { AuthService } from '~/app/auth/auth.service';
 import { switchMap } from 'rxjs/operators';
@@ -31,7 +31,7 @@ let { fromAsset } = require("tns-core-modules/image-source/image-source");
   moduleId: module.id,
 })
 export class IndividualCollectionComponent implements OnInit {
-
+  user;
   //public collection: {id: string, name: string, public: boolean, count: string, createdAt: string, updatedAt: string, userId: string};
   public collection: any;
   isLoading = false;
@@ -58,6 +58,7 @@ export class IndividualCollectionComponent implements OnInit {
   ngOnInit() {
     this.authService.user.subscribe(userData => {
       let langCode = userData.nativeLanguageId.toString()
+      this.user = userData
       if (!langCode) {
         langCode = '1'
       }
@@ -75,9 +76,14 @@ export class IndividualCollectionComponent implements OnInit {
 
   getAllItems(){
     this.isLoading = true
-    this.authService.user.pipe(switchMap(currentUser => {
-      return this.http.get(`${NGROK}/collectionItems/${this.collection.id}`)
-    })).subscribe(items => {
+    console.log(this.user.firebase, "firebase");
+      return this.http.get(`${NGROK}/collectionItems/`, {
+        params: {
+          id: this.collection.id,
+          firebase: this.user.firebase,
+        }
+      })
+    .subscribe(items => {
       this.activeItems = items;
       this.activeItems.reverse();
       this.isLoading = false;
@@ -105,15 +111,15 @@ export class IndividualCollectionComponent implements OnInit {
             image.src = imageAsset;
             console.log(imageAsset.options.width, imageAsset.options.height)
             fromAsset(imageAsset).then((result) => {
-              this.authService.user.pipe(switchMap(currentUser => {
+              
               let base64 = result.toBase64String("jpeg", 100);
               let testUrl = `${NGROK}/images`;
               let options = {
                 base64: base64,
-                userId: currentUser.id,
+                userId: this.user.id,
+                firebase: this.user.firebase,
               }
               return http.post(testUrl, options)
-              }))
                 .subscribe((data) => {
                   data['collectionId'] = collectionId;
                   self.modalDialog.showModal(SelectWordComponent,

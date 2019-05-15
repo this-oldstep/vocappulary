@@ -13,9 +13,14 @@ export class BuddiesService {
         return this._buddies.asObservable();
     }
 
-    getBuddies(userId: number) {
+    getBuddies(userId, firebase: string) {
         return this.http.get(
-            `${NGROK}/buddies/all/${userId}`
+            `${NGROK}/buddies/all/`, {
+                params: {
+                    firebase: firebase,
+                    id: userId,
+                }
+            }
         ).subscribe(response => {
             this._buddies.next(response);
             console.log(response)
