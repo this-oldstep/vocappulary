@@ -3,8 +3,11 @@ import { AuthService } from '~/app/auth/auth.service';
 import { findBuddyService } from './find-buddy.service';
 import { HttpClient } from '@angular/common/http';
 import { NGROK } from '../../../config'
-import { ModalDialogService, ModalDialogParams } from 'nativescript-angular/modal-dialog'
+import { ModalDialogService } from 'nativescript-angular/modal-dialog'
 import { NoticeComponent } from '../notice/notice.component';
+import * as dialogs from "tns-core-modules/ui/dialogs";
+
+
 const i18n = require('../../i18n/i18n.js')
 
 @Component({
@@ -13,6 +16,10 @@ const i18n = require('../../i18n/i18n.js')
   styleUrls: ['./find-buddy.component.css'],
   moduleId: module.id,
 })
+
+//const modalViewModulets = "ns-ui-category/modal-view/basics/modal-ts-view-page";
+
+
 export class FindBuddyComponent implements OnInit {
   user;
   users;
@@ -64,18 +71,15 @@ export class FindBuddyComponent implements OnInit {
     })
       .subscribe(response => {
         console.log(response);
-        this.modalDialog.showModal(NoticeComponent, {
-          fullscreen: false,
-          viewContainerRef: this.vcRef,
-          context: {
-            notice: this.notice
-          }
+        dialogs.alert({
+          title: '',
+          message: this.notice,
+          okButtonText: 'Ok'
         })
-          .then(action => {
-            this.getPotentialBuddies();
-          })
+        this.getPotentialBuddies();
       })
 
   }
+
 
 }

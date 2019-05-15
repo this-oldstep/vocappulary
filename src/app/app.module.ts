@@ -29,6 +29,8 @@ import { FindBuddyComponent } from "./components/find-buddy/find-buddy.component
 import { BuddyRequestsComponent } from './components/buddy-requests/buddy-requests.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { NoticeComponent } from './components/notice/notice.component'
+
+
 @NgModule({
     bootstrap: [
         AppComponent
