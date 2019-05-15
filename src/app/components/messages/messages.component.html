@@ -3,8 +3,8 @@
   <ListView #scroll [items]="messages" class="list-group" row="0" col="0">
     <ng-template let-message="item">
       <StackLayout class="list-group-item">
-        <Label *ngIf="message.user" text="{{message.user}}" class="user-message"></Label>
-        <Label *ngIf="message.buddy" text="{{message.buddy}}" class="buddy-message"></Label>
+        <Label horizontalAlignment="right" *ngIf="message.user" text="{{message.user}}" class="user-message"></Label>
+        <Label horizontalAlignment="left" *ngIf="message.buddy" text="{{message.buddy}}" class="buddy-message"></Label>
       </StackLayout>
     </ng-template>
   </ListView>
