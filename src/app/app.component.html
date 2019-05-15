@@ -1,9 +1,26 @@
 <RadSideDrawer>
     <StackLayout tkDrawerContent class="drawer-container">
-        <TextView
-        text={{user.username}}
+        <FlexboxLayout 
+        flexDirection="column"
+        backgroundColor="#00caab"
+        paddingTop="50px"
+        >
+        <Label
+        text="{{user.username}}"
+        class="personalized"
         *ngIf="user"
-        ></TextView>
+        ></Label>
+        <Label
+        text="Points: {{user.points}}"
+        class="personalized"
+        *ngIf="user"
+        ></Label>
+        <Label
+        text={{languages[user.currentLanguageId]}}
+        class="personalized"
+        *ngIf="user"
+        ></Label>
+        </FlexboxLayout>
         <Button 
         text="{{language.logout}}" 
         class="btn btn-primary" 

@@ -39,8 +39,9 @@ export class LandingComponent implements OnInit {
       }
       this.language = i18n[langCode]
       console.log("testing", this.language)
+      this.getAllCollections();
     })
-    this.getAllCollections();
+    
   }
 
   onCollectionInput($event) {
@@ -53,6 +54,7 @@ export class LandingComponent implements OnInit {
     this.isLoading = true;
     
       const URL = `${NGROK}/collections/get`
+      console.log("user", this.user.id);
       const options = { userId: this.user.id, firebase: this.user.firebase }
       return this.http.post(URL, options)
       .subscribe(collections => {

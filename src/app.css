@@ -23,3 +23,9 @@ components that have the btn class name.
     background: #4ddcc6;
     horizontal-align: left;
 }
+
+.personalized {
+    font-size: 24;
+    color: white;
+    font-weight: bold;
+}

@@ -40,7 +40,22 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
             collections: "Collections",
             switchLanguage: 'Switch Language',
             Buddies: 'Buddies'
-        } 
+        }
+        public languages: any = {
+            1: "English",
+            2: "Spanish",
+            3: "Portuguese",
+            4: "Italian",
+            5: "French",
+            6: "German",
+            7: "Danish",
+            8: "Swahili",
+            9: "Tagalog",
+            10: "Vietnamese",
+            11: "Turkish",
+            12: "Basque",
+            13: "Zulu",
+        }
 
     ngOnInit() {
         this.drawerSub = this.uiService.drawerState.subscribe( () => {
