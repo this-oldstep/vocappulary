@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy, NgZone, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { NGROK, SOCKET } from '../../../config.js';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from "~/app/auth/auth.service";
 import { User } from '~/app/auth/user.model.js';
+import { ListView } from 'tns-core-modules/ui/list-view/list-view';
 const SocketIO = require('nativescript-socket.io');
 
 
@@ -40,7 +41,17 @@ export class MessagesComponent implements OnInit, OnDestroy {
     })
   }
 
+@ViewChild("scroll") scroll: ElementRef;
+
+  scrolldown(){
+    let scroll = <ListView>this.scroll.nativeElement;
+    scroll.scrollToIndex(this.messages.length - 1);
+  }
+
+
   public async ngOnInit() {
+
+
     await this.authService.user.subscribe(user=>{
       this.user = user;
     })
@@ -60,6 +71,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
           }
         }
       })
+      this.scrolldown();
     })
     console.log(this.messages)
 
@@ -80,11 +92,13 @@ export class MessagesComponent implements OnInit, OnDestroy {
         this.messages.push({user: event.text})
         console.log(this.messages)
         this.chRef.detectChanges();
+        this.scrolldown();
       }
       else {
         console.log('recieved messages', JSON.stringify(event.text))
         this.messages.push({buddy: event.text});
         this.chRef.detectChanges();
+        this.scrolldown();
       }
     })
   }

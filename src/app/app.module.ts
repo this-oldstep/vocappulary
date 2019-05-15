@@ -27,7 +27,8 @@ import { BuddiesComponent } from "./components/buddies/buddies.component";
 import { BuddiesTabComponent } from './components/buddies-tab/buddies-tab.component';
 import { FindBuddyComponent } from "./components/find-buddy/find-buddy.component";
 import { BuddyRequestsComponent } from './components/buddy-requests/buddy-requests.component';
-import { MessagesComponent } from './components/messages/messages.component'
+import { MessagesComponent } from './components/messages/messages.component';
+import { NoticeComponent } from './components/notice/notice.component'
 @NgModule({
     bootstrap: [
         AppComponent
@@ -63,11 +64,12 @@ import { MessagesComponent } from './components/messages/messages.component'
         MessagesComponent,
         FindBuddyComponent,
         BuddyRequestsComponent,
-        BuddiesTabComponent
+        BuddiesTabComponent,
+        NoticeComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
     ],
-    entryComponents: [SelectWordComponent, LangModalComponent]
+    entryComponents: [SelectWordComponent, LangModalComponent, NoticeComponent]
 })
 export class AppModule { }
