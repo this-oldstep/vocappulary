@@ -53,6 +53,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
                     }
                     console.log(i18n[langCode])
                     this.language = i18n[langCode]
+                    this.user = userData;
                 })
                 this.drawer.toggleDrawerState();
             }

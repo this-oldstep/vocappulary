@@ -1,5 +1,9 @@
 <RadSideDrawer>
     <StackLayout tkDrawerContent class="drawer-container">
+        <TextView
+        text={{user.username}}
+        *ngIf="user"
+        ></TextView>
         <Button 
         text="{{language.logout}}" 
         class="btn btn-primary" 
