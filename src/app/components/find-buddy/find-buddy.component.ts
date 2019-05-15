@@ -4,7 +4,8 @@ import { findBuddyService } from './find-buddy.service';
 import { HttpClient } from '@angular/common/http';
 import { NGROK } from '../../../config'
 import { ModalDialogService, ModalDialogParams } from 'nativescript-angular/modal-dialog'
-import { NoticeComponent } from '../notice/notice.component'
+import { NoticeComponent } from '../notice/notice.component';
+const i18n = require('../../i18n/i18n.js')
 
 @Component({
   selector: 'ns-find-buddy',
@@ -16,6 +17,9 @@ export class FindBuddyComponent implements OnInit {
   user;
   users;
   public notice: string;
+  private language: any;
+
+
   constructor(
     private authService: AuthService,
     private modalDialog: ModalDialogService,
@@ -30,6 +34,12 @@ export class FindBuddyComponent implements OnInit {
   ngOnInit() {
     this.authService.user.subscribe(user => {
       this.user = user;
+      let langCode = user.nativeLanguageId.toString()
+      if (!langCode) {
+        langCode = '1'
+      }
+      this.language = i18n[langCode]
+      this.notice = this.language.noticeSent; // added by patrick
     })
 
     this.getPotentialBuddies();

@@ -33,6 +33,9 @@ module.exports = {
     your: 'your',
     youHave: 'You have',
     points: 'points',
+    noticeSent: 'Request has been sent',
+    acceptedReq: 'You have accepted the request',
+    rejectedReq: 'You have rejected the request',
   },
   2: {
     language: 'Spanish',
@@ -67,6 +70,9 @@ module.exports = {
     your: 'Tu',
     youHave: 'tienes',
     points: 'puntos',
+    noticeSent: 'Aviso ha sido enviado',
+    acceptedReq: 'Has aceptado la solicitud',
+    rejectedReq: 'Has rechazado la solicitud',
   },
   3: { 
     language: 'Portugese',
@@ -101,6 +107,10 @@ module.exports = {
     your: 'Seu',
     youHave: 'Você tem',
     points: 'pontos',
+    noticeSent: 'Aviso foi enviado',
+    acceptedReq: 'Você aceitou o pedido',
+    rejectedReq: 'Você rejeitou a solicitação',
+    
   },
   4:{
     language: 'Italian',
@@ -135,6 +145,9 @@ module.exports = {
     your: 'Il tuo',
     youHave: 'hai',
     points: 'punti',
+    noticeSent: "L'avviso è stato inviato",
+    acceptedReq: "Hai accettato la richiesta",
+    rejectedReq: "Hai respinto la richiesta",
   },
   5:{
     language: 'French',
@@ -170,6 +183,9 @@ module.exports = {
     your: 'Votre', 
     youHave: 'tu as',
     points: 'points',
+    noticeSent: 'Un avis a été envoyé',
+    acceptedReq: 'Vous avez accepté la demande',
+    rejectedReq: 'Vous avez rejeté la demande',
   },
   6: {
     language: 'German',
@@ -205,6 +221,9 @@ module.exports = {
     your: 'Ihre',
     youHave: 'du hast',
     points: 'punkte',
+    noticeSent: 'Nachricht wurde gesendet',
+    acceptedReq: 'Sie haben die Anfrage angenommen',
+    rejectedReq: 'Sie haben die Anfrage abgelehnt',
   },
   7: {
     language: 'Danish',
@@ -240,6 +259,9 @@ module.exports = {
     your: 'Dine',
     youHave: 'du har',
     points: 'punkter',
+    noticeSent: 'Meddelelsen er blevet sendt',
+    acceptedReq: 'Du har accepteret anmodningen',
+    rejectedReq: 'Du har afvist anmodningen',
   },
   8: {
     language: 'Swahili',
@@ -275,6 +297,9 @@ module.exports = {
     your: 'Yako',
     youHave: 'unayo',
     points: 'pointi',
+    noticeSent: 'Taarifa imetumwa',
+    acceptedReq: 'Umekubali ombi hilo',
+    rejectedReq: 'Umekataa ombi hilo',
   },
   9: {
     language: 'Tagalog',
@@ -310,6 +335,9 @@ module.exports = {
     your: 'Iyong',
     youHave: 'mayroon ka',
     points: 'mga puntos',
+    noticeSent: 'Ang paunawa ay naipadala na',
+    acceptedReq: 'Tinanggap mo ang kahilingan',
+    rejectedReq: 'Tinanggihan mo ang kahilingan',
   },
   10: {
     language: 'Vietnamese',
@@ -345,6 +373,9 @@ module.exports = {
     your: 'Của bạn',
     youHave: 'bạn có',
     points: 'điểm',
+    noticeSent: 'Thông báo đã được gửi',
+    acceptedReq: 'Bạn đã chấp nhận yêu cầu',
+    rejectedReq: 'Bạn đã từ chối yêu cầu',
   },
   11: {
     language: 'Turkish',
@@ -380,6 +411,9 @@ module.exports = {
     your: 'Sizin',
     youHave: 'var',
     points: 'makas',
+    noticeSent: 'Uyarı gönderildi',
+    acceptedReq: 'İsteği kabul ettin',
+    rejectedReq: 'İsteği reddettiniz',
   },
   12: {
     language: 'Basque',
@@ -415,6 +449,9 @@ module.exports = {
     your: 'Zure',
     youHave: 'duzu',
     points: 'puntuak',
+    noticeSent: 'Oharra bidali da',
+    acceptedReq: 'Eskaera onartu duzu',
+    rejectedReq: 'Eskaera baztertu duzu',
   },
   13: {
     language: 'Zulu',
@@ -450,5 +487,8 @@ module.exports = {
     your: 'Wakho',
     youHave: 'unayo',
     points: 'amaphuzu',
+    noticeSent: 'Isaziso sithunyelwe',
+    acceptedReq: 'Uwamukele isicelo',
+    rejectedReq: 'Uwenqabe isicelo',
   },
 }
