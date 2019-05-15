@@ -10,6 +10,7 @@ import { RouterExtensions } from 'nativescript-angular/router';
 import { AuthService } from "~/app/auth/auth.service";
 import { switchMap, take } from "rxjs/operators";
 import { User } from "~/app/auth/user.model"
+const i18n = require("../../i18n/i18n.js")
 
 const permissions = require('nativescript-permissions');
 var bghttp = require("nativescript-background-http");
@@ -28,7 +29,10 @@ export class PracticeComponent implements OnInit {
   
  
   user;
-
+  private language: any = {
+    youHave: 'You have',
+    points: 'points'
+  }
   public cards: any;
   private _recorder: TNSRecorder;
   public index: number;
@@ -51,13 +55,22 @@ export class PracticeComponent implements OnInit {
     this.index = 0;
     this.end = false;
     this.points = 0;
-    this.message = `You got ${this.points} points!`
+    this.message = `${this.language.youHave} ${this.points} ${this.language.points}!`
     this.pointList = [];
   }
 
  
 
   ngOnInit(): void {
+    this.authService.user.subscribe(userData => {
+      this.user = userData;
+      let langCode = userData.nativeLanguageId.toString()
+      if (!langCode) {
+        langCode = '1'
+      }
+      this.language = i18n[langCode]
+      this.message = `${this.language.youHave} ${this.points} ${this.language.points}!`
+    })
     
     this.authService.user.pipe(take(1)).subscribe( currentUser => {
        this.user = currentUser;

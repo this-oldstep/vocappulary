@@ -1,11 +1,11 @@
 
-<ns-action-bar title="Say it!"></ns-action-bar>
+<ns-action-bar title="{{language.sayIt}}"></ns-action-bar>
 <ng-template [ngIf]="cards && index < cards.length" [ngIfElse]="end ? results : ready">
     <StackLayout >
         <FlexboxLayout id="main">
             <Image  id="img" [src]="cards[index].url_image"></Image>
-            <Button text="pronounce!" class = "btn btn-primary" (tap)="onRecord()"></Button>
-            <Button id = "stop" text="stop recording" class="btn" (tap)="stopRecording()"></Button>
+            <Button text="{{language.pronounce}}!" class = "btn btn-primary" (tap)="onRecord()"></Button>
+            <Button id = "stop" text="{{language.stopRecording}}" class="btn" (tap)="stopRecording()"></Button>
         </FlexboxLayout>
             <StackLayout orientation="horizontal">
                 <ng-container *ngFor="let point of pointList">
@@ -18,14 +18,14 @@
 
 <ng-template #ready>
   <FlexboxLayout> 
-    <Label text="Get Ready!"></Label>
+    <Label text="{{language.getReady}}!"></Label>
   </FlexboxLayout> 
 </ng-template>
 
 <ng-template #results>
     <FlexboxLayout>
         <Label [text]="message"></Label>
-        <Button text="practice some more!" class="btn btn-primary" (tap)="ngOnInit()"></Button>
-        <Button text="Back to Collections" class="btn btn-primary" (tap)="backToCollections()"></Button>
+        <Button text="{{language.practiceMore}}!" class="btn btn-primary" (tap)="ngOnInit()"></Button>
+        <Button text="{{language.backToCollection}}" class="btn btn-primary" (tap)="backToCollections()"></Button>
     </FlexboxLayout>
 </ng-template>
