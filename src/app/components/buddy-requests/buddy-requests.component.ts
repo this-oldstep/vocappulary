@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { BuddyRequestsService } from './buddy-requests.service';
 import { AuthService } from '~/app/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
@@ -6,6 +6,7 @@ import { NGROK } from '../../../config';
 import * as dialogs from "tns-core-modules/ui/dialogs";
 const i18n = require('../../i18n/i18n.js')
 
+@Injectable()
 
 @Component({
   selector: 'ns-buddy-requests',
@@ -17,6 +18,7 @@ export class BuddyRequestsComponent implements OnInit {
   
   user;
   requests;
+  
   public language: any;
   public languages: any = {
     1: "English",
@@ -36,12 +38,12 @@ export class BuddyRequestsComponent implements OnInit {
 
 
 
-
   constructor(
     private buddyRequestsService: BuddyRequestsService,
     private authService: AuthService,
     private http: HttpClient
     ) { }
+  
 
   ngOnInit() {
     this.authService.user.subscribe(currentUser => {
