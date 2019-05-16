@@ -7,10 +7,10 @@
             paddingRight="20">
             <GridLayout rows="*,*,*" columns="auto,*">
                 <Label id="username" col="0" row="0" [text]="request.username"></Label>
-                <Label row='1' col='0' text="speaks: {{languages[request.nativeLanguageId]}}"></Label>
-                <Label row='2' col='0' text="learning: {{languages[request.currentLanguageId]}}"></Label>
-                <Button class="btn " id="accept" col="1" row="1" text="accept" (tap)="acceptRequest(request)"></Button>
-                <Button class="btn" id="reject" col="1" row="2" text="reject" (tap)="rejectRequest(request)"></Button>
+                <Label row='1' col='0' text="{{language.speaks}}: {{languages[request.nativeLanguageId]}}"></Label>
+                <Label row='2' col='0' text="{{language.learning}}: {{languages[request.currentLanguageId]}}"></Label>
+                <Button class="btn " id="accept" col="1" row="1" text="{{language.accept}}" (tap)="acceptRequest(request)"></Button>
+                <Button class="btn" id="reject" col="1" row="2" text="{{language.reject}}" (tap)="rejectRequest(request)"></Button>
             </GridLayout>
           </FlexboxLayout>
         </GridLayout>

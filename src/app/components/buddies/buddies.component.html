@@ -7,8 +7,8 @@
                         paddingRight="20">
                         <GridLayout rows="auto,*,*" columns="auto,30,*">
                         <Label id="username" row="0" col="0" id="col-text" [text]="buddy.username"></Label>
-                        <Label row="1" col="0" text="speaks: {{languages[buddy.nativeLanguageId]}}"></Label>
-                        <Label row="2" col="0" text="learning: {{languages[buddy.currentLanguageId]}}"></Label>
+                        <Label row="1" col="0" text="{{language.speaks}}: {{languages[buddy.nativeLanguageId]}}"></Label>
+                        <Label row="2" col="0" text="{{language.learning}}: {{languages[buddy.currentLanguageId]}}"></Label>
                         <Button row="1" col="2" rowSpan="2" text="chat" class="btn btn-primary" (tap)="chat(buddy)" ></Button>
                         </GridLayout>
                     </FlexboxLayout>

@@ -4,6 +4,7 @@ import { AuthService } from '~/app/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { NGROK } from '../../../config';
 import * as dialogs from "tns-core-modules/ui/dialogs";
+const i18n = require('../../i18n/i18n.js')
 
 
 @Component({
@@ -16,7 +17,7 @@ export class BuddyRequestsComponent implements OnInit {
   
   user;
   requests;
-
+  public language: any;
   public languages: any = {
     1: "English",
     2: "Español",
@@ -45,6 +46,11 @@ export class BuddyRequestsComponent implements OnInit {
   ngOnInit() {
     this.authService.user.subscribe(currentUser => {
       this.user = currentUser;
+      let langCode = currentUser.nativeLanguageId.toString()
+      if (!langCode) {
+        langCode = '1'
+      }
+      this.language = i18n[langCode]
     })
     this.getRequests();
   }
@@ -65,7 +71,7 @@ export class BuddyRequestsComponent implements OnInit {
         console.log('response from server', response);
         dialogs.alert({
           title: '',
-          message: 'Buddy Accepted',
+          message: this.language.acceptedReq,
           okButtonText: 'Ok'
         });
         this.getRequests();
@@ -81,7 +87,7 @@ export class BuddyRequestsComponent implements OnInit {
         console.log('response from server', response);
         dialogs.alert({
           title: '',
-          message: 'Buddy Rejected',
+          message: this.language.rejectedReq,
           okButtonText: 'Ok'
         });
         this.getRequests();
