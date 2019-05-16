@@ -27,8 +27,7 @@ declare var android: any;
   styleUrls: ['./practice.component.css'],
 })
 export class PracticeComponent implements OnInit {
-  
- 
+  isRecording = false;
   user;
   private language: any = {
     youHave: 'You have',
@@ -108,6 +107,7 @@ export class PracticeComponent implements OnInit {
    if (args.action === "down") {
     permissions.requestPermission(android.Manifest.permission.RECORD_AUDIO, "Say the word!...")
       .then(function (){
+        self.isRecording = true;
           if (TNSRecorder.CAN_RECORD()){
             console.log('I can record!');
 
@@ -147,8 +147,7 @@ export class PracticeComponent implements OnInit {
       })
     } else 
     if (args.action === "up") {
-
-  let self = this;
+      self.isRecording = false;
 
   if (this._recorder !== undefined){
     this._recorder.stop()

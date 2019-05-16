@@ -6,6 +6,12 @@
             <Image  id="img" [src]="cards[index].url_image"></Image>
             <Button text="{{language.pronounce}}!" class = "btn btn-primary" (touch)="onRecord($event)"></Button>
         </FlexboxLayout>
+        <Image 
+        *ngIf="isRecording"
+        width="100"
+        height="100"
+        src="https://res.cloudinary.com/dlqxzhifw/image/upload/v1558023519/ynhrbgxa93xi45h3rqgd.gif"
+        ></Image>
             <StackLayout orientation="horizontal">
                 <ng-container *ngFor="let point of pointList">
                 <Image *ngIf="point.value" class="points" src="https://res.cloudinary.com/dlqxzhifw/image/upload/v1557608414/igxiv6p8yrkfk2zkvjfa.png"></Image>
