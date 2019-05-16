@@ -3,3 +3,12 @@ FlexboxLayout{
   border-radius: 10px;
   border-color: #4cdcc6;
 }
+
+Label{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#username{
+  font-size: 19px;
+}
