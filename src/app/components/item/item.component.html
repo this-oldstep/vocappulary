@@ -1,6 +1,19 @@
 <ns-action-bar title="Voccapulary"></ns-action-bar>
 <FlexboxLayout>
-  <Image id="img" [src]="item.url_image"></Image>
-  <Button class="btn btn-primary" [text] = "item.currentTranslation" (tap)="playWord()" ></Button>
-  <Label [text]="item.nativeTranslation"></Label>
+  <Image 
+  id="img" 
+  [src]="item.url_image"
+  stretch="aspectFit"
+  ></Image>
+  <Button 
+  class="btn btn-primary" 
+  [text] = "item.currentTranslation" 
+  (tap)="playWord()" 
+  fontWeight="500"
+  fontSize="28"
+  ></Button>
+  <Label 
+  [text]="item.nativeTranslation"
+  fontSize="25"
+  ></Label>
 </FlexboxLayout>
