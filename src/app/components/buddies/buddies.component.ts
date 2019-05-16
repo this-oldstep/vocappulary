@@ -14,6 +14,24 @@ import { NavigationExtras } from "@angular/router";
 export class BuddiesComponent implements OnInit {
   user;
   buddies;
+
+  public languages: any = {
+    1: "English",
+    2: "Español",
+    3: "Português",
+    4: "Italiano",
+    5: "Français",
+    6: "Deutsche",
+    7: "Dansk",
+    8: "Swahili",
+    9: "Tagalog",
+    10: "Tiếng Việt",
+    11: "Türk",
+    12: "Euskara",
+    13: "Zulu",
+  }
+
+
   constructor(
     private buddiesService: BuddiesService,
     private router: RouterExtensions,

@@ -17,6 +17,25 @@ export class BuddyRequestsComponent implements OnInit {
   user;
   requests;
 
+  public languages: any = {
+    1: "English",
+    2: "Español",
+    3: "Português",
+    4: "Italiano",
+    5: "Français",
+    6: "Deutsche",
+    7: "Dansk",
+    8: "Swahili",
+    9: "Tagalog",
+    10: "Tiếng Việt",
+    11: "Türk",
+    12: "Euskara",
+    13: "Zulu",
+  }
+
+
+
+
   constructor(
     private buddyRequestsService: BuddyRequestsService,
     private authService: AuthService,

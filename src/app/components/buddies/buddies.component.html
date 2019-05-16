@@ -1,11 +1,16 @@
 <GridLayout tkExampleTitle tkToggleNavButton>
     <RadListView [items]="buddies" class="aaa">
         <ng-template tkListItemTemplate let-buddy="item">
-            <GridLayout backgroundColor="white" margin="15" (tap)="chat(buddy)">
+            <GridLayout backgroundColor="white" margin="15" >
                 <GridLayout verticalAlignment="bottom">
                     <FlexboxLayout backgroundColor="#f6eec4" paddingTop="15" paddingBottom="15" paddingLeft="16"
                         paddingRight="20">
-                        <Label id="col-text" [text]="buddy.username"></Label>
+                        <GridLayout rows="auto,*,*" columns="auto,30,*">
+                        <Label id="username" row="0" col="0" id="col-text" [text]="buddy.username"></Label>
+                        <Label row="1" col="0" text="speaks: {{languages[buddy.nativeLanguageId]}}"></Label>
+                        <Label row="2" col="0" text="learning: {{languages[buddy.currentLanguageId]}}"></Label>
+                        <Button row="1" col="2" rowSpan="2" text="chat" class="btn btn-primary" (tap)="chat(buddy)" ></Button>
+                        </GridLayout>
                     </FlexboxLayout>
                 </GridLayout>
             </GridLayout>
@@ -14,4 +19,3 @@
         </ListViewGridLayout>
     </RadListView>
 </GridLayout>
-
