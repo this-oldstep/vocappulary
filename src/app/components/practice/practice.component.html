@@ -4,8 +4,7 @@
     <StackLayout >
         <FlexboxLayout id="main">
             <Image  id="img" [src]="cards[index].url_image"></Image>
-            <Button text="{{language.pronounce}}!" class = "btn btn-primary" (tap)="onRecord()"></Button>
-            <Button id = "stop" text="{{language.stopRecording}}" class="btn" (tap)="stopRecording()"></Button>
+            <Button text="{{language.pronounce}}!" class = "btn btn-primary" (touch)="onRecord($event)"></Button>
         </FlexboxLayout>
             <StackLayout orientation="horizontal">
                 <ng-container *ngFor="let point of pointList">
