@@ -37,6 +37,8 @@ module.exports = {
     noticeSent: 'Request has been sent',
     acceptedReq: 'You have accepted the request',
     rejectedReq: 'You have rejected the request',
+    accept: 'Accept',
+    reject: 'Reject',
   },
   2: {
     language: 'Spanish',
@@ -75,6 +77,8 @@ module.exports = {
     noticeSent: 'Aviso ha sido enviado',
     acceptedReq: 'Has aceptado la solicitud',
     rejectedReq: 'Has rechazado la solicitud',
+    accept: 'Aceptar',
+    reject: 'Rechazar',
   },
   3: { 
     language: 'Portugese',
@@ -113,6 +117,8 @@ module.exports = {
     noticeSent: 'Aviso foi enviado',
     acceptedReq: 'Você aceitou o pedido',
     rejectedReq: 'Você rejeitou a solicitação',
+    accept: 'Aceitar',
+    reject: 'Rejeitar',
     
   },
   4:{
@@ -152,6 +158,8 @@ module.exports = {
     noticeSent: "L'avviso è stato inviato",
     acceptedReq: "Hai accettato la richiesta",
     rejectedReq: "Hai respinto la richiesta",
+    accept: 'Accettare',
+    reject: 'Rifiutare',
   },
   5:{
     language: 'French',
@@ -191,6 +199,8 @@ module.exports = {
     noticeSent: 'Un avis a été envoyé',
     acceptedReq: 'Vous avez accepté la demande',
     rejectedReq: 'Vous avez rejeté la demande',
+    accept: 'Acceptez',
+    reject: 'Rejeter',
   },
   6: {
     language: 'German',
@@ -230,6 +240,8 @@ module.exports = {
     noticeSent: 'Nachricht wurde gesendet',
     acceptedReq: 'Sie haben die Anfrage angenommen',
     rejectedReq: 'Sie haben die Anfrage abgelehnt',
+    accept: 'Akzeptieren',
+    reject: 'Ablehnen',
   },
   7: {
     language: 'Danish',
@@ -269,6 +281,8 @@ module.exports = {
     noticeSent: 'Meddelelsen er blevet sendt',
     acceptedReq: 'Du har accepteret anmodningen',
     rejectedReq: 'Du har afvist anmodningen',
+    accept: 'Acceptere',
+    reject: 'Afvise',
   },
   8: {
     language: 'Swahili',
@@ -308,6 +322,8 @@ module.exports = {
     noticeSent: 'Taarifa imetumwa',
     acceptedReq: 'Umekubali ombi hilo',
     rejectedReq: 'Umekataa ombi hilo',
+    accept: 'Kukubali',
+    reject: 'Kataa',
   },
   9: {
     language: 'Tagalog',
@@ -347,6 +363,9 @@ module.exports = {
     noticeSent: 'Ang paunawa ay naipadala na',
     acceptedReq: 'Tinanggap mo ang kahilingan',
     rejectedReq: 'Tinanggihan mo ang kahilingan',
+    accept: 'Tanggapin',
+    reject: 'Tanggihan',
+    
   },
   10: {
     language: 'Vietnamese',
@@ -386,6 +405,8 @@ module.exports = {
     noticeSent: 'Thông báo đã được gửi',
     acceptedReq: 'Bạn đã chấp nhận yêu cầu',
     rejectedReq: 'Bạn đã từ chối yêu cầu',
+    accept: 'Chấp nhận',
+    reject: 'Từ chối',
   },
   11: {
     language: 'Turkish',
@@ -425,6 +446,8 @@ module.exports = {
     noticeSent: 'Uyarı gönderildi',
     acceptedReq: 'İsteği kabul ettin',
     rejectedReq: 'İsteği reddettiniz',
+    accept: 'Kabul etmek',
+    reject: 'reddetmek',
   },
   12: {
     language: 'Basque',
@@ -464,6 +487,8 @@ module.exports = {
     noticeSent: 'Oharra bidali da',
     acceptedReq: 'Eskaera onartu duzu',
     rejectedReq: 'Eskaera baztertu duzu',
+    accept: 'Onartu',
+    reject: 'Ukatu',
   },
   13: {
     language: 'Zulu',
@@ -503,5 +528,7 @@ module.exports = {
     noticeSent: 'Isaziso sithunyelwe',
     acceptedReq: 'Uwamukele isicelo',
     rejectedReq: 'Uwenqabe isicelo',
+    accept: 'Yamukela',
+    reject: 'Yenqaba',
   },
 }

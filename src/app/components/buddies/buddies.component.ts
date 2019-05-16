@@ -4,6 +4,7 @@ import { AuthService } from "~/app/auth/auth.service";
 import { RouterExtensions } from 'nativescript-angular/router';
 import { ItemEventData } from 'tns-core-modules/ui/list-view'
 import { NavigationExtras } from "@angular/router";
+const i18n = require('../../i18n/i18n.js')
 
 @Component({
   selector: 'ns-buddies',
@@ -14,6 +15,7 @@ import { NavigationExtras } from "@angular/router";
 export class BuddiesComponent implements OnInit {
   user;
   buddies;
+  public language: any;
 
   public languages: any = {
     1: "English",
@@ -41,6 +43,11 @@ export class BuddiesComponent implements OnInit {
   ngOnInit() {
     this.authService.user.subscribe(user => {
       this.user = user;
+      let langCode = user.nativeLanguageId.toString()
+      if (!langCode) {
+        langCode = '1'
+      }
+      this.language = i18n[langCode]
     })
     this.buddiesService.getBuddies(this.user.id, this.user.firebase)
 

@@ -10,8 +10,8 @@
                         paddingRight="20">
                         <GridLayout rows="40,20,*" columns="auto,20,*" >
                             <Button id="col-text" row="0" col="0" rowSpan="2" class="btn btn-primary" [text]="user.username" (tap)="buddyRequest(user)" ></Button>
-                            <Label id="col-text" row="0" col="2" text="speaks: {{user.nativeLanguage.name}}"></Label>
-                            <Label id="col-text" row="1" col="2" text="learning: {{user.currentLanguage.name}}"></Label>
+                            <Label id="col-text" row="0" col="2" text="{{language.speaks}}: {{user.nativeLanguage.name}}"></Label>
+                            <Label id="col-text" row="1" col="2" text="{{language.learning}}: {{user.currentLanguage.name}}"></Label>
                         </GridLayout>    
                     </FlexboxLayout>
                     </GridLayout>
