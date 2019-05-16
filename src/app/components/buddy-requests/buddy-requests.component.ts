@@ -6,8 +6,6 @@ import { NGROK } from '../../../config';
 import * as dialogs from "tns-core-modules/ui/dialogs";
 const i18n = require('../../i18n/i18n.js')
 
-@Injectable()
-
 @Component({
   selector: 'ns-buddy-requests',
   templateUrl: './buddy-requests.component.html',
@@ -18,7 +16,7 @@ export class BuddyRequestsComponent implements OnInit {
   
   user;
   requests;
-  
+
   public language: any;
   public languages: any = {
     1: "English",

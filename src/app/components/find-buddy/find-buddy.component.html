@@ -1,6 +1,6 @@
 <StackLayout>
     <ns-action-bar title="{{language.buddies}}"></ns-action-bar>
-    <GridLayout tkExampleTitle tkToggleNavButton>
+    <GridLayout id="background" tkExampleTitle tkToggleNavButton>
         <RadListView [items]="users" class="aaa">
             <ng-template tkListItemTemplate let-user="item">
                 <StackLayout>
