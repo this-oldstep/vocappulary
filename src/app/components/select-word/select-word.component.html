@@ -1,5 +1,5 @@
 <FlexboxLayout>
-  <Label class='definition' text="{{language.whatObject}}"></Label>
+  <Label class='definition' text="{{language.whatObject}}" textWrap='true'></Label>
   <Button class="btn" [text]="words[0].text" (tap)="onWordSelection(words[0].wordId)"></Button>
   <Button class="btn" [text]="words[1].text" (tap)="onWordSelection(words[1].wordId)"></Button>
   <Button class="btn" [text]="words[2].text" (tap)="onWordSelection(words[2].wordId)"></Button>
