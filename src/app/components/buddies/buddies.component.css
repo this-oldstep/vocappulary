@@ -12,3 +12,7 @@ Label{
 #username{
   font-size: 19px;
 }
+
+#background{
+    background-image: url("https://img.freepik.com/vector-gratis/fondo-textura-madera-blanca_64749-498.jpg?size=338&ext=jpg"); 
+}
