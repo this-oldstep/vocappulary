@@ -10,6 +10,7 @@ import { RouterExtensions } from 'nativescript-angular/router';
 import { AuthService } from "~/app/auth/auth.service";
 import { switchMap, take } from "rxjs/operators";
 import { User } from "~/app/auth/user.model"
+import { TouchGestureEventData } from "tns-core-modules/ui/gestures/gestures";
 const i18n = require("../../i18n/i18n.js")
 
 const permissions = require('nativescript-permissions');
@@ -99,11 +100,12 @@ export class PracticeComponent implements OnInit {
     this.end = false;
   }
 
-  onRecord(){
+  onRecord(args: TouchGestureEventData ){
     let self = this;
     /*
     add functionality for is recording.
     */
+   if (args.action === "down") {
     permissions.requestPermission(android.Manifest.permission.RECORD_AUDIO, "Say the word!...")
       .then(function (){
           if (TNSRecorder.CAN_RECORD()){
@@ -143,10 +145,8 @@ export class PracticeComponent implements OnInit {
       .catch(err => {
         console.log(err, 'no permissions can\'t record');
       })
-
-  }
-
-  stopRecording(){
+    } else 
+    if (args.action === "up") {
 
   let self = this;
 
@@ -224,10 +224,7 @@ export class PracticeComponent implements OnInit {
       });
     }
   }
-
-
-
-
+  }
 }
 
 function shuffleItems(itemList) {
