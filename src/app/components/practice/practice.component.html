@@ -24,7 +24,7 @@
 
 <ng-template #results>
     <FlexboxLayout>
-        <Label [text]="message"></Label>
+        <Label text="{{language.youHave}} {{points}} {{language.points}}"></Label>
         <Button text="{{language.practiceMore}}!" class="btn btn-primary" (tap)="ngOnInit()"></Button>
         <Button text="{{language.backToCollection}}" class="btn btn-primary" (tap)="backToCollections()"></Button>
     </FlexboxLayout>
