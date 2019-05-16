@@ -20,6 +20,7 @@ const i18n = require('./i18n/i18n.js')
 })
 export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     user;
+    change;
     @ViewChild(RadSideDrawerComponent) drawerComponent: RadSideDrawerComponent
     private drawerSub: Subscription
     private drawer: RadSideDrawer;
@@ -43,19 +44,19 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
         }
         public languages: any = {
             1: "English",
-            2: "Spanish",
-            3: "Portuguese",
-            4: "Italian",
-            5: "French",
-            6: "German",
-            7: "Danish",
+            2: "Español",
+            3: "Português",
+            4: "Italiano",
+            5: "Français",
+            6: "Deutsche",
+            7: "Dansk",
             8: "Swahili",
             9: "Tagalog",
-            10: "Vietnamese",
-            11: "Turkish",
-            12: "Basque",
+            10: "Tiếng Việt",
+            11: "Türk",
+            12: "Euskara",
             13: "Zulu",
-        }
+          }
 
     ngOnInit() {
         this.drawerSub = this.uiService.drawerState.subscribe( () => {
@@ -113,8 +114,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
           .then((action: Array<any>) => {
               return new Promise((resolve)=> {
                 this.authService.user.pipe(take(1)).subscribe(currentUser => {
-                    console.log(currentUser);
-                    this.user = new User(currentUser.email, currentUser.id, currentUser.username, action[1], currentUser.nativeLanguageId, currentUser.points, currentUser._token, currentUser._tokenExpirationDate, currentUser.firebase)
+                    this.change = new User(currentUser.email, currentUser.id, currentUser.username, action[1], currentUser.nativeLanguageId, currentUser.points, currentUser._token, currentUser._tokenExpirationDate, currentUser.firebase)
                       
                     this.http.patch(
                         `${NGROK}/user/edit/`
@@ -124,7 +124,8 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
               })
     }).then(resData => {
         this.uiService.toggleDrawer();
-        this.authService.updateUser(this.user)
+        this.authService.updateUser(this.change)
+        console.log("yarp", resData);
         }).catch(err => {
             console.log(err);
         })

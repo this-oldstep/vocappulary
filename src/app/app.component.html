@@ -2,7 +2,7 @@
     <StackLayout tkDrawerContent class="drawer-container">
         <FlexboxLayout 
         flexDirection="column"
-        backgroundColor="#00caab"
+        backgroundColor="#4cdcc6"
         paddingTop="25"
         paddingBottom="25"
         paddingLeft="25"
@@ -10,8 +10,13 @@
         ><FlexboxLayout
         flexDirection="row"
         justifyContent= "space-between";
-        backgroundColor="#4cdcc6"
-        paddingLeft="5"
+        backgroundColor="#00caab"
+        paddingLeft="10"
+        paddingRight="10"
+        paddingTop="10"
+        paddingBottom="10"
+        borderTopRightRadius= "20"
+        borderTopLeftRadius="20"
         ><Label
         text="{{user.username}}"
         class="personalized"
@@ -22,10 +27,19 @@
         class="personalized"
         *ngIf="user"
         ></Label>
-        <FlexboxLayout> 
-        </FlexboxLayout>
-        <Label
-        text={{languages[user.currentLanguageId]}}
+    </FlexboxLayout>
+        <FlexboxLayout
+        flexDirection="row"
+        justifyContent= "space-between";
+        backgroundColor="#00caab"
+        paddingLeft="10"
+        paddingRight="10"
+        paddingTop="10"
+        paddingBottom="10"
+        borderBottomRightRadius="20"
+        borderBottomLeftRadius="20"
+        ><Label
+        [text]=languages[user.currentLanguageId]
         class="personalized"
         *ngIf="user"
         ></Label>
